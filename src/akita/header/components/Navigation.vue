@@ -19,7 +19,7 @@
       <li class="navigation__item navigation__language">
         <span class="change__language">
           <a href="#" class="change__language navigation__link">EN</a> / 
-          <a href="#" class="change__language navigation__link">DE</a>
+          <a href="#DE" class="change__language navigation__link">DE</a>
           </span>
       </li>
     </ul>
@@ -44,6 +44,7 @@ export default {};
 
   .navigation__link, .change__language {
     color: #fff;
+    white-space: nowrap;
   }
 
   .navigation__item {
@@ -62,7 +63,12 @@ export default {};
     top: -12px;
   }
 
-  @media (max-width: 425px) {
+  .navigation__link:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
+
+  @media (max-width: 500px) {
   .navigation {
     flex-direction: column;
   }

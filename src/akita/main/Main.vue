@@ -5,14 +5,7 @@
     <p>Each transactions triggers an automated machine-to-machine (M2M) payment and production process.</p>
     <p>Select a new pair of headphones or a laptop on your machine device.</p>
     <div class="usecase">
-      <div class="user">
-        <div class="user_wallet">
-          <h3>user wallet</h3>
-          <p class="balance">1400i</p>
-          <p>Balance</p>
-        </div>
-      </div>
-
+      <User />
       <div class="machines">
         <div class="machines_park">
           <div class="machine">
@@ -56,9 +49,12 @@
   </div>
 </template>
 <script>
+import User from './components/User.vue'
+import { composeAPI } from "@iota/core";
+
 export default {
   name: "Main",
-  components: {}
+  components: {User}
 };
 </script>
 
@@ -83,29 +79,7 @@ p {
   h3 {
     color: white;
   }
-  .user {
-    padding: 10px 20px;
-    width: 30%;
-    .user_wallet {
-      text-align: center;
-      border-radius: 20px;
-      padding: 20px;
-      background: linear-gradient(
-        to top right,
-        #5f46b1 0%,
-        #7d41af 50%,
-        #ff2ea0 100%
-      );
-      p {
-        color: white;
-        margin: 0;
-      }
-      .balance {
-        margin: 0;
-        font-size: 3em;
-      }
-    }
-  }
+  
   .machines {
     padding: 0 20px;
     width: 70%;

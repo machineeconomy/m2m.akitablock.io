@@ -21,7 +21,7 @@
      <div class="activities">
         <h3>Activities</h3>
         <ul id="logger">
-          <li v-for="(activity, index) in sortedActivities" :key="index">{{activity.message}}</li>
+          <li v-for="(activity, index) in sortedActivities" :key="index">{{ activity.timestamp | formatTimestampToTime}}: {{activity.message}}</li>
         </ul>
       </div>
   </div>
@@ -45,7 +45,7 @@ export default {
   }, 
   methods: {
     addActivity(activity) {
-      console.log("new macheine", activity)
+      console.log("new machine", activity)
       this.activities.push(activity)
       let container = this.$el.querySelector("#logger");
       //console.log("container", container.scrollHeight)

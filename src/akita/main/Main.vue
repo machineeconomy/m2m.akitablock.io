@@ -5,56 +5,27 @@
     <p>Each transactions triggers an automated machine-to-machine (M2M) payment and production process.</p>
     <p>Select a new pair of headphones or a laptop on your machine device.</p>
     <div class="usecase">
-      <User />
+      <User/>
       <div class="machines">
         <div class="machines_park">
-          <div class="machine">
-            <div class="machine_wallet">
-              <h3>robot 1</h3>
-              <p class="balance">1400i</p>
-              <p>Balance</p>
-            </div>
-            <div class="info">transaction history</div>
-          </div>
-          <div class="machine">
-            <div class="machine_wallet">
-              <h3>wind energy</h3>
-              <p class="balance">1400i</p>
-              <p>Balance</p>
-            </div>
-            <div class="info">transaction history</div>
-          </div>
+          <Machine url="http://localhost:3001"/>
+          <Machine url="http://localhost:3002"/>
         </div>
         <div class="machines_park">
-          <div class="machine">
-            <div class="machine_wallet">
-              <h3>robot 2</h3>
-              <p class="balance">1400i</p>
-              <p>Balance</p>
-            </div>
-            <div class="info">transaction history</div>
-          </div>
-
-          <div class="machine">
-            <div class="machine_wallet">
-              <h3>solar energy</h3>
-              <p class="balance">1400i</p>
-              <p>Balance</p>
-            </div>
-            <div class="info">transaction history</div>
-          </div>
+          <Machine url="http://localhost:3003"/>
+          <Machine url="http://localhost:3004"/>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import User from './components/User.vue'
-import { composeAPI } from "@iota/core";
+import User from "./components/User.vue";
+import Machine from "./components/Machine.vue";
 
 export default {
   name: "Main",
-  components: {User}
+  components: { User, Machine }
 };
 </script>
 
@@ -76,45 +47,5 @@ p {
 
 .usecase {
   display: flex;
-  h3 {
-    color: white;
-  }
-  
-  .machines {
-    padding: 0 20px;
-    width: 70%;
-    .machines_park {
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      .machine {
-        display: flex;
-        .machine_wallet {
-          float: left;
-          text-align: center;
-          border-radius: 20px;
-          padding: 20px;
-          background: linear-gradient(
-            to top right,
-            #5f46b1 0%,
-            #7d41af 50%,
-            #ff2ea0 100%
-          );
-          p {
-            color: white;
-          }
-          .balance {
-            font-size: 3em;
-          }
-        }
-        .info {
-          padding: 20px;
-          float: right;
-          border-radius: 20px;
-          background: #EFEFEF;
-        }
-      }
-    }
-  }
 }
 </style>

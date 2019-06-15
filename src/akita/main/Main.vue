@@ -8,15 +8,22 @@
       <User/>
       <div class="machines">
         <div class="machines_park">
-          <Machine url="http://localhost:3001"/>
-          <Machine url="http://localhost:3002"/>
+          <Machine url="http://localhost:3001" v-on:newActivity="addActivity"/>
+          <Machine url="http://localhost:3002" v-on:newActivity="addActivity"/>
         </div>
         <div class="machines_park">
-          <Machine url="http://localhost:3003"/>
-          <Machine url="http://localhost:3004"/>
+          <Machine url="http://localhost:3003" v-on:newActivity="addActivity"/>
+          <Machine url="http://localhost:3004" v-on:newActivity="addActivity"/>
         </div>
       </div>
+     
     </div>
+     <div class="activities">
+        <h3>Activities</h3>
+        <ul id="logger">
+          <li v-for="(activity, index) in sortedActivities" :key="index">{{activity.message}}</li>
+        </ul>
+      </div>
   </div>
 </template>
 <script>
@@ -25,7 +32,39 @@ import Machine from "./components/Machine.vue";
 
 export default {
   name: "Main",
-  components: { User, Machine }
+  components: { User, Machine },
+  data() {
+    return {
+      activities: [
+         {
+           message: "Machines connecting...",
+           timestamp: Date.now()
+         }
+      ]
+    }
+  }, 
+  methods: {
+    addActivity(activity) {
+      console.log("new macheine", activity)
+      this.activities.push(activity)
+      let container = this.$el.querySelector("#logger");
+      //console.log("container", container.scrollHeight)
+      //container.scrollTop = container.scrollHeight;
+    }
+  },
+  computed: {
+  sortedActivities: function() {
+    function compare(a, b) {
+      if (b.timestamp < a.timestamp)
+        return -1;
+      if (b.timestamp > a.timestamp)
+        return 1;
+      return 0;
+    }
+
+    return this.activities.sort(compare);
+  }
+}
 };
 </script>
 
@@ -48,4 +87,25 @@ p {
 .usecase {
   display: flex;
 }
+.activities {
+  h3 {
+      margin-top: 40px;
+  }
+    ul {
+      line-height: 2em;
+      border: 1px solid #ccc;
+      padding: 0;
+      margin: 0;
+      overflow: scroll;
+      overflow-x: hidden;
+      background-color: #efefef;
+      border-radius: 20px;
+      height: 220px;
+      padding-inline-start: 0;
+      li {
+        list-style: none;
+        padding-left: 5px;
+      }
+    }
+  }
 </style>

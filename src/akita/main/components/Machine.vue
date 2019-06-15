@@ -30,6 +30,8 @@ export default {
       socket.on("welcome", function(msg) {
         self.name = msg.name;
         self.status = msg.status;
+        let data 
+        self.$emit('newActivity', {message: `Machine '${self.name}' connected.`, timestamp: Date.now()})
       });
     }
   }

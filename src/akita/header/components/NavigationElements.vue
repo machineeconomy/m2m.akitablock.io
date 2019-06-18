@@ -1,0 +1,88 @@
+<template>
+  <ul class="navigation">
+    <li class="navigation__item navigation__logo">
+      <h2>
+        <a href="#" class="navigation__link">AKITA</a>
+      </h2>
+    </li>
+
+    <li v-for="li in nav" :class="li.liClass">
+      <a :href="li.href" :class="li.aClass">
+        {{li.text}}
+      </a>
+    </li>
+
+    <li class="navigation__item navigation__language">
+      <span class="change__language">
+        <a href="#" class="change__language navigation__link">EN</a> /
+        <a href="#DE" class="change__language navigation__link">DE</a>
+      </span>
+    </li>
+  </ul>
+</template>
+
+<script>
+export default {
+  name: "NavigationElements",
+  data() {
+    return {
+      nav: [
+        {text: "Live Demo", liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"},
+        {text: "Process",   liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"},
+        {text: "Services",  liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"},
+        {text: "Engage",    liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"}
+      ]
+    };
+  }
+};
+</script>
+
+<style>
+  .navigation {
+    list-style: none;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .navigation__link, .change__language {
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  .navigation__item {
+    flex: 1 1 auto;
+  }
+
+  .navigation__language {
+    flex: 3 1 auto;
+    text-align: right;
+    position: relative;
+    top: -20px;
+  }
+
+  .navigation__logo {
+    position: relative;
+    top: -15px;
+    font-family: 'Oswald', sans-serif;
+  }
+
+  .navigation__logo a{
+    font-weight: bold;
+  }
+
+  .navigation__link:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
+
+  @media (max-width: 500px) {
+  .navigation__element {
+    display: none;
+  }
+  .navigation__language {
+    top: -40px;
+  }
+}
+
+</style>

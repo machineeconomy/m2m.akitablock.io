@@ -29,8 +29,8 @@ export default {
 
   header {
     background: linear-gradient(to top left, #5F46B1 0%, #7D41AF 50%, #FF2EA0 100%);
-    min-height: 800px;
     position: relative;
+    font-family: 'Roboto', sans-serif;
   }
 
   .contain {

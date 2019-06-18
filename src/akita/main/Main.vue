@@ -1,5 +1,6 @@
 <template>
-  <div class="main">
+  <main>
+    <div class="contain">
     <h2>Live use case</h2>
     <p>In this Machine Economy demonstration every participant has its own blockchain based service application.</p>
     <p>Each transactions triggers an automated machine-to-machine (M2M) payment and production process.</p>
@@ -24,7 +25,8 @@
           <li v-for="(activity, index) in sortedActivities" :key="index">{{ activity.timestamp | formatTimestampToTime}}: {{activity.message}}</li>
         </ul>
       </div>
-  </div>
+      </div>
+  </main>
 </template>
 <script>
 import User from "./components/User.vue";
@@ -69,11 +71,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main {
-  max-width: 1600px;
-  padding: 0px 50px;
-  margin: auto;
-}
 
 h2 {
   margin: 40px 0;
@@ -87,6 +84,7 @@ p {
 .usecase {
   display: flex;
 }
+
 .activities {
   h3 {
       margin-top: 40px;

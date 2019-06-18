@@ -13,7 +13,7 @@ export default {};
   height: 120px;
   width: 100%;
   position: absolute;
-  bottom: 0px;
+  bottom: -1px;
   background: linear-gradient(to bottom right, rgba(0, 0, 0, 0) 49%, white 51%);
 }
 
@@ -28,7 +28,13 @@ export default {};
   height: 800px;
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1500px) {
+  .img__factory {
+    right: 0;
+  }
+}
+
+@media (max-width: 1400px) {
   .img__factory {
     right: 0;
     top: -330%;

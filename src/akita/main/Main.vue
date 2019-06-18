@@ -50,8 +50,6 @@ export default {
       console.log("new machine", activity)
       this.activities.push(activity)
       let container = this.$el.querySelector("#logger");
-      //console.log("container", container.scrollHeight)
-      //container.scrollTop = container.scrollHeight;
     }
   },
   computed: {

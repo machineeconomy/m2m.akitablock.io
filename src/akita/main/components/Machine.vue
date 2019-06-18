@@ -5,9 +5,12 @@
       <p class="balance">1400i</p>
       <p>Balance</p>
     </div>
-    <div class="info">
+    <div v-if="connected" class="info">
       <p>{{status}}</p>
       <p>transaction history</p>
+    </div>
+     <div v-else class="info">
+      <p>not connected</p>
     </div>
   </div>
 </template>
@@ -20,7 +23,8 @@ export default {
   data() {
     return {
       name: "",
-      status: ""
+      status: "",
+      connected: false
     };
   },
   created() {
@@ -30,8 +34,19 @@ export default {
       socket.on("welcome", function(msg) {
         self.name = msg.name;
         self.status = msg.status;
-        let data 
+        self.connected = true;
         self.$emit('newActivity', {message: `Machine '${self.name}' connected.`, timestamp: Date.now()})
+      });
+      socket.on("orders", function(msg) {
+        console.log("ws: oders", msg)
+        self.status = msg.status;
+        self.$emit('newActivity', {message: `Machine '${self.name}' got an order.`, timestamp: Date.now()})
+  
+      });
+      socket.on("tx_income", function(msg) {
+        console.log("ws: tx_income", msg)
+        self.$emit('newActivity', {message: `Machine '${self.name}' found an income transaction. Wait for confirmation`, timestamp: Date.now()})
+  
       });
     }
   }

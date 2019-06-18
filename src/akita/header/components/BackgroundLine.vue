@@ -43,12 +43,21 @@ export default {};
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 1100px) {
   .img__factory {
     right: 0;
     top: -250%;
     width: 500px;
     height: 500px;
+  }
+}
+
+@media (max-width: 900px) {
+  .img__factory {
+    right: 0;
+    top: -200%;
+    width: 400px;
+    height: 400px;
   }
 }
 

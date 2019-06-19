@@ -3,8 +3,11 @@
 AKITA Logo
 
 // menu
+(Home)
 Live Demo
-Process
+M2M Supply Chain
+machines
+Time to build
 
 ///////////////// Section 2
 
@@ -23,17 +26,18 @@ Select a new pair of headphones or a laptop on your machines device:
 M2M Supply Chain powered by IOTA
 
 // Text below header
-Providing each protragonist along the Supply Chain with a dedicated machines unit, enables radical new opportunities:
+Providing each protagonist along the Supply Chain with a dedicated machines unit,
+enables radical new opportunities:
 
-+ Direct M2M payments
++ direct M2M payments
 
-+ Automation triggered by payment
++ automation triggered by payment
 
 + instant payment & settlement (24/7)
 
-+ Immutable data logs
++ immutable data logs
 
-+ Real time integrated Trace & tracking
++ real time integrated trace & tracking
 
 + ecofriendly processes and documentation
 
@@ -46,8 +50,8 @@ Machines4 EnergySolar
 
 order headphones
 send 100i
-order energy
-send 10i
+order energy from cheapest provider
+send xi to energySolar or energyWind
 produce energy
 send energy
 produce headphones
@@ -56,8 +60,8 @@ receive headphones
 
 order laptop
 send 500i
-order energy
-send 20i
+order energy from cheapest provider
+send xi to energySolar or energyWind
 produce energy
 send energy
 produce laptop

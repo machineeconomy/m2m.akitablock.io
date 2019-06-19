@@ -1,13 +1,43 @@
-// Section 1
+///////////////// Section 1 Landing Page
+
+AKITA Logo
+
+// menu
+Live Demo
+Process
+
+///////////////// Section 2
+
+// header
+Distributed M2M Supply Chain
+Live Demonstration
+
+In this Machine Economy demonstrator every participant has its own blockchain based service application.
+Each transaction triggers an automated machine-to-machine (M2M) payment and production process.
+Select a new pair of headphones or a laptop on your machines device:
 
 
+///////////////// Section 3
 
-// Section 2
+// Header
+M2M Supply Chain powered by IOTA
 
+// Text below header
+Providing each protragonist along the Supply Chain with a dedicated machines unit, enables radical new opportunities:
 
++ Direct M2M payments
 
-// Section 3
++ Automation triggered by payment
 
++ instant payment & settlement (24/7)
+
++ Immutable data logs
+
++ Real time integrated Trace & tracking
+
++ ecofriendly processes and documentation
+
+// Process diagram
 Machines0 Human
 Machines1 Robot1
 Machines2 EnergyWind
@@ -19,9 +49,69 @@ send 100i
 order energy
 send 10i
 produce energy
+send energy
+produce headphones
+send headphones
+receive headphones
 
-// Section 4
+order laptop
+send 500i
+order energy
+send 20i
+produce energy
+send energy
+produce laptop
+send laptop
+receive laptop
+
+///////////////// Section 4
+
+// header
+The modular design
+
+// top
+Machines modular services can be integrated into existing systems
+and hardware or by adding external pc units that can be as small and cheap as a Raspberry Pi
+
+Integrate to your machine
+
+// left
+Services and products made by your machine can be offered and sold directly M2M to other machines
+
+Sell Service
++100i
+
+New sService
++500i
+
+// bottom
+Machines is your gateway in and out of the blockchain,
+it can generate private keys, securely store them and save valubale data on an immutable ledger
+
+Connect in/out the Tangle
+
+// right
+Every machine needs at least power to work. In addition it can purchase information like building plans, GPS coordinates or sensor data. 
+
+Buy Service
+-50i
+
+Alternative Service
+-200i
+
+
+///////////////// Section 5
+
+// header
+The time to build is now
+
+Did our demonstration provide you a better understanding about the true power of blockchain?
+Then let us build a competitve advantage today to stay ahead of the competition tomorrow.
+
+// Button Send E-Mail
+
+AKITA Blockchain Solutions
 
 
 
-// Section 5
+

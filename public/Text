@@ -1,0 +1,27 @@
+// Section 1
+
+
+
+// Section 2
+
+
+
+// Section 3
+
+Machines0 Human
+Machines1 Robot1
+Machines2 EnergyWind
+Machines3 Robot2
+Machines4 EnergySolar
+
+order headphones
+send 100i
+order energy
+send 10i
+produce energy
+
+// Section 4
+
+
+
+// Section 5

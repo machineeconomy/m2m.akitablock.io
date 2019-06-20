@@ -20,6 +20,7 @@
           </ul>
         </div>
       </div>
+      <span class="footer__background"></span>
       <div class="footer__bottom">AKITA Blockchain Solutions</div>
     </footer>
 </template>
@@ -36,10 +37,22 @@ export default {
 <style>
   footer {
     margin-top: 200px;
+    position: relative;
+  }
+
+  .footer__background {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 50%;
+    height: 165%;
+    background: url("./../../../public/MachineChain.png") no-repeat;
+    background-size: 1400px;
   }
 
   .footer__information {
-    max-width: 700px;
+    max-width: 850px;
   }
 
   .footer__information h3 {
@@ -56,7 +69,7 @@ export default {
 
   .input__background {
     display: inline-block;
-    max-width: 380px;
+    max-width: 600px;
     width: 100%;
     height: 75px;
     background-color: #F4F5F7;
@@ -80,6 +93,8 @@ export default {
     color: #fff;
     font-size: 22px;
     margin: 30px 0px;
+    position: relative;
+    z-index: 2;
   }
 
   .network__icons {
@@ -106,7 +121,62 @@ export default {
     padding-top: 40px;
     text-align: center;
     color: #fff;
+    position: relative;
+    z-index: 2;
   }
+
+  @media (max-width: 1750px) {
+    .footer__background {
+      height: 150%;
+      background-size: 1200px;
+    }
+  }
+
+  @media (max-width: 1500px) {
+    .footer__background {
+      height: 130%;
+      background-size: 1000px;
+    }
+    .input__background {
+      max-width: 500px;
+    }
+    .footer__information {
+      max-width: 700px;
+    }
+  }
+
+  @media (max-width: 1250px) {
+    .footer__background {
+      height: 115%;
+      background-size: 800px;
+    }
+    .input__background {
+      max-width: 400px;
+    }
+    .footer__information {
+      max-width: 600px;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .footer__background {
+      width: 45%;
+      height: 100%;
+      background-size: 600px;
+    }
+    .input__background {
+      max-width: 330px;
+    }
+    .footer__information {
+      max-width: 550px;
+    }
+  }
+
+   @media (max-width: 900px) {
+     .footer__background {
+       display: none;
+     }
+   }
 
   @media (max-width: 500px) {
     .network__link {

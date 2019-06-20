@@ -26,17 +26,19 @@
         </ul>
       </div>
       </div>
-      <section4></section4>
+      <section3/>
+      <section4/>
   </main>
 </template>
 <script>
 import User from "./components/User.vue";
 import Machine from "./components/Machine.vue";
+import Section3 from "./components/Section3.vue";
 import Section4 from "./components/Section4.vue";
 
 export default {
   name: "Main",
-  components: { User, Machine, Section4 },
+  components: { User, Machine, Section3, Section4 },
   data() {
     return {
       activities: [

@@ -48,6 +48,12 @@ export default {
         self.$emit('newActivity', {message: `Machine '${self.name}' found an income transaction. Wait for confirmation`, timestamp: Date.now()})
   
       });
+      socket.on("tx_confirmed", function(msg) {
+        console.log("ws: tx_confirmed", msg)
+        self.status = msg.status;
+        self.$emit('newActivity', {message: `Machine '${self.name}': ${msg.message}`, timestamp: Date.now()})
+  
+      });
     }
   }
 };

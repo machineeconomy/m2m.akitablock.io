@@ -18,7 +18,7 @@
       <base-button v-on:click="orderHeadphone">Buy Headphone</base-button>
       <base-button v-on:click="orderLaptop">Buy Laptop</base-button>
       <div v-if="orders" class="orders">
-        <p v-for="(order, index) in orders" :key="index"><a target="_blank" href="https://devnet.thetangle.org/transaction/CLJYGLWKSSMXXYYMYARVWVKQDZIQTQT9JRZHI9FUDVIAN9HSDWYBHI9FYBPJUXVHKQGNSBBXZUWEEU999">Order {{index}}</a></p>
+        <p v-for="(order, index) in orders" :key="index"><a target="_blank" :href="`https://devnet.thetangle.org/transaction/${order}`">Order {{index}}</a></p>
       </div>
     </div>
   </div>

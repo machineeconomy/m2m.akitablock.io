@@ -8,17 +8,20 @@
     <div class="user_wallet__empty" v-show="!balance">
       <button v-on:click="fetchBalance" class="btn btn-primary">Refresh balance</button>
       <p>Your browser wallet don't have any IOTA tokens on it.</p>
-      <p>
-        Send IOTA devnet tokens with
-        <a href="https://faucet.devnet.iota.org/">the devnet faucet</a> to this address:
-      </p>
+      <p>Send IOTA devnet tokens with our IOTA Devnet Faucet. Just click this button below and wait for the IOTA tokens.</p>
+      <base-button v-on:click="callFaucet">Get IOTA Devnet Tokens</base-button>
       <p>
         <span class="address">{{address}}</span>
       </p>
       <base-button v-on:click="orderHeadphone">Buy Headphone</base-button>
       <base-button v-on:click="orderLaptop">Buy Laptop</base-button>
       <div v-if="orders" class="orders">
-        <p v-for="(order, index) in orders" :key="index"><a target="_blank" :href="`https://devnet.thetangle.org/transaction/${order}`">Order {{index}}</a></p>
+        <p v-for="(order, index) in orders" :key="index">
+          <a
+            target="_blank"
+            :href="`https://devnet.thetangle.org/transaction/${order}`"
+          >Order {{index}}</a>
+        </p>
       </div>
     </div>
   </div>
@@ -48,13 +51,14 @@ export default {
   created() {
     // Fetch seed from local storage
     this.seed = localStorage.getItem("seed");
-    if (!this.seed) {
+    this.address = localStorage.getItem("address");
+    if (!this.seed || !this.address) {
       // create new seed
       this.seed = generateSeed();
       // set seed to local storage
       this.seed = localStorage.setItem("seed", this.seed);
+      this.createNewAddress();
     }
-    this.getAddress();
   },
   methods: {
     fetchBalance() {
@@ -67,12 +71,12 @@ export default {
           console.log("error fetching balance, err");
         });
     },
-    getAddress() {
+    createNewAddress() {
       iota
         .getNewAddress(localStorage.getItem("seed"), { index: 0 })
         .then(address => {
+          localStorage.setItem("address", address);
           this.address = address;
-          this.fetchBalance();
         })
         .catch(err => {
           console.log("Error on 'getNewAddress'", err);
@@ -105,6 +109,41 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+    },
+    callFaucet() {
+      let self = this;
+      axios
+        .post("http://localhost:5000/send_tokens?address=" + this.address, {})
+        .then(function(response) {
+          console.log(response);
+          if (response.status == 200) {
+            console.log(
+              "devnet faucet sent stokens to this address: ",
+              this.address
+            );
+
+            // check for balance
+            this.checkBalance();
+          } else {
+            console.log("something went wrong.");
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    },
+    checkBalance() {
+      console.log("checkBalance called")
+      this.checkBalanceInterval = setInterval(
+        function() {
+          // Check the iota balance
+          this.balance = this.balance + 1
+          if(this.balance >= 10) {
+            clearInterval(this.checkBalanceInterval)
+          }
+        }.bind(this),
+        1000
+      );
     },
     transferIOTA(amount, address) {
       console.log(`send ${amount} iota to ${address}.`);
@@ -141,7 +180,7 @@ export default {
             `Published transaction with tail hash: ${bundle[0].hash}`
           );
           console.log(`Bundle: ${bundle}`);
-          this.orders.push(bundle[0].hash)
+          this.orders.push(bundle[0].hash);
         })
         .catch(err => {
           // handle errors here

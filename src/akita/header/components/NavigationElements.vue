@@ -1,9 +1,7 @@
 <template>
   <ul class="navigation">
-    <li class="navigation__item navigation__logo">
-      <h2>
-        <a href="#" class="navigation__link">AKITA</a>
-      </h2>
+    <li class="navigation__item">
+        <a href="#" class="navigation__link navigation__logo"></a>
     </li>
 
     <li v-for="li in nav" :class="li.liClass">
@@ -14,8 +12,8 @@
 
     <li class="navigation__item navigation__language">
       <span class="change__language">
-        <a href="#" class="change__language navigation__link">EN</a> /
-        <a href="#DE" class="change__language navigation__link">DE</a>
+        <!--<a href="#" class="change__language navigation__link">EN</a> /
+        <a href="#DE" class="change__language navigation__link">DE</a>-->
       </span>
     </li>
   </ul>
@@ -28,9 +26,9 @@ export default {
     return {
       nav: [
         {text: "Live Demo", liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"},
-        {text: "Process",   liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"},
+        {text: "M2M Supply Chain",   liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"},
         {text: "Services",  liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"},
-        {text: "Engage",    liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"}
+        {text: "Engage Now",    liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"}
       ]
     };
   }
@@ -62,9 +60,13 @@ export default {
   }
 
   .navigation__logo {
+    display: block;
+    width: 170px;
+    height: 85px;
+    background: url("./../../../../public/akita_logo_white.png") no-repeat;
+    background-size: 100%;
     position: relative;
-    top: -15px;
-    font-family: 'Oswald', sans-serif;
+    top: -35px;
   }
 
   .navigation__logo a{

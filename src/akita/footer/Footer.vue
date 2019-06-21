@@ -2,21 +2,22 @@
     <footer>
       <div class="contain">
         <div class="footer__information"> 
-          <h3>The time to build is now.</h3>
-          <p>Did our demonstration provide you a better understanding about the true power of blockchain? 
+          <h3>The time to engage is now.</h3>
+          <p>Did our demonstration provide you a better understanding about the true power beyong blockchain? 
             Then let's build a competitve advantage today to stay aheaf of the competition tomorrow.</p>
         </div>
         <div class="send__email">
           <span class="input__background">
             <input class="email__input" type="email" placeholder="E-Mail">
           </span>
-          <button class="email__button">Send E-Mail</button>
+          <button class="email__button">ENGAGE NOW</button>
         </div>
         <div class="network__icons">
           <ul>
-            <li><a href="#" class="network__link"><span class="network__icon">img</span></a></li>
-            <li><a href="#" class="network__link"><span class="network__icon">img</span></a></li>
-            <li><a href="#" class="network__link"><span class="network__icon">img</span></a></li>
+            <li><a href="#" class="network__link twitter"></a></li>
+            <li><a href="#" class="network__link linkedIn"></a></li>
+            <li><a href="#" class="network__link gitHub"></a></li>
+            <li><a href="#" class="network__link iota"></a></li>
           </ul>
         </div>
       </div>
@@ -91,7 +92,7 @@ export default {
     border: none;
     background: linear-gradient(to top right, #5F46B1 0%, #FF2EA0 100%);
     color: #fff;
-    font-size: 22px;
+    font-size: 20px;
     margin: 30px 0px;
     position: relative;
     z-index: 2;
@@ -107,12 +108,29 @@ export default {
     padding: 0px;
   }
 
+  .linkedIn {
+    background: url("./../../../public/linkedin_logo.png");
+  }
+
+  .twitter {
+    background: url("./../../../public/twitter_logo.png");
+  }
+
+  .gitHub {
+    background: url("./../../../public/github_logo.png");
+  }
+
+  .iota {
+    background: url("./../../../public/Iota_logo.png");
+  }
+
   .network__link {
     display: block;
     height: 60px;
     width: 60px;
     margin: 0px 25px;
-    background-color: #333;
+    background-size: 100%;
+    background-repeat: no-repeat;
   }
 
   .footer__bottom {
@@ -180,6 +198,8 @@ export default {
 
   @media (max-width: 500px) {
     .network__link {
+      width: 40px;
+      height: 40px;
       margin: 0px 20px 0px 0px;
     }
   }

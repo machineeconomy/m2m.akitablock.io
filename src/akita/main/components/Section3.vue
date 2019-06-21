@@ -1,29 +1,13 @@
 <template>
   <section class="section3">
-    <div class="contain contain-flex">
+    <div class="contain">
       <div class="section3__information">
-        <h3>M2M Supply Chain powered by IOTA</h3>
-        <p>Providing each protagonist along the Supply Chain with a dedicated machines unit, enables radical new opportunities:</p>
-        <ul class="information__list">
-          <li class="information__element">+ direct M2M payments</li>
-          <li class="information__element">+ automation triggered by payment</li>
-          <li class="information__element">+ instant payment & settlement (24/7)</li>
-          <li class="information__element">+ immutable data logs</li>
-          <li class="information__element">+ real time integrated trace & tracking</li>
-          <li class="information__element">+ ecofriendly processes and documentation</li>
-        </ul>
+        <h3 class="section3__title">Machine-to-machine Supply Chain</h3>
+        <p
+          class="section3__text"
+        >powered by the DLT infrastructure of IOTA Tangle, build by AKITA and shared open source for eveyone</p>
       </div>
-      <div class="machines__chain">
-        <div class="headphones__chain">
-          <div class="machine__block">Machine0</div>
-          <div class="machine__block">machine1</div>
-          <div class="machine__block">Machine2</div>
-          <div class="machine__block">machine3</div>
-          <div class="machine__block">Machine4</div>
-          <div class="chain__block">Order headphone</div>
-        </div>
-        <div class="laptop__chain"></div>
-      </div>
+      <img src="./../../../../public/SupplyChain.png" alt="M2M Supply Chain" class="chain__img">
     </div>
   </section>
 </template>
@@ -34,53 +18,44 @@ export default {};
 
 <style>
 .section3 {
-    margin-top: 200px;
+  margin-top: 200px;
 }
 
-.contain-flex {
-  display: flex;
+.section3__title {
+  font-family: "Oswald", sans-serif;
+  font-weight: bold;
+  font-size: 64px;
 }
 
-.section3__information {
-  width: 30%;
+.section3__text {
+  max-width: 530px;
+  font-size: 22px;
+  line-height: 1.2;
 }
 
-.information__list {
-  padding: 0;
+.chain__img {
+  width: 100%;
 }
 
-.information__element {
-  list-style: none;
+@media (max-width: 1500px) {
+  .section3__title {
+    font-size: 52px;
+  }
 }
 
-.machines__chain {
-    width: 70%;
+@media (max-width: 1200px) {
+  .section3__title {
+    font-size: 42px;
+  }
 }
 
-.headphones__chain, .laptop__chain {
-    height: 60%;
-    margin-bottom: 10px;
-    width: 100%;
-    background-color: #F2F2F2;
-    border-radius: 5px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 60px 30px 30px 30px 30px 30px;
-}
-
-.machine__block {
-  background: linear-gradient(to top right, #5F46B1 30%, #FF2EA0 100%);
-  width: 100px;
-  height: 60px;
-  font-size: 12px;
-  text-align: center;
-  padding-top: 30px;
-  color: #fff;
-  border-radius: 5px;
-  margin: auto;
-}
-
-.laptop__chain {
-    height: 40%;
+@media (max-width: 700px) {
+  .section3__title {
+    font-size: 32px;
+  }
+  .section3__text {
+    max-width: 450px;
+    font-size: 18px;
+  }
 }
 </style>

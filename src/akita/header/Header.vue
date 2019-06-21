@@ -28,7 +28,8 @@ export default {
 <style>
 
   header {
-    background: linear-gradient(to top left, #5F46B1 0%, #7D41AF 50%, #FF2EA0 100%);
+    background: url("./../../../public/chain.png") no-repeat, linear-gradient(to top left, #5F46B1 0%, #7D41AF 50%, #FF2EA0 100%);
+    background-size: cover;
     position: relative;
     font-family: 'Roboto', sans-serif;
   }

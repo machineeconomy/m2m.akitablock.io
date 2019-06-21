@@ -1,7 +1,7 @@
 <template>
     <section class="section4">
         <div class="contain contain-fix">
-            <h3 class="section4__title">The modular design</h3>
+            <h3 class="section4__title">The modular service design</h3>
             <div class="machines__information">
                 <div class="machines__text machines__text-top">Machines modular services can be integrated into existing systems and hardware or by adding external pc units that can be as small and cheap as a Raspberry Pi</div>
                 <div class="machines__text machines__text-left">Services and products made by your machine can be offered and sold directly M2M to other machines</div>
@@ -9,25 +9,21 @@
                     <div class="machines__block-mid">Machines</div>
                     <div class="machines__blocks-top machines__blocks">Integrate to your machine</div>
                     <div class="machines__blocks-lt machines__blocks">
-                        <span class="aquamarine">Sell Service</span><br/>
-                        +100i
+                        <span class="aquamarine">Sell Service<br/>+100i</span>
                     </div>
                     <div class="machines__blocks-lb machines__blocks">
-                        <span class="aquamarine">New Service</span><br/>
-                        +500i
+                        <span class="aquamarine">New Service<br/>+500i</span>
                     </div>
                     <div class="machines__blocks-rt machines__blocks">
-                        <span class="pink">Buy Service</span><br/>
-                        -50i
+                        <span class="pink">Buy Service<br/>-50i</span>
                         </div>
                     <div class="machines__blocks-rb machines__blocks">
-                        <span class="pink">Alternative Service</span><br/>
-                        -200i
+                        <span class="pink">Alternative Service<br/>-200i</span>
                     </div>
-                    <div class="machines__blocks-bot machines__blocks">Connect to <br/>clockchain</div>                    
+                    <div class="machines__blocks-bot machines__blocks">Connect to <br/>the Tangle</div>                    
                 </div>
-                <div class="machines__text machines__text-right">Machines is your gateway in and out of the blockchain, it can generate private keys, securely store them and save valubale data on an immutable ledger</div>
-                <div class="machines__text machines__text-bottom">Every machine needs at least power to work. In addition it can purchase information like building plans, GPS coordinates or sensor data.</div>
+                <div class="machines__text machines__text-right">Every machine needs at least power to work. In addition it can purchase information like building plans, GPS coordinates or sensor data.</div>
+                <div class="machines__text machines__text-bottom">Machines is your gateway in and out of the DLT, it can generate private keys, securely store them and save valubale data on an immutable ledger</div>
             </div>
         </div>
     </section>
@@ -151,7 +147,7 @@ export default {}
     }
 
     .aquamarine {
-        color: #70D1D1;
+        color: #0BC5FE;
     }
 
     .pink {
@@ -163,19 +159,26 @@ export default {}
             padding: 0px;
         }
 
-        .machines__text-right {
+        .machines__text-bottom {
             grid-column: 2 / 3;
             grid-row: 4 / 5;
+        }
+
+        .machines__text-right {
+            grid-column: 2 / 3;
+            grid-row: 3 / 4;
+            margin-top: 0;
         }
 
         .machines__text-left {
             grid-column: 2 / 3;
             grid-row: 5 / 6;
+            margin-top: 0;
         }
 
         .machines__information {
             grid-template-columns: 1fr;
-            grid-template-rows: repeat(1fr);
+            grid-template-rows: 1fr;
         }
     }
 
@@ -188,14 +191,6 @@ export default {}
         .machines__information {
             grid-template-rows: 120px 1fr 100px 100px 100px;
             grid-gap: 20px 5px;
-        }
-
-        .machines__text-left {
-            margin-top: 0px;
-        }
-
-        .machines__text-right {
-            margin-top: 0px;
         }
 
         .machines__blocks-rb {

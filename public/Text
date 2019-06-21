@@ -6,67 +6,30 @@ AKITA Logo
 (Home)
 Live Demo
 M2M Supply Chain
-machines
-Time to build
+Services
+Engage now!
 
 ///////////////// Section 2
 
-// header
-Distributed M2M Supply Chain
-Live Demonstration
-
+// Updates:
 In this Machine Economy demonstrator every participant has its own blockchain based service application.
-Each transaction triggers an automated machine-to-machine (M2M) payment and production process.
-Select a new pair of headphones or a laptop on your machines device:
+Each transaction triggers an automated machine-to-machine (M2M) payment and production process:
+1. Click to fund your wallet with virtual tokens
+2. Select a new pair of headphones or a laptop
+3. The rest of the process is completely automated - just watch what happens...
 
 
 ///////////////// Section 3
 
 // Header
-M2M Supply Chain powered by IOTA
+Distributed M2M Supply Chain
 
-// Text below header
-Providing each protagonist along the Supply Chain with a dedicated machines unit,
-enables radical new opportunities:
+// Text
+powered by the DLT infrastructure of IOTA Tangle,
+build by AKITA and shared open source for everyone
 
-+ direct M2M payments
+// insert process picture .png
 
-+ automation triggered by payment
-
-+ instant payment & settlement (24/7)
-
-+ immutable data logs
-
-+ real time integrated trace & tracking
-
-+ ecofriendly processes and documentation
-
-// Process diagram
-Machines0 Human
-Machines1 Robot1
-Machines2 EnergyWind
-Machines3 Robot2
-Machines4 EnergySolar
-
-order headphones
-send 100i
-order energy from cheapest provider
-send xi to energySolar or energyWind
-produce energy
-send energy
-produce headphones
-send headphones
-receive headphones
-
-order laptop
-send 500i
-order energy from cheapest provider
-send xi to energySolar or energyWind
-produce energy
-send energy
-produce laptop
-send laptop
-receive laptop
 
 ///////////////// Section 4
 
@@ -107,13 +70,28 @@ Alternative Service
 ///////////////// Section 5
 
 // header
-The time to build is now
+The time to engage is now
 
-Did our demonstration provide you a better understanding about the true power of blockchain?
-Then let us build a competitve advantage today to stay ahead of the competition tomorrow.
+Did our demonstration provide you a better understanding about the true power beyond blockchain?
+Then let us build a competitve advantage today and stay ahead of the competition.
 
-// Button Send E-Mail
+// Button
+ENGAGE NOW
 
+// external links
+Twitter
+https://twitter.com/AkitaBlock
+
+linkedin:
+https://www.linkedin.com/in/nino-ulrich
+
+github:
+https://github.com/machineeconomy
+
+iota:
+https://www.iota.org
+
+// Footer
 AKITA Blockchain Solutions
 
 

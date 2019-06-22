@@ -1,18 +1,34 @@
 <template>
   <div class="user">
     <div class="user_wallet">
-      <h3>user wallet</h3>
+      <h3>user browser wallet</h3>
       <p class="balance">{{balance}}i</p>
       <p>Balance</p>
     </div>
-    <div class="user_wallet__empty" v-show="!balance">
-      <button v-on:click="fetchBalance" class="btn btn-primary">Refresh balance</button>
-      <p>Your browser wallet don't have any IOTA tokens on it.</p>
-      <p>Send IOTA devnet tokens with our IOTA Devnet Faucet. Just click this button below and wait for the IOTA tokens.</p>
-      <base-button v-on:click="callFaucet">Get IOTA Devnet Tokens</base-button>
-      <p>
-        <span class="address">{{address}}</span>
-      </p>
+    <div class="user_wallet__conent" v-if="!balance">
+      <div v-if="!waitForTokens">
+        <p>Your browser wallet don't have any IOTA tokens on it.</p>
+        <p>Send IOTA devnet tokens with our IOTA Devnet Faucet. Just click this button below and wait for the IOTA tokens.</p>
+        <p>
+          <strong>Note: This could take a while</strong>
+        </p>
+        <base-button
+          type="success"
+          v-on:click="callFaucet"
+        >Get IOTA Devnet Tokens</base-button>
+      </div>
+      <div v-else>
+        <p>Loading...</p>
+        <p>
+          Watch address on
+          <a :href="`https://devnet.thetangle.org/address/${address}`" target="_blank">theThangle.org</a>.
+        </p>
+        <p>
+          <strong>Don't refresh this page - it will show the balance automatically</strong>
+        </p>
+      </div>
+    </div>
+    <div class="user_wallet__conent" v-else>
       <base-button v-on:click="orderHeadphone">Buy Headphone</base-button>
       <base-button v-on:click="orderLaptop">Buy Laptop</base-button>
       <div v-if="orders" class="orders">
@@ -45,7 +61,8 @@ export default {
       balance: 0,
       seed: "",
       address: "",
-      orders: []
+      orders: [],
+      waitForTokens: false
     };
   },
   created() {
@@ -59,6 +76,7 @@ export default {
       this.seed = localStorage.setItem("seed", this.seed);
       this.createNewAddress();
     }
+    this.fetchBalance();
   },
   methods: {
     fetchBalance() {
@@ -112,35 +130,43 @@ export default {
     },
     callFaucet() {
       let self = this;
+      this.waitForTokens = true;
       axios
         .post("http://localhost:5000/send_tokens?address=" + this.address, {})
         .then(function(response) {
-          console.log(response);
           if (response.status == 200) {
             console.log(
               "devnet faucet sent stokens to this address: ",
-              this.address
+              self.address
             );
 
             // check for balance
-            this.checkBalance();
+            self.startBalanceChecker();
           } else {
             console.log("something went wrong.");
+            console.log("Error response: ", response);
           }
         })
         .catch(function(error) {
           console.log(error);
         });
     },
-    checkBalance() {
-      console.log("checkBalance called")
+    startBalanceChecker() {
       this.checkBalanceInterval = setInterval(
         function() {
           // Check the iota balance
-          this.balance = this.balance + 1
-          if(this.balance >= 10) {
-            clearInterval(this.checkBalanceInterval)
-          }
+          iota
+            .getBalances([this.address], 100)
+            .then(({ balances }) => {
+              this.balance = balances[0];
+              if (this.balance > 0) {
+                this.waitForTokens = false;
+                clearInterval(this.checkBalanceInterval);
+              }
+            })
+            .catch(err => {
+              console.log("getBalances got an error: ", err);
+            });
         }.bind(this),
         1000
       );
@@ -215,7 +241,7 @@ export default {
       margin: 0;
       font-size: 3em;
     }
-    &__empty {
+    &__conent {
       border-radius: 20px;
       background-color: #efefef;
       padding: 20px;

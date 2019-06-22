@@ -14,10 +14,10 @@
         </div>
         <div class="network__icons">
           <ul>
-            <li><a href="#" class="network__link twitter"></a></li>
-            <li><a href="#" class="network__link linkedIn"></a></li>
-            <li><a href="#" class="network__link gitHub"></a></li>
-            <li><a href="#" class="network__link iota"></a></li>
+            <li><a href="https://twitter.com/AkitaBlock" target="_blank" class="network__link twitter"></a></li>
+            <li><a href="https://www.linkedin.com/in/nino-ulrich" target="_blank" class="network__link linkedIn"></a></li>
+            <li><a href="https://github.com/machineeconomy" target="_blank" class="network__link gitHub"></a></li>
+            <li><a href="https://www.iota.org" target="_blank" class="network__link iota"></a></li>
           </ul>
         </div>
       </div>

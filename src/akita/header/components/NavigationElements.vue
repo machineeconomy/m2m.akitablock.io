@@ -5,7 +5,7 @@
     </li>
 
     <li v-for="li in nav" :class="li.liClass">
-      <a :href="li.href" :class="li.aClass">
+      <a :href="li.href" :path="li.path" @click="scroll" :class="li.aClass">
         {{li.text}}
       </a>
     </li>
@@ -25,13 +25,20 @@ export default {
   data() {
     return {
       nav: [
-        {text: "Live Demo", liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"},
-        {text: "M2M Supply Chain",   liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"},
-        {text: "Services",  liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"},
-        {text: "Engage Now",    liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#"}
+        {text: "Live Demo", liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#", path: "main"},
+        {text: "M2M Supply Chain",   liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#", path: ".section3"},
+        {text: "Services",  liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#", path: ".section4"},
+        {text: "Engage Now",    liClass:  "navigation__item navigation__element", aClass: "navigation__link", href: "#", path: "footer"}
       ]
     };
-  }
+  },
+  methods: {
+    scroll(e) {
+      e.preventDefault();
+      let path = e.target.attributes.path.value;
+      document.querySelector(path).scrollIntoView({block: "start", behavior: "smooth"});
+    }
+  },
 };
 </script>
 

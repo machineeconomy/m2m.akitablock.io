@@ -29,8 +29,8 @@
       </div>
     </div>
     <div class="user_wallet__conent" v-else>
-      <base-button v-on:click="orderHeadphone">Buy Headphone</base-button>
-      <base-button v-on:click="orderLaptop">Buy Laptop</base-button>
+      <OrderButton url="http://localhost:3001" :amount="1">Buy Headphone</OrderButton>
+      <OrderButton url="http://localhost:3003" :amount="1">Buy Laptop</OrderButton>
       <div v-if="orders" class="orders">
         <p v-for="(order, index) in orders" :key="index">
           <a
@@ -47,7 +47,7 @@
 import { composeAPI } from "@iota/core";
 import generateSeed from "@/utils/generateSeed.js";
 
-import BaseBUtton from "@/components/BaseButton.vue";
+import OrderButton from "@/akita/main/components/OrderButton.vue";
 
 const iota = composeAPI({
   provider: "https://nodes.devnet.thetangle.org:443"
@@ -56,6 +56,7 @@ const axios = require("axios");
 
 export default {
   name: "User",
+  components: { OrderButton },
   data() {
     return {
       balance: 0,
@@ -100,34 +101,6 @@ export default {
           console.log("Error on 'getNewAddress'", err);
         });
     },
-    orderHeadphone() {
-      let self = this;
-      axios
-        .post("http://localhost:3001/orders/", {})
-        .then(function(response) {
-          console.log(response);
-          if (response.status == 200) {
-            self.transferIOTA(100, response.data);
-          }
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    },
-    orderLaptop() {
-      let self = this;
-      axios
-        .post("http://localhost:3003/orders/", {})
-        .then(function(response) {
-          console.log(response);
-          if (response.status == 200) {
-            self.transferIOTA(1000, response.data);
-          }
-        })
-        .catch(function(error) {
-          console.log(error);
-        });
-    },
     callFaucet() {
       let self = this;
       this.waitForTokens = true;
@@ -170,47 +143,6 @@ export default {
         }.bind(this),
         1000
       );
-    },
-    transferIOTA(amount, address) {
-      console.log(`send ${amount} iota to ${address}.`);
-      // Array of transfers which defines transfer recipients and value transferred in IOTAs.
-      const transfers = [
-        {
-          address: address,
-          value: 0, // 1Ki
-          tag: "AKITA9MACHINE", // optional tag of `0-27` trytes
-          message: "" // optional message in trytes
-        }
-      ];
-
-      // Depth or how far to go for tip selection entry point.
-      const depth = 3;
-
-      // Difficulty of Proof-of-Work required to attach transaction to tangle.
-      // Minimum value on mainnet is `14`, `7` on spamnet and `9` on devnet and other testnets.
-      const minWeightMagnitude = 9;
-
-      // Prepare a bundle and signs it.
-      iota
-        .prepareTransfers(this.seed, transfers)
-        .then(trytes => {
-          // Persist trytes locally before sending to network.
-          // This allows for reattachments and prevents key reuse if trytes can't
-          // be recovered by querying the network after broadcasting.
-
-          // Does tip selection, attaches to tangle by doing PoW and broadcasts.
-          return iota.sendTrytes(trytes, depth, minWeightMagnitude);
-        })
-        .then(bundle => {
-          console.log(
-            `Published transaction with tail hash: ${bundle[0].hash}`
-          );
-          console.log(`Bundle: ${bundle}`);
-          this.orders.push(bundle[0].hash);
-        })
-        .catch(err => {
-          // handle errors here
-        });
     }
   }
 };

@@ -1,12 +1,12 @@
 <template>
   <div class="machine">
     <div class="machine_wallet">
-      <h3>{{name}}</h3>
-      <p class="balance">1400i</p>
+      <h3>{{ name }}</h3>
+      <p class="balance">{{ this.balance }}i</p>
       <p>Balance</p>
     </div>
     <div v-if="connected" class="info">
-      <p>{{status}}</p>
+      <p>{{ status }}</p>
       <p>transaction history</p>
     </div>
      <div v-else class="info">
@@ -24,6 +24,7 @@ export default {
     return {
       name: "",
       status: "",
+      balance: 0,
       connected: false
     };
   },
@@ -31,9 +32,10 @@ export default {
     var socket = io(this.url, { path: "/socket" });
     if (socket) {
       var self = this;
-      socket.on("welcome", function(msg) {
+      socket.on("info", function(msg) {
         self.name = msg.name;
         self.status = msg.status;
+        self.balance = msg.balance
         self.connected = true;
         self.$emit('newActivity', {message: `Machine '${self.name}' connected.`, timestamp: Date.now()})
       });

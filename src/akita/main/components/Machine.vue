@@ -32,25 +32,15 @@ export default {
     var socket = io(this.url, { path: "/socket" });
     if (socket) {
       var self = this;
-      socket.on("info", function(msg) {
+      socket.on("init", function(msg) {
         self.name = msg.name;
         self.status = msg.status;
         self.balance = msg.balance
         self.connected = true;
         self.$emit('newActivity', {message: `Machine '${self.name}' connected.`, timestamp: Date.now()})
       });
-      socket.on("orders", function(msg) {
-        console.log("ws: oders", msg)
-        self.status = msg.status;
-        self.$emit('newActivity', {message: `Machine '${self.name}' got an order.`, timestamp: Date.now()})
-  
-      });
-      socket.on("tx_income", function(msg) {
-        console.log("ws: tx_income", msg)
-        self.$emit('newActivity', {message: `Machine '${self.name}' found an income transaction. Wait for confirmation`, timestamp: Date.now()})
-  
-      });
-      socket.on("tx_confirmed", function(msg) {
+
+      socket.on("status", function(msg) {
         console.log("ws: tx_confirmed", msg)
         self.status = msg.status;
         self.$emit('newActivity', {message: `Machine '${self.name}': ${msg.message}`, timestamp: Date.now()})

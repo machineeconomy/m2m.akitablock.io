@@ -72,10 +72,6 @@ export default {};
 }
 
 @media (max-width: 425px) {
-  .information {
-    margin-top: 50px;
-  }
-
   .information__title h1 {
     font-size: 32px;
   }

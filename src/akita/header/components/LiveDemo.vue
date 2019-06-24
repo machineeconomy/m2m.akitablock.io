@@ -19,17 +19,14 @@
     margin-left: 40px;
     margin-bottom: 150px;
   }
-
   .liveDemo:hover {
     border: 1px solid #fff;
   }
-
   @media (max-width: 1400px) {
     .liveDemo {
       margin-bottom: 80px;
     }
   }
-
   @media (max-width: 425px) {
   .liveDemo {
     margin-left: 0px;

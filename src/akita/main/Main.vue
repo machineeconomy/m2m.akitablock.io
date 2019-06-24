@@ -12,12 +12,12 @@
         <User v-on:newActivity="addActivity"/>
         <div class="machines">
           <div class="machines_park">
-            <Machine url="http://localhost:3001" name="Robot1" v-on:newActivity="addActivity"/>
-            <Machine url="http://localhost:3002" name="EnergyWind" v-on:newActivity="addActivity"/>
+            <Machine :url="machine_1_url" name="Robot1" v-on:newActivity="addActivity"/>
+            <Machine :url="provider_1_url" name="EnergyWind" v-on:newActivity="addActivity"/>
           </div>
           <div class="machines_park">
-            <Machine url="http://localhost:3003" name="Robot2" v-on:newActivity="addActivity"/>
-            <Machine url="http://localhost:3004" name="EnergySolar" v-on:newActivity="addActivity"/>
+            <Machine :url="machine_2_url" name="Robot2" v-on:newActivity="addActivity"/>
+            <Machine :url="provider_2_url" name="EnergySolar" v-on:newActivity="addActivity"/>
           </div>
         </div>
       </div>
@@ -49,10 +49,20 @@ export default {
       activities: [
         {
           message: "Machines connecting...",
-          timestamp: Date.now()
+          timestamp: Date.now(),
+          machine_1_url: '',
+          provider_1_url: '',
+          machine_2_url: '',
+          provider_2_url: '',
         }
       ]
     };
+  },
+  created() {
+    this.machine_1_url = process.env.VUE_APP_MACHINE_1_URL;
+    this.provider_1_url = process.env.VUE_APP_PROVIDER_1_URL;
+    this.machine_2_url = process.env.VUE_APP_MACHINE_2_URL;
+    this.provider_2_url = process.env.VUE_APP_PROVIDER_2_URL;
   },
   methods: {
     addActivity(activity) {

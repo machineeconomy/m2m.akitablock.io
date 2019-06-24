@@ -12,12 +12,12 @@
         <User v-on:newActivity="addActivity"/>
         <div class="machines">
           <div class="machines_park">
-            <Machine url="http://localhost:3001" v-on:newActivity="addActivity"/>
-            <Machine url="http://localhost:3002" v-on:newActivity="addActivity"/>
+            <Machine url="http://localhost:3001" name="Robot1" v-on:newActivity="addActivity"/>
+            <Machine url="http://localhost:3002" name="EnergyWind" v-on:newActivity="addActivity"/>
           </div>
           <div class="machines_park">
-            <Machine url="http://localhost:3003" v-on:newActivity="addActivity"/>
-            <Machine url="http://localhost:3004" v-on:newActivity="addActivity"/>
+            <Machine url="http://localhost:3003" name="Robot2" v-on:newActivity="addActivity"/>
+            <Machine url="http://localhost:3004" name="EnergySolar" v-on:newActivity="addActivity"/>
           </div>
         </div>
       </div>

@@ -1,8 +1,9 @@
 <template>
   <div class="machine">
+    <img class="machine_img" :src="getImgUrl()" alt="machine">
     <div class="machine_wallet">
       <h3>{{ name }}</h3>
-      <p class="balance">{{ this.balance }}i</p>
+      <p class="balance">{{ this.balance }}</p>
       <p>Balance</p>
     </div>
     <div v-if="connected" class="info">
@@ -19,10 +20,9 @@
 import io from "socket.io-client";
 
 export default {
-  props: ["url"],
+  props: ["url", "name"],
   data() {
     return {
-      name: "",
       status: "",
       balance: 0,
       connected: false
@@ -47,6 +47,12 @@ export default {
   
       });
     }
+  },
+  methods: {
+    getImgUrl() {
+      var images = require.context('../../../assets/img/', false, /\.png$/)
+      return images('./' + this.name + ".png")
+    }
   }
 };
 </script>
@@ -66,6 +72,13 @@ export default {
     justify-content: space-between;
     .machine {
       display: flex;
+      .machine_img {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        left: 50px;
+        top: 100px;
+      }
       .machine_wallet {
         float: left;
         text-align: center;

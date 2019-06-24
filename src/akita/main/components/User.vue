@@ -2,7 +2,7 @@
   <div class="user">
     <div class="user_wallet">
       <h3>user browser wallet</h3>
-      <p class="balance">{{balance}}i</p>
+      <p class="balance">{{balance}}</p>
       <p>Balance</p>
     </div>
     <div class="user_wallet__conent" v-if="!balance">
@@ -12,7 +12,7 @@
         <p>
           <strong>Note: This could take a while</strong>
         </p>
-        <base-button type="success" v-on:click="callFaucet">Get IOTA Devnet Tokens</base-button>
+        <base-button type="success" v-on:click="callFaucet">Get Tokens</base-button>
       </div>
       <div v-else>
         <p>Loading...</p>
@@ -160,7 +160,7 @@ export default {
 <style lang="scss" scoped>
 .user {
   padding: 10px 20px;
-  width: 30%;
+  width: 20%;
   h3 {
     color: white;
   }

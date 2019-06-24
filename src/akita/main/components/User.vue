@@ -12,16 +12,16 @@
         <p>
           <strong>Note: This could take a while</strong>
         </p>
-        <base-button
-          type="success"
-          v-on:click="callFaucet"
-        >Get IOTA Devnet Tokens</base-button>
+        <base-button type="success" v-on:click="callFaucet">Get IOTA Devnet Tokens</base-button>
       </div>
       <div v-else>
         <p>Loading...</p>
         <p>
           Watch address on
-          <a :href="`https://devnet.thetangle.org/address/${address}`" target="_blank">theThangle.org</a>.
+          <a
+            :href="`https://devnet.thetangle.org/address/${address}`"
+            target="_blank"
+          >theThangle.org</a>.
         </p>
         <p>
           <strong>Don't refresh this page - it will show the balance automatically</strong>
@@ -40,6 +40,7 @@
         </p>
       </div>
     </div>
+    <img class="business_woman" src="../../../assets/img/business_woman.png" alt="business_woman">
   </div>
 </template>
 
@@ -104,7 +105,10 @@ export default {
     callFaucet() {
       let self = this;
       this.waitForTokens = true;
-      self.$emit('newActivity', {message: "User requested for tokens.", timestamp: Date.now()})
+      self.$emit("newActivity", {
+        message: "User requested for tokens.",
+        timestamp: Date.now()
+      });
       axios
         .post("http://localhost:5000/send_tokens?address=" + this.address, {})
         .then(function(response) {
@@ -135,7 +139,10 @@ export default {
               this.balance = balances[0];
               if (this.balance > 0) {
                 this.waitForTokens = false;
-                this.$emit('newActivity', {message: "Tokens from faucet arrived.", timestamp: Date.now()})
+                this.$emit("newActivity", {
+                  message: "Tokens from faucet arrived.",
+                  timestamp: Date.now()
+                });
                 clearInterval(this.checkBalanceInterval);
               }
             })
@@ -186,6 +193,13 @@ export default {
         word-wrap: break-word;
       }
     }
+  }
+  .business_woman {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    left: calc(100% - 160px);
+    bottom: 300px;
   }
 }
 </style>

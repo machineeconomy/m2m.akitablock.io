@@ -161,6 +161,7 @@ export default {
 .user {
   padding: 10px 20px;
   width: 20%;
+  max-height: 500px;
   h3 {
     color: white;
   }

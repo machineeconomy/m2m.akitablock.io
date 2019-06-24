@@ -9,7 +9,7 @@
         <li>The rest of the process is completely automated - just watch what happens...</li>
       </ol>
       <div class="usecase">
-        <User/>
+        <User v-on:newActivity="addActivity"/>
         <div class="machines">
           <div class="machines_park">
             <Machine url="http://localhost:3001" v-on:newActivity="addActivity"/>

@@ -104,6 +104,7 @@ export default {
     callFaucet() {
       let self = this;
       this.waitForTokens = true;
+      self.$emit('newActivity', {message: "User requested for tokens.", timestamp: Date.now()})
       axios
         .post("http://localhost:5000/send_tokens?address=" + this.address, {})
         .then(function(response) {
@@ -134,6 +135,7 @@ export default {
               this.balance = balances[0];
               if (this.balance > 0) {
                 this.waitForTokens = false;
+                this.$emit('newActivity', {message: "Tokens from faucet arrived.", timestamp: Date.now()})
                 clearInterval(this.checkBalanceInterval);
               }
             })

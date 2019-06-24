@@ -7,10 +7,12 @@
       <p>Balance</p>
     </div>
     <div v-if="connected" class="info">
-      <p>{{ status }}</p>
-      <p>transaction history</p>
+      <div :class="status">
+        <badge :type="getStatusColor(status)">{{status}}</badge>
+      </div>
+      
     </div>
-     <div v-else class="info not_connected">
+    <div v-else class="info not_connected">
       <p>not connected</p>
     </div>
   </div>
@@ -35,23 +37,49 @@ export default {
       socket.on("init", function(msg) {
         self.name = msg.name;
         self.status = msg.status;
-        self.balance = msg.balance
+        self.balance = msg.balance;
         self.connected = true;
-        self.$emit('newActivity', {message: `Machine '${self.name}' connected.`, timestamp: Date.now()})
+        self.$emit("newActivity", {
+          message: `Machine '${self.name}' connected.`,
+          timestamp: Date.now()
+        });
       });
 
       socket.on("status", function(msg) {
-        console.log("ws: tx_confirmed", msg)
+        console.log("ws: tx_confirmed", msg);
         self.status = msg.status;
-        self.$emit('newActivity', {message: `Machine '${self.name}': ${msg.message}`, timestamp: Date.now()})
-  
+        self.$emit("newActivity", {
+          message: `Machine '${self.name}': ${msg.message}`,
+          timestamp: Date.now()
+        });
       });
     }
   },
   methods: {
     getImgUrl() {
-      var images = require.context('../../../assets/img/', false, /\.png$/)
-      return images('./' + this.name + ".png")
+      var images = require.context("../../../assets/img/", false, /\.png$/);
+      return images("./" + this.name + ".png");
+    },
+    getStatusColor(status) {
+
+      switch (status) {
+        case 'waiting_for_order': 
+          return 'info';
+          break;
+       case 'waiting_for_tx': 
+       case 'waiting_for_tx_confirm': 
+          return 'primary';
+          break;
+        case 'payout_provider':
+          return 'warning';
+          break;
+        case 'working':
+          return 'success';
+          break;
+        default: 
+          return 'default';
+          break;
+      }
     }
   }
 };
@@ -98,21 +126,24 @@ export default {
         }
       }
       .info {
-        padding: 20px;
+        padding: 5px;
+        padding-top: 15px;
+        width: 200px;
         float: right;
         border-radius: 20px;
         background: #efefef;
+        text-align: center;
         p {
           color: black;
         }
       }
-       .not_connected {
-          border: 2px solid red;
-          p {
+      .not_connected {
+        border: 2px solid red;
+        p {
           color: red;
           text-align: center;
         }
-        }
+      }
     }
   }
 }

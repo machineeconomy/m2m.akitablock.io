@@ -15,7 +15,7 @@
         <base-button type="success" v-on:click="callFaucet">Get Tokens</base-button>
       </div>
       <div v-else>
-        <p>Loading...</p>
+        <h5>Loading...</h5>
         <p>
           Watch address on
           <a

@@ -10,7 +10,7 @@
       <p>{{ status }}</p>
       <p>transaction history</p>
     </div>
-     <div v-else class="info">
+     <div v-else class="info not_connected">
       <p>not connected</p>
     </div>
   </div>
@@ -106,6 +106,13 @@ export default {
           color: black;
         }
       }
+       .not_connected {
+          border: 2px solid red;
+          p {
+          color: red;
+          text-align: center;
+        }
+        }
     }
   }
 }

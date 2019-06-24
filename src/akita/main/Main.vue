@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="contain main__margin">
+    <div class="contain main-margin">
       <p>In this Machine Economy demonstrator every participant has its own blockchain based service application.</p>
       <p>Each transaction triggers an automated machine-to-machine (M2M) payment and production process:</p>
       <ol>
@@ -76,8 +76,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main__margin {
-  margin-top: 150px;
+.main-margin {
+  margin-bottom: 200px;
 }
 
 p {

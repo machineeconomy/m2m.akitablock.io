@@ -18,3 +18,10 @@ export default {
   }
 };
 </script>
+
+<style>
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+</style>

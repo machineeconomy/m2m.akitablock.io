@@ -37,7 +37,6 @@ export default {
 
 <style>
   footer {
-    margin-top: 200px;
     position: relative;
   }
 

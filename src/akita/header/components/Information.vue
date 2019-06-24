@@ -7,7 +7,7 @@
     </div>
     <div class="information__text">
       <p>
-        99% of all companies are talking about blockchain...
+        99% of all companies are talking about blockchain and DLT...
         <br>Meanwhile we are already building a physical Machine Economy<br/>
         and demonstrate automated machine-to-machine payment
       </p>
@@ -72,10 +72,6 @@ export default {};
 }
 
 @media (max-width: 425px) {
-  .information {
-    margin-top: 50px;
-  }
-
   .information__title h1 {
     font-size: 32px;
   }

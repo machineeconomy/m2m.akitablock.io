@@ -32,6 +32,7 @@ export default {
     background-size: cover;
     position: relative;
     font-family: 'Roboto', sans-serif;
+    margin-bottom: 200px;
   }
 
   .contain {

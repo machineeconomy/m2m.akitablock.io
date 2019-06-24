@@ -1,13 +1,47 @@
 <template>
-  <div class="navigation__button">
+<div>
+  <div class="navigation__button" @click="openPopup">
     <span class="button__line"></span>
     <span class="button__line"></span>
     <span class="button__line"></span>
   </div>
+  <div class="navigation__popup">
+    <ul>
+      <li v-for="li in navigation" :class="li.liClass">
+        <a :href="li.href" :path="li.path" @click="scroll" :class="li.aClass">
+         {{li.text}}
+        </a>
+    </li>
+    </ul>
+  </div>
+</div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: "NavigationButton",
+  data() {
+    return {
+      navigation: [
+        {text: "Live Demo", liClass:  "navigation__item popup__item", href: "#", path: "main"},
+        {text: "M2M Supply Chain",   liClass:  "navigation__item popup__item", href: "#", path: ".section3"},
+        {text: "Services",  liClass:  "navigation__item popup__item", href: "#", path: ".section4"},
+        {text: "Engage Now",    liClass:  "navigation__item popup__item", href: "#", path: "footer"}
+      ]
+    }
+  },
+  methods: {
+    openPopup() {
+      let popup = document.querySelector(".navigation__popup");
+      popup.classList.toggle("display-block");
+    },
+    scroll(e) {
+      e.preventDefault();
+      let path = e.target.attributes.path.value;
+      document.querySelector(path).scrollIntoView({block: "start", behavior: "smooth"});
+    }
+  }
+};
 </script>
 
 <style>
@@ -17,7 +51,6 @@ export default {};
   position: absolute;
   right: 0px;
   top: 40px;
-  display: none;
 }
 
 .button__line {
@@ -28,9 +61,36 @@ export default {};
   margin-top: 6px;
 }
 
-@media (max-width: 500px) {
+.navigation__popup {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  width: 100%;
+  top: 80px;
+  height: 150px;
+  left: 0;
+  border-radius: 5px;
+}
+
+.popup__item {
+  padding: 5px 20px;
+}
+
+.popup__item a {
+  color: #000;
+}
+
+.display-block {
+  display: block;
+}
+
+@media (min-width: 801px) {
   .navigation__button {
-    display: block;
+    display: none;
+  }
+
+  .navigation__popup {
+    display: none;
   }
 }
 </style>

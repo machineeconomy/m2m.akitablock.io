@@ -35,7 +35,7 @@ export default {}
 
 <style>
     .section4 {
-        margin-top: 200px;
+        margin-bottom: 500px;
         line-height: 1.2;
     }
 

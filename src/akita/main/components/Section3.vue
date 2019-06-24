@@ -18,7 +18,7 @@ export default {};
 
 <style>
 .section3 {
-  margin-top: 200px;
+  margin-bottom: 200px;
 }
 
 .section3__title {

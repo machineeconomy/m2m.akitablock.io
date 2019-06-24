@@ -61,7 +61,7 @@ export default {};
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 800px) {
   .background__line {
     height: 60px;
   }

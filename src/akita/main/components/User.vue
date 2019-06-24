@@ -1,7 +1,7 @@
 <template>
   <div class="user">
     <div class="user_wallet">
-      <h3>user browser wallet</h3>
+      <h3>Your wallet</h3>
       <p class="balance">{{balance}}</p>
       <p>Balance</p>
     </div>
@@ -198,8 +198,9 @@ export default {
     width: 400px;
     height: 400px;
     position: relative;
-    left: calc(100% - 160px);
+    left: calc(100% - 150px);
     bottom: 300px;
+    z-index: -1;
   }
 }
 </style>

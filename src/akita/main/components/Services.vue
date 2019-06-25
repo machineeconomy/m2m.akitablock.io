@@ -1,7 +1,7 @@
 <template>
-    <section class="section4">
+    <section class="Services">
         <div class="contain contain-fix">
-            <h3 class="section4__title">The modular service design</h3>
+            <h3 class="Services__title title">The modular service design</h3>
             <div class="machines__information">
                 <div class="machines__text machines__text-top">Machines modular services can be integrated into existing systems and hardware or by adding external pc units that can be as small and cheap as a Raspberry Pi</div>
                 <div class="machines__text machines__text-left">Services and products made by your machine can be offered and sold directly M2M to other machines</div>
@@ -34,16 +34,12 @@ export default {}
 </script>
 
 <style>
-    .section4 {
+    .Services {
         margin-bottom: 500px;
-        line-height: 1.2;
     }
 
-    .section4__title {
+    .Services__title {
         text-align: center;
-        font-family: 'Oswald', sans-serif;
-        font-weight: bold;
-        font-size: 52px;
     }
 
     .machines__information {

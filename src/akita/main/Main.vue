@@ -1,5 +1,6 @@
 <template>
   <main>
+    <div class="LiveDemo"></div>
     <div class="contain main-margin">
       <p>In this Machine Economy demonstrator every participant has its own blockchain based service application.</p>
       <p>Each transaction triggers an automated machine-to-machine (M2M) payment and production process:</p>
@@ -31,19 +32,19 @@
         </ul>
       </div>
     </div>
-    <section3/>
-    <section4/>
+    <M2MSupplyChain/>
+    <Services/>
   </main>
 </template>
 <script>
 import User from "./components/User.vue";
 import Machine from "./components/Machine.vue";
-import Section3 from "./components/Section3.vue";
-import Section4 from "./components/Section4.vue";
+import M2MSupplyChain from "./components/M2MSupplyChain.vue";
+import Services from "./components/Services.vue";
 
 export default {
   name: "Main",
-  components: { User, Machine, Section3, Section4 },
+  components: { User, Machine, M2MSupplyChain, Services },
   data() {
     return {
       activities: [

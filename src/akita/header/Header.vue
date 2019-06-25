@@ -1,17 +1,19 @@
 <template>
   <header>
     <div class="contain">
-      <navigation></navigation>
-      <information></information>
-      <liveDemo></liveDemo>
+      <navigation/>
+      <information/>
+      <div class="header__button">
+        <StandartButton/>
+      </div>
     </div>
-    <backgroundLine></backgroundLine>
+    <backgroundLine/>
   </header>
 </template>
 <script>
 import Navigation from "./components/Navigation";
 import Information from "./components/Information";
-import LiveDemo from "./components/LiveDemo";
+import StandartButton from "./components/StandartButton";
 import BackgroundLine from "./components/BackgroundLine";
 
 export default {
@@ -19,25 +21,36 @@ export default {
   components: {
     Navigation,
     Information,
-    LiveDemo,
+    StandartButton,
     BackgroundLine
   }
 };
 </script>
 
 <style>
+header {
+  background: url("./../../../public/chain.png") no-repeat,
+    linear-gradient(to top left, #5f46b1 0%, #7d41af 50%, #ff2ea0 100%);
+  background-size: cover;
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 200px;
+}
 
-  header {
-    background: url("./../../../public/chain.png") no-repeat, linear-gradient(to top left, #5F46B1 0%, #7D41AF 50%, #FF2EA0 100%);
-    background-size: cover;
-    position: relative;
-    font-family: 'Roboto', sans-serif;
-    margin-bottom: 200px;
-  }
+.header__button {
+  width: 100%;
+  height: 210px;
+  margin-left: 40px;
+}
 
-  .contain {
-    max-width: 1600px;
-    padding: 0px 50px;
-    margin: auto;
+@media (max-width: 1400px) {
+  .header__button {
+    height: 140px;
   }
+}
+@media (max-width: 425px) {
+  .header__button {
+    margin-left: 0px;
+  }
+}
 </style>

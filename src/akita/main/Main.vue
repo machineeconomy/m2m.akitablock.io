@@ -60,10 +60,10 @@ export default {
     };
   },
   created() {
-    this.machine_1_url = process.env.VUE_APP_MACHINE_1_URL;
-    this.provider_1_url = process.env.VUE_APP_PROVIDER_1_URL;
-    this.machine_2_url = process.env.VUE_APP_MACHINE_2_URL;
-    this.provider_2_url = process.env.VUE_APP_PROVIDER_2_URL;
+    this.machine_1_url = 'https://akita.einfach-iota.de:3001';
+    this.provider_1_url = 'https://akita.einfach-iota.de:3002';
+    this.machine_2_url = 'https://akita.einfach-iota.de:3003';
+    this.provider_2_url = 'https://akita.einfach-iota.de:3004';
     console.log("VUE_APP_MACHINE_1_URL", this.machine_1_url)
     console.log("VUE_APP_PROVIDER_1_URL", this.provider_1_url)
   },

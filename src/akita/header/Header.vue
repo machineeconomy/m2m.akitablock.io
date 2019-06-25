@@ -48,6 +48,12 @@ header {
     height: 140px;
   }
 }
+
+@media (max-width: 900px) {
+  header {
+      margin-bottom: 70px;
+  }
+}
 @media (max-width: 425px) {
   .header__button {
     margin-left: 0px;

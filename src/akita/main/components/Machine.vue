@@ -31,7 +31,7 @@ export default {
     };
   },
   created() {
-    var socket = io(this.url, { path: "/socket" });
+    var socket = io(this.url, { path: "/socket", secure: true });
     if (socket) {
       var self = this;
       socket.on("init", function(msg) {

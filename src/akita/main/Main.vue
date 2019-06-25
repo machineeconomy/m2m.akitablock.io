@@ -50,13 +50,19 @@ export default {
         {
           message: "Machines connecting...",
           timestamp: Date.now(),
-          machine_1_url: 'http://localhost:3001',
-          provider_1_url: 'http://localhost:3002',
-          machine_2_url: 'http://localhost:3003',
-          provider_2_url: 'http://localhost:3004',
+          machine_1_url: '',
+          provider_1_url: '',
+          machine_2_url: '',
+          provider_2_url: ''
         }
       ]
     };
+  },
+  created() {
+    this.machine_1_url = process.env.VUE_APP_MACHINE_1_URL;
+    this.provider_1_url = process.env.VUE_APP_PROVIDER_1_URL;
+    this.machine_2_url = process.env.VUE_APP_MACHINE_2_URL;
+    this.provider_2_url = process.env.VUE_APP_PROVIDER_2_URL;
   },
   methods: {
     addActivity(activity) {

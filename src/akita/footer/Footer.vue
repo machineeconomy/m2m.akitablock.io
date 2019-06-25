@@ -138,6 +138,9 @@ footer {
   margin: 0px 25px;
   background-size: 100%;
   background-repeat: no-repeat;
+   &:hover {
+    transform: scale(1.1)
+  }
 }
 
 .footer__bottom {

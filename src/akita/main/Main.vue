@@ -63,6 +63,8 @@ export default {
     this.provider_1_url = process.env.VUE_APP_PROVIDER_1_URL;
     this.machine_2_url = process.env.VUE_APP_MACHINE_2_URL;
     this.provider_2_url = process.env.VUE_APP_PROVIDER_2_URL;
+    console.log("VUE_APP_MACHINE_1_URL", this.machine_1_url)
+    console.log("VUE_APP_PROVIDER_1_URL", this.provider_1_url)
   },
   methods: {
     addActivity(activity) {

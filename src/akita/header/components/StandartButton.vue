@@ -18,7 +18,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss">
 .standart__button {
   background-color: #eb479d;
   width: 190px;
@@ -28,8 +28,10 @@ export default {
   color: #fff;
   font-size: 24px;
   text-transform: uppercase;
-}
-.standart__button:hover {
-  border: 1px solid #fff;
+  z-index: 1000;
+  &:hover {
+    border: 1px solid #fff;
+    cursor: pointer;
+  }
 }
 </style>

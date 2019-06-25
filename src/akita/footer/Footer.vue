@@ -9,10 +9,7 @@
         </p>
       </div>
       <div class="send__email">
-        <span class="input__background">
-          <input class="email__input" type="email" placeholder="E-Mail">
-        </span>
-        <button class="email__button">ENGAGE NOW</button>
+        <a class="email__button" href="mailto:hello@akitablock.io?subject=Machine%20Economy%20Use%20Case">WRITE AN EMAIL</a>
       </div>
       <div class="network__icons">
         <ul>
@@ -48,7 +45,8 @@
 export default {};
 </script>
 
-<style>
+<style lang="scss">
+
 footer {
   position: relative;
 }
@@ -100,6 +98,11 @@ footer {
   margin: 30px 0px;
   position: relative;
   z-index: 2;
+  padding: 10px;
+  &:hover{
+    color: #5f46b1;
+    padding: 11px;
+  }
 }
 
 .network__icons {

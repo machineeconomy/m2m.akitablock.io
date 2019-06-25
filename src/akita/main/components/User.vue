@@ -29,8 +29,8 @@
       </div>
     </div>
     <div class="user_wallet__conent" v-else>
-      <OrderButton url="http://localhost:3001" :amount="1">Buy Headphone</OrderButton>
-      <OrderButton url="http://localhost:3003" :amount="1">Buy Laptop</OrderButton>
+      <OrderButton url="https://akita.einfach-iota.de:3001" :amount="1">Buy Headphone</OrderButton>
+      <OrderButton url="https://akita.einfach-iota.de:3003" :amount="1">Buy Laptop</OrderButton>
       <div v-if="orders" class="orders">
         <p v-for="(order, index) in orders" :key="index">
           <a

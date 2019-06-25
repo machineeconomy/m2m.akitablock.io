@@ -110,7 +110,7 @@ export default {
         timestamp: Date.now()
       });
       axios
-        .post("http://localhost:5000/send_tokens?address=" + this.address, {})
+        .post("https://akita.einfach-iota.de:5000/send_tokens?address=" + this.address, {})
         .then(function(response) {
           if (response.status == 200) {
             console.log(

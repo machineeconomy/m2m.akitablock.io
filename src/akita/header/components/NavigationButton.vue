@@ -1,20 +1,24 @@
 <template>
-<div>
-  <div class="navigation__button" @click="openPopup">
-    <span class="button__line"></span>
-    <span class="button__line"></span>
-    <span class="button__line"></span>
+  <div>
+    <div class="navigation__button" @click="openPopup">
+      <span class="button__line"></span>
+      <span class="button__line"></span>
+      <span class="button__line"></span>
+    </div>
+    <div class="navigation__popup">
+      <ul>
+        <li v-for="li in navigation" :class="li.liClass">
+          <a
+            href="#"
+            :class="li.aClass"
+            :path="li.path"
+            :block="li.block"
+            @click="scroll"
+          >{{li.text}}</a>
+        </li>
+      </ul>
+    </div>
   </div>
-  <div class="navigation__popup">
-    <ul>
-      <li v-for="li in navigation" :class="li.liClass">
-        <a :href="li.href" :path="li.path" @click="scroll" :class="li.aClass">
-         {{li.text}}
-        </a>
-    </li>
-    </ul>
-  </div>
-</div>
 </template>
 
 <script>
@@ -23,12 +27,36 @@ export default {
   data() {
     return {
       navigation: [
-        {text: "Live Demo", liClass:  "navigation__item popup__item", href: "#", path: "main"},
-        {text: "M2M Supply Chain",   liClass:  "navigation__item popup__item", href: "#", path: ".section3"},
-        {text: "Services",  liClass:  "navigation__item popup__item", href: "#", path: ".section4"},
-        {text: "Engage Now",    liClass:  "navigation__item popup__item", href: "#", path: "footer"}
+        {
+          text: "Live Demo",
+          liClass: "navigation__item popup__item",
+          aClass: "popup__link",
+          path: ".LiveDemo",
+          block: "start"
+        },
+        {
+          text: "M2M Supply Chain",
+          liClass: "navigation__item popup__item",
+          aClass: "popup__link",
+          path: ".M2MSupplyChain",
+          block: "start"
+        },
+        {
+          text: "Services",
+          liClass: "navigation__item popup__item",
+          aClass: "popup__link",
+          path: ".Services",
+          block: "center"
+        },
+        {
+          text: "Engage Now",
+          liClass: "navigation__item popup__item",
+          aClass: "popup__link",
+          path: ".EngageNow",
+          block: "start"
+        }
       ]
-    }
+    };
   },
   methods: {
     openPopup() {
@@ -37,8 +65,11 @@ export default {
     },
     scroll(e) {
       e.preventDefault();
-      let path = e.target.attributes.path.value;
-      document.querySelector(path).scrollIntoView({block: "start", behavior: "smooth"});
+      let path = e.target.attributes.path.value,
+        block = e.target.attributes.block.value;
+      document
+        .querySelector(path)
+        .scrollIntoView({ block: block, behavior: "smooth" });
     }
   }
 };
@@ -76,7 +107,11 @@ export default {
   padding: 5px 20px;
 }
 
-.popup__item a {
+.popup__link {
+  color: #000;
+}
+
+.popup__link:hover {
   color: #000;
 }
 

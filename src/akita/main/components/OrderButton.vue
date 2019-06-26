@@ -1,5 +1,5 @@
 <template>
-  <base-button @click="order">
+  <base-button @click="order" :disabled="loading">
     <slot>{{text}}</slot>
   </base-button>
 </template>
@@ -7,8 +7,6 @@
 <script>
 const axios = require("axios");
 import { composeAPI } from "@iota/core";
-
-import OrderButton from "@/akita/main/components/OrderButton.vue";
 
 const iota = composeAPI({
   provider: "https://nodes.devnet.thetangle.org:443"
@@ -21,6 +19,11 @@ export default {
       type: String,
       default: "",
       description: "Button text in case not provided via default slot"
+    },
+    name: {
+      type: String,
+      required: true,
+      description: "The name of the product which can be ordered."
     },
     url: {
       type: String,
@@ -35,7 +38,8 @@ export default {
   },
   data() {
     return {
-      seed: ""
+      seed: "",
+      loading: false
     };
   },
   created() {
@@ -43,6 +47,7 @@ export default {
   },
   methods: {
     order() {
+      this.loading = true;
       let self = this;
       axios
         .post(this.url + "/orders/", {})
@@ -92,10 +97,16 @@ export default {
             `Published transaction with tail hash: ${bundle[0].hash}`
           );
           console.log(`Bundle: ${bundle}`);
-          this.orders.push(bundle[0].hash);
+          this.loading = false;
+          let obj = {
+            tx: bundle[0].hash,
+            name: this.name
+          };
+          this.$emit("ordered", obj);
         })
         .catch(err => {
           // handle errors here
+          console.log("Error sending iota", err);
         });
     }
   }

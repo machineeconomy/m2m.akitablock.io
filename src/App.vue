@@ -20,6 +20,14 @@ export default {
 </script>
 
 <style>
+
+:root {
+  --akita-primary: #5f46b1;
+  --akita-secondary: #eb479d;
+  --akita-dark: #3D4449;
+  --akita-light: #EFEFEF;
+}
+
 .contain {
   max-width: 1600px;
   padding: 0px 50px;

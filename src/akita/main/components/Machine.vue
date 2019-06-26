@@ -53,6 +53,11 @@ export default {
           timestamp: Date.now()
         });
       });
+
+      socket.on("new_balance", function(msg) {
+        console.log("ws: new_balance", msg);
+        self.balance = msg.balance;
+      });
     }
   },
   methods: {

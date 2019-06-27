@@ -52,28 +52,39 @@ ul {
   font-family: "Roboto", sans-serif;
 }
 
-@media (max-width:1250px)  {
+@media (max-width:1500px)  {
+  .title {
+    font-size: 64px;
+  }
+  .text {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 1250px) {
   .title {
     font-size: 54px;
   }
   .text {
     font-size: 18px;
-    margin-bottom: 0;
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1250px) {
   .title {
     font-size: 48px;
   }
   .text {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
 @media (max-width: 768px) {
   .title {
     font-size: 40px;
+  }
+  .text {
+    font-size: 16px;
   }
 }
 

@@ -30,28 +30,28 @@ export default {
         {
           text: "Live Demo",
           liClass: "navigation__item popup__item",
-          aClass: "popup__link",
+          aClass: "popup__link text",
           path: ".LiveDemo",
           block: "start"
         },
         {
           text: "M2M Supply Chain",
           liClass: "navigation__item popup__item",
-          aClass: "popup__link",
+          aClass: "popup__link text",
           path: ".M2MSupplyChain",
           block: "start"
         },
         {
           text: "Services",
           liClass: "navigation__item popup__item",
-          aClass: "popup__link",
+          aClass: "popup__link text",
           path: ".Services",
           block: "center"
         },
         {
           text: "Engage Now",
           liClass: "navigation__item popup__item",
-          aClass: "popup__link",
+          aClass: "popup__link text",
           path: ".EngageNow",
           block: "start"
         }
@@ -81,7 +81,7 @@ export default {
   height: 30px;
   position: absolute;
   right: 0px;
-  top: 40px;
+  top: 50px;
 }
 
 .button__line {
@@ -97,7 +97,7 @@ export default {
   position: absolute;
   background-color: #fff;
   width: 100%;
-  top: 80px;
+  top: 90px;
   height: 150px;
   left: 0;
   border-radius: 5px;

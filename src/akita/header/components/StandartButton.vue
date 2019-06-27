@@ -1,5 +1,7 @@
 <template>
-  <button class="standart__button" path=".LiveDemo" block="start" @click="scroll">Live Demo</button>
+  <div class="button-size">  
+    <base-button type="info" block path=".LiveDemo" position="start" @click="scroll">Live Demo</base-button>
+  </div>
 </template>
 
 <script>
@@ -8,30 +10,28 @@ export default {
   methods: {
     scroll(e) {
       e.preventDefault();
+      console.log(e);
       let path = e.target.attributes.path.value,
-        block = e.target.attributes.block.value;
+        position = e.target.attributes.position.value;
       document
         .querySelector(path)
-        .scrollIntoView({ block: block, behavior: "smooth" });
+        .scrollIntoView({ block: position, behavior: "smooth" });
     }
   }
 };
 </script>
 
 <style lang="scss">
-.standart__button {
-  background-color: #eb479d;
-  width: 190px;
+.button-size {
+  width: 200px;
   height: 60px;
-  border: 1px solid #eb479d;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 24px;
-  text-transform: uppercase;
-  z-index: 1000;
+  z-index: 10;
   &:hover {
-    border: 1px solid #fff;
     cursor: pointer;
+  }
+  button {
+    font-size: 22px;
+    background: #0BC5FE;
   }
 }
 </style>

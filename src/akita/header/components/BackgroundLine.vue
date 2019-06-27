@@ -41,9 +41,6 @@ export default {};
     width: 600px;
     height: 600px;
   }
-  .background__line {
-    bottom: -100px;
-  }
 }
 
 @media (max-width: 1100px) {

@@ -34,28 +34,28 @@ export default {
         {
           text: "Live Demo",
           liClass: "navigation__item navigation__element",
-          aClass: "navigation__link",
+          aClass: "navigation__link text",
           path: ".LiveDemo",
           block: "start"
         },
         {
           text: "M2M Supply Chain",
           liClass: "navigation__item navigation__element",
-          aClass: "navigation__link",
+          aClass: "navigation__link text",
           path: ".M2MSupplyChain",
           block: "start"
         },
         {
           text: "Services",
           liClass: "navigation__item navigation__element",
-          aClass: "navigation__link",
+          aClass: "navigation__link text",
           path: ".Services",
           block: "center"
         },
         {
           text: "Engage Now",
           liClass: "navigation__item navigation__element",
-          aClass: "navigation__link",
+          aClass: "navigation__link text",
           path: ".EngageNow",
           block: "start"
         }
@@ -88,7 +88,6 @@ export default {
 
 .navigation__link,
 .change__language {
-  font-size: 22px;
   color: #fff;
   white-space: nowrap;
 }
@@ -111,7 +110,7 @@ export default {
   background: url("./../../../../public/akita_logo_white.png") no-repeat;
   background-size: 100%;
   position: relative;
-  top: -35px;
+  top: -25px;
 }
 
 .navigation__link:hover {
@@ -121,7 +120,7 @@ export default {
 
 @media (max-width: 800px) {
   .navigation__logo {
-    left: -25px;
+    left: -20px;
   }
 
   .navigation__element {

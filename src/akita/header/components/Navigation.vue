@@ -88,6 +88,7 @@ export default {
 
 .navigation__link,
 .change__language {
+  font-size: 22px;
   color: #fff;
   white-space: nowrap;
 }

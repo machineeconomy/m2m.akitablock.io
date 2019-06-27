@@ -32,19 +32,19 @@ ul {
 }
 
 .title {
-  font-size: 60px;
+  font-size: 70px;
   font-family: "Oswald", sans-serif;
   font-weight: bold;
 }
 
 .text {
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1.3;
   margin-bottom: 0;
   font-family: "Roboto", sans-serif;
 }
 
-@media (max-width: 1250px) {
+@media (max-width:1250px)  {
   .title {
     font-size: 54px;
   }

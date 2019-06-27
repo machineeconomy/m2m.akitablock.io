@@ -77,7 +77,7 @@ export default {};
   grid-row: 2 / 3;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1r 1fr 1fr;
+  grid-template-rows: 2fr 1fr 2fr 2fr 1fr 2fr;
   grid-gap: 15px 10px;
 }
 
@@ -93,13 +93,13 @@ export default {};
 .machines__text-left {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
-  margin-top: 70px;
+  margin-top: 115px;
 }
 
 .machines__text-right {
   grid-column: 3 / 4;
   grid-row: 2 / 3;
-  margin-top: 70px;
+  margin-top: 115px;
 }
 
 .machines__text-bottom {
@@ -110,11 +110,11 @@ export default {};
 .machines__block-mid {
   background: url("./../../../../public/machines_logo.png") no-repeat;
   background-size: contain;
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   margin: auto;
   grid-column: 2 / 3;
-  grid-row: 2 / 4;
+  grid-row: 2 / 6;
 }
 
 .machines__blocks {
@@ -122,7 +122,6 @@ export default {};
   height: 60px;
   text-align: center;
   max-width: 200px;
-  width: 100px;
   width: 100%;
   margin: auto;
   font-weight: bold;
@@ -138,31 +137,35 @@ export default {};
 .machines__blocks-top {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
+  position: relative;
+  top: 10px;
 }
 
 .machines__blocks-lt {
   grid-column: 1 / 2;
-  grid-row: 2 / 3;
+  grid-row: 3 / 4;
 }
 
 .machines__blocks-lb {
   grid-column: 1 / 2;
-  grid-row: 3 / 4;
+  grid-row: 4 / 5;
 }
 
 .machines__blocks-rt {
   grid-column: 3 / 4;
-  grid-row: 2 / 3;
+  grid-row: 3 / 4;
 }
 
 .machines__blocks-rb {
   grid-column: 3 / 4;
-  grid-row: 3 / 4;
+  grid-row: 4 / 5;
 }
 
 .machines__blocks-bot {
   grid-column: 2 / 3;
-  grid-row: 4 / 5;
+  grid-row: 6 / 7;
+  position: relative;
+  top: -20px;
 }
 
 .aquamarine {
@@ -202,6 +205,13 @@ export default {};
 
   .machines__blocks {
       height: 50px;
+  }
+}
+
+@media (max-width: 700px) {
+  .machines__block-mid {
+    height: 150px;
+    width: 150px;
   }
 }
 

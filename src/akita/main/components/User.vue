@@ -29,8 +29,8 @@
       </div>
     </div>
     <div class="user_wallet__conent" v-else>
-      <OrderButton url="https://akita.einfach-iota.de:3001" :amount="1">Buy Headphone</OrderButton>
-      <OrderButton url="https://akita.einfach-iota.de:3003" :amount="1">Buy Laptop</OrderButton>
+      <OrderButton @ordered="ordered" name="headphone" url="https://akita.einfach-iota.de:3001" :amount="1">Buy Headphone</OrderButton>
+      <OrderButton @ordered="ordered" name="laptop" url="https://akita.einfach-iota.de:3003" :amount="1">Buy Laptop</OrderButton>
       <div v-if="orders" class="orders">
         <p v-for="(order, index) in orders" :key="index">
           <a
@@ -82,6 +82,7 @@ export default {
   },
   methods: {
     fetchBalance() {
+      console.log("fetch balance", this.address)
       iota
         .getBalances([this.address], 100)
         .then(({ balances }) => {
@@ -150,8 +151,14 @@ export default {
               console.log("getBalances got an error: ", err);
             });
         }.bind(this),
-        1000
+        3000
       );
+    },
+    ordered(order) {
+      console.log("type", order)
+      // TODO: save the order object to the history
+
+      this.fetchBalance()
     }
   }
 };

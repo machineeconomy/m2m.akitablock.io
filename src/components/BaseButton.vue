@@ -102,5 +102,22 @@ export default {
   }
 };
 </script>
-<style>
+<style lang="scss">
+
+.btn-default {
+  background-color: var(--akita-primary);
+  width: 190px;
+  height: 60px;
+  border: 1px solid var(--akita-primary);
+  border-radius: 10px;
+  color: var(--light);
+  text-transform: uppercase;
+  &:hover {
+    border: 1px solid var(--akita-light);  
+    background-color: var(--akita-secondary);
+
+    cursor: pointer;
+  }
+}
+
 </style>

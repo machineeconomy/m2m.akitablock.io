@@ -50,7 +50,7 @@ export default {
           liClass: "navigation__item navigation__element",
           aClass: "navigation__link text",
           path: ".Services",
-          block: "center"
+          block: window.innerWidth > 1000 ? "center" : "start"
         },
         {
           text: "Engage Now",

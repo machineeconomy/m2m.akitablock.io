@@ -46,7 +46,7 @@ export default {
           liClass: "navigation__item popup__item",
           aClass: "popup__link text",
           path: ".Services",
-          block: "center"
+          block: window.innerWidth > 1000 ? "center" : "start"
         },
         {
           text: "Engage Now",

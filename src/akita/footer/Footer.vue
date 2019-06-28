@@ -9,7 +9,9 @@
         </p>
       </div>
       <div class="send__email">
-        <a class="email__button" href="mailto:hello@akitablock.io?subject=Machine%20Economy%20Use%20Case">WRITE AN EMAIL</a>
+        <a class="email__button" href="mailto:hello@akitablock.io?subject=Machine%20Economy%20Use%20Case">
+          <standartButton />
+        </a>
       </div>
       <div class="network__icons">
         <ul>
@@ -37,12 +39,22 @@
       </div>
     </div>
     <span class="footer__background"></span>
-    <div class="footer__bottom">AKITA Blockchain Solutions</div>
+    <div class="footer__bottom text">
+      <span class="bottom__text">Open source project <br/>made by AKITA</span>
+      <a class="bottom__link" href="#">Site Notice</a>
+    </div>
   </footer>
 </template>
 
 <script>
-export default {};
+import  StandartButton from "./components/StandartButton";
+
+export default {
+  name: "Footer",
+  components: {
+    StandartButton
+  }
+};
 </script>
 
 <style lang="scss">
@@ -70,39 +82,8 @@ footer {
   margin: 20px 5px;
 }
 
-.input__background {
-  display: inline-block;
-  max-width: 600px;
-  width: 100%;
-  height: 75px;
-  background-color: #f4f5f7;
-  padding: 15px;
-  margin-right: 30px;
-}
-
-.email__input {
-  height: 50px;
-  width: 100%;
-  padding: 0px 15px;
-  border: 1px solid #ebebef;
-}
-
-.email__button {
-  width: 170px;
-  height: 50px;
-  border-radius: 5px;
-  border: none;
-  background: linear-gradient(to top right, #5f46b1 0%, #ff2ea0 100%);
-  color: #fff;
-  font-size: 20px;
-  margin: 30px 0px;
-  position: relative;
-  z-index: 2;
-  padding: 10px;
-  &:hover{
-    color: #5f46b1;
-    padding: 11px;
-  }
+.send__email {
+  margin: 30px 40px 80px;
 }
 
 .network__icons {
@@ -144,13 +125,31 @@ footer {
 }
 
 .footer__bottom {
-  background: linear-gradient(to top left, #5f46b1 0%, #ff2ea0 100%);
-  height: 70px;
-  padding-top: 40px;
-  text-align: center;
+  background: linear-gradient(to right, #0BC5FE 0%, #5f46b1 40%, #ff2ea0 100%);
+  height: 80px;
   color: #fff;
   position: relative;
   z-index: 2;
+  display: flex;
+  font-weight: lighter;
+}
+
+.bottom__text {
+  text-align: center;
+  flex: 3 1 auto;
+  margin: auto;
+  line-height: 1;
+}
+
+.bottom__link {
+  position: absolute;
+  right: 10%;
+  bottom: 30%;
+  color: #fff;
+  &:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
 }
 
 @media (max-width: 1750px) {
@@ -210,6 +209,12 @@ footer {
     width: 40px;
     height: 40px;
     margin: 0px 20px 0px 0px;
+  }
+
+  .bottom__link {
+    position: static;
+    flex: 1 1 auto;
+    margin: auto;
   }
 }
 </style>

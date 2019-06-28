@@ -3,6 +3,7 @@
     <img class="machine_img" :src="getImgUrl()" alt="machine">
     <div class="machine_wallet">
       <h3>{{ name }}</h3>
+      <fade-loader :loading="!this.balance" color="#FFFFFF"></fade-loader>
       <p class="balance">{{ this.balance }}</p>
       <p>Balance</p>
     </div>
@@ -10,9 +11,9 @@
       <div :class="status">
         <badge :type="getStatusColor(status)">{{status}}</badge>
       </div>
-      
     </div>
     <div v-else class="info not_connected">
+      <fade-loader :loading="true" color="#5f46b1"></fade-loader>
       <p>not connected</p>
     </div>
   </div>
@@ -20,13 +21,15 @@
 
 <script>
 import io from "socket.io-client";
+import FadeLoader from "vue-spinner/src/FadeLoader.vue";
 
 export default {
   props: ["url", "name"],
+  components: { FadeLoader },
   data() {
     return {
       status: "",
-      balance: 0,
+      balance: "",
       connected: false
     };
   },
@@ -66,23 +69,22 @@ export default {
       return images("./" + this.name + ".png");
     },
     getStatusColor(status) {
-
       switch (status) {
-        case 'waiting_for_order': 
-          return 'info';
+        case "waiting_for_order":
+          return "info";
           break;
-       case 'waiting_for_tx': 
-       case 'waiting_for_tx_confirm': 
-          return 'primary';
+        case "waiting_for_tx":
+        case "waiting_for_tx_confirm":
+          return "primary";
           break;
-        case 'payout_provider':
-          return 'warning';
+        case "payout_provider":
+          return "warning";
           break;
-        case 'working':
-          return 'success';
+        case "working":
+          return "success";
           break;
-        default: 
-          return 'default';
+        default:
+          return "default";
           break;
       }
     }
@@ -138,6 +140,7 @@ export default {
         border-radius: 20px;
         background: #efefef;
         text-align: center;
+        justify-content: center;
         p {
           color: black;
         }

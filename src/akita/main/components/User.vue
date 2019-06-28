@@ -4,6 +4,8 @@
       <h3>Your wallet</h3>
       <p class="balance">{{balance}}</p>
       <p>Balance</p>
+      
+
     </div>
     <div class="user_wallet__conent" v-if="!balance">
       <div v-if="!waitForTokens">
@@ -12,9 +14,10 @@
         <p>
           <strong>Note: This could take a while</strong>
         </p>
-        <base-button type="success" v-on:click="callFaucet">Get Tokens</base-button>
+        <base-button v-on:click="callFaucet">Get Tokens</base-button>
       </div>
       <div v-else>
+        <pulse-loader :loading="true" color="#5f46b1"></pulse-loader>
         <h5>Loading...</h5>
         <p>
           Watch address on
@@ -50,6 +53,8 @@ import generateSeed from "@/utils/generateSeed.js";
 
 import OrderButton from "@/akita/main/components/OrderButton.vue";
 
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+
 const iota = composeAPI({
   provider: "https://nodes.devnet.thetangle.org:443"
 });
@@ -57,7 +62,7 @@ const axios = require("axios");
 
 export default {
   name: "User",
-  components: { OrderButton },
+  components: { OrderButton, PulseLoader },
   data() {
     return {
       balance: 0,

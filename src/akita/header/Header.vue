@@ -29,7 +29,7 @@ export default {
 
 <style>
 header {
-  background: url("./../../../public/chainTest.png") no-repeat,
+  background: url("./../../../public/chain.png") no-repeat,
     linear-gradient(to top left, #0BC5FE 0%, #5f46b1 50%, #ff2ea0 100%);
   background-size: cover;
   position: relative;

@@ -1,5 +1,28 @@
 # MachineEconomy
-Machine Economy M2M Demo based on IOTA
+This is an open source project with the goal to demonstrate real live Use Cases on a Virtual Lab.
+The first Use Case shows an abstract, high level Machine-to-Machine (M2M) Supply Chain, where each machine has its own decentralized, dedicated service unit (no central controlling unit) called "machines".
+machines enables each machine to have its own "machine bank account", send & receive value and trigger automated processes based on payments. the first Use Case is based on IOTA Tangle a DLT technology beyond blockchain, that is open source, permissionless and 0 transaction costs.
+
+The website offers:
+1. bold landing page
+2. short demo video
+3. virtual lab live use case demonstration user experience (linked to the IOTa DevNet)
+4. dedeciated process description
+5. modular service design of "machines"
+6. Opportunity to engage and build the future with us today! (Links: E-Mail, Twitter, Linkedin, github, IOTA)
+
+Roadmap 2019
+June      alpha version promo
+July      Public release of the alpha version website
+July      optimize and extend functions
+Augut     extend other Use Cases
+September implement virtual lab code on physical components
+...
+
+
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////////
 
 internal checklist:
 - we want to make a website with some functions and integrated IOTA transactions based on the current DevNet

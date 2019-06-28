@@ -1,4 +1,4 @@
-# MachineEconomy
+# AKITA Virtual Lab : Machine Economy (M2M) live demonstrator
 This is an open source project with the goal to demonstrate real live Use Cases on a Virtual Lab.
 The first Use Case shows an abstract, high level Machine-to-Machine (M2M) Supply Chain, where each machine has its own decentralized, dedicated service unit (no central controlling unit) called "machines".
 machines enables each machine to have its own "machine bank account", send & receive value and trigger automated processes based on payments. the first Use Case is based on IOTA Tangle a DLT technology beyond blockchain, that is open source, permissionless and 0 transaction costs.

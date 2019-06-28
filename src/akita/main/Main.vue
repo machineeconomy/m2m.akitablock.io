@@ -115,7 +115,7 @@ p {
     overflow-x: hidden;
     background-color: #efefef;
     border-radius: 20px;
-    height: 220px;
+    height: 130px;
     padding-inline-start: 0;
     li {
       list-style: none;

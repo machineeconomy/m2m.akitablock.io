@@ -41,7 +41,7 @@
     <span class="footer__background"></span>
     <div class="footer__bottom text">
       <span class="bottom__text">Open source project <br/>made by AKITA</span>
-      <a class="bottom__link" href="#">Site Notice</a>
+      <a class="bottom__link" href="https://github.com/machineeconomy/m2m.akitablock.io/blob/master/Site%20Notice">Site Notice</a>
     </div>
   </footer>
 </template>

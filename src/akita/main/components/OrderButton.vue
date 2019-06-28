@@ -1,6 +1,7 @@
 <template>
   <base-button @click="order" :disabled="loading">
-    <slot>{{text}}</slot>
+    <pulse-loader v-if="loading" :loading="true" color="#FFFFFF"></pulse-loader>
+    <slot v-else>{{text}}</slot>
   </base-button>
 </template>
 
@@ -12,8 +13,11 @@ const iota = composeAPI({
   provider: "https://nodes.devnet.thetangle.org:443"
 });
 
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+
 export default {
   name: "OrderButton",
+  components: { PulseLoader },
   props: {
     text: {
       type: String,

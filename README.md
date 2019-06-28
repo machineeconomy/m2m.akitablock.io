@@ -3,7 +3,7 @@ This is an open source project with the goal to demonstrate real live Use Cases 
 The first Use Case shows an abstract, high level Machine-to-Machine (M2M) Supply Chain, where each machine has its own decentralized, dedicated service unit (no central controlling unit) called "machines".
 machines enables each machine to have its own "machine bank account", send & receive value and trigger automated processes based on payments. the first Use Case is based on IOTA Tangle a DLT technology beyond blockchain, that is open source, permissionless and 0 transaction costs.
 
-https://github.com/machineeconomy/m2m.akitablock.io/blob/master/public/img/AKITA%20-%20Virtual%20Lab%20-%20M2M%20Supply%20Chain%20-%20landing%20page%20.png
+![alt text](https://github.com/machineeconomy/m2m.akitablock.io/blob/master/public/img/AKITA%20-%20Virtual%20Lab%20-%20M2M%20Supply%20Chain%20-%20landing%20page%20.png)
 
 The website offers:
 1. bold landing page

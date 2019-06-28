@@ -1,4 +1,4 @@
-# AKITA Virtual Lab <br> Machine Economy (M2M) live demonstrator
+# AKITA Virtual DLT Lab <br> Machine Economy (M2M) live demonstrator based on IOTA
 
 This is an open source project with the goal to demonstrate real live Use Cases on a Virtual Lab.
 The first Use Case shows an abstract, high level Machine-to-Machine (M2M) Supply Chain, where each machine has its own decentralized, dedicated service unit (no central controlling unit) called "machines".

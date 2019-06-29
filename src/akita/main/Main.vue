@@ -2,12 +2,12 @@
   <main>
     <div class="LiveDemo"></div>
     <div class="contain main-margin">
-      <p>In this Machine Economy demonstrator every participant has its own blockchain based service application.</p>
-      <p>Each transaction triggers an automated machine-to-machine (M2M) payment and production process:</p>
+      <p class="text">In this Machine Economy demonstrator every participant has its own blockchain based service application.</p>
+      <p class="text">Each transaction triggers an automated machine-to-machine (M2M) payment and production process:</p>
       <ol>
-        <li>Click to fund your wallet with virtual tokens</li>
-        <li>Select a new pair of headphones or a laptop</li>
-        <li>The rest of the process is completely automated - just watch what happens...</li>
+        <li class="text">Click to fund your wallet with virtual tokens</li>
+        <li class="text">Select a new pair of headphones or a laptop</li>
+        <li class="text">The rest of the process is completely automated - just watch what happens...</li>
       </ol>
       <div class="usecase">
         <User v-on:newActivity="addActivity"/>
@@ -121,6 +121,11 @@ export default {
 <style lang="scss" scoped>
 .main-margin {
   margin-bottom: 200px;
+}
+
+ol {
+  color: #000;
+  font-weight: lighter;
 }
 
 p {

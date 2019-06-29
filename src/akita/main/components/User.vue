@@ -188,7 +188,7 @@ export default {
 <style lang="scss" scoped>
 .user {
   padding: 10px 20px;
-  width: 20%;
+  min-width: 290px;
   max-height: 500px;
   max-width: 300px;
   h3 {
@@ -217,6 +217,8 @@ export default {
       background-color: #efefef;
       padding: 20px;
       text-align: center;
+      max-width: 260px;
+      min-width: 240px;
       p {
         color: black;
         margin: 0;
@@ -239,9 +241,20 @@ export default {
 
 @media (max-width: 900px) {
   .user {
+    margin: auto;
     .business_woman {
-      right: calc(80% - 100px);
+      right: calc(0% - 120px);
     }
   }
 }
+
+@media (max-width: 450px) {
+  .user {
+    margin-left: -20px;
+  }
+  .user_wallet__conent p{
+    line-height: 1.3;
+  }
+}
+
 </style>

@@ -208,6 +208,12 @@ export default {};
   }
 }
 
+@media (max-width: 1100px) {
+  .Services {
+    margin-bottom: 200px;
+  }
+}
+
 @media (max-width: 700px) {
   .machines__block-mid {
     height: 150px;

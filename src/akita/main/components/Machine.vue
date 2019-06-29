@@ -157,4 +157,35 @@ export default {
     }
   }
 }
+
+@media (max-width: 900px) {
+  .machine {
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: relative;
+    right: 0px;
+    margin: 20px;
+      .machine_img {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    left: 30px;
+    top: 20px;
+  }
+    .machine_wallet {
+      float: none;
+      width: 150px;
+      h3 {
+        font-size: 1.2em;
+      }
+    }
+    .info {
+      float: none;
+      width: 150px;
+
+    }
+  }
+}
 </style>

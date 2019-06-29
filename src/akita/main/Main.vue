@@ -18,7 +18,7 @@
               src="../../assets/img/value_transfer_anim_machine.gif"
               alt
             >
-            <Machine class="machine" :url="machine_1_url" name="Robot1" v-on:newActivity="addActivity"/>
+            <Machine :url="machine_1_url" name="Robot1" v-on:newActivity="addActivity"/>
             <img
               class="transfer_provider_anim transfer_provider_anim__top"
               src="../../assets/img/value_transfer_anim_provider.gif"
@@ -32,7 +32,7 @@
               src="../../assets/img/value_transfer_anim_machine.gif"
               alt
             >
-            <Machine class="machine" :url="machine_2_url" name="Robot2" v-on:newActivity="addActivity"/>
+            <Machine :url="machine_2_url" name="Robot2" v-on:newActivity="addActivity"/>
             <img
               class="transfer_provider_anim transfer_provider_anim__bottom"
               src="../../assets/img/value_transfer_anim_provider.gif"
@@ -120,7 +120,7 @@ p {
 
 .usecase {
   display: flex;
-  
+
   .machines {
     .machines_park {
        padding: 10px 40px;
@@ -187,5 +187,34 @@ p {
       padding-left: 5px;
     }
   }
+}
+@media (max-width: 900px) {
+  .usecase {
+  display: flex; 
+  flex-direction: column;
+  
+  .user {
+    width: 100%;
+  }
+  
+  .machines {
+  width: 100%;
+  display: flex; 
+  flex-direction: row;
+          justify-content: center;
+
+    .machines_park {
+        display: flex;
+        flex-direction: column;
+        padding: 0px;
+        img {
+          display: none;
+        }
+      .provider {
+        right: 0px;
+      }
+    }
+  }
+}
 }
 </style>

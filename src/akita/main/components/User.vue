@@ -12,7 +12,7 @@
         <p>
           <strong>Note: This could take a while</strong>
         </p>
-        <base-button class="button  " v-on:click="callFaucet">Get Tokens</base-button>
+        <base-button class="button" v-on:click="callFaucet">Get Tokens</base-button>
       </div>
       <div v-else>
         <pulse-loader :loading="true" color="#5f46b1" size="5px"></pulse-loader>
@@ -229,9 +229,17 @@ export default {
     width: 400px;
     height: 400px;
     position: relative;
-    right: 80%;
+    right: calc(100% - 50px);
     bottom: 300px;
     z-index: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .user {
+    .business_woman {
+      right: calc(80% - 100px);
+    }
   }
 }
 </style>

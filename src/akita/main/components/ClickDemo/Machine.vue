@@ -5,7 +5,7 @@
       <h3>{{ mutableName }}</h3>
       <p class="balance">{{ this.balance }}</p>
       <p>
-        <pulse-loader :loading="!this.balance" color="#FFFFFF" size="5px"></pulse-loader>Balance
+        <pulse-loader :loading="isNaN(balance)" color="#FFFFFF" size="5px"></pulse-loader>Balance
       </p>
     </div>
     <div v-if="connected" class="info">
@@ -17,14 +17,13 @@
       <badge :type="getStatusColor('not_connected')">not connected</badge>
       <p>
         connecting...
-        <pulse-loader :loading="true" color="#5f46b1" size="5px"></pulse-loader>
+        <pulse-loader :loading="!connected" color="#5f46b1" size="5px"></pulse-loader>
       </p>
     </div>
   </div>
 </template>
 
 <script>
-import io from "socket.io-client";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 export default {
@@ -33,40 +32,23 @@ export default {
   data() {
     return {
       status: "",
-      balance: "",
+      balance: undefined,
       connected: false,
       mutableName: this.name
     };
   },
-  created() {
-    var socket = io(this.url, { path: "/socket", secure: true });
-    if (socket) {
-      var self = this;
-      socket.on("init", function(msg) {
-        self.mutableName = msg.name;
-        self.status = msg.status;
-        self.balance = msg.balance;
-        self.connected = true;
-        self.$emit("newActivity", {
+  mounted() {
+    let self = this;
+    let rnd_time = Math.floor(Math.random() * (4000 - 1000 + 1)) + 1000;
+    setTimeout(function() {
+    self.connected = true;
+    self.balance = 0;
+    self.status = "waiting_for_order"
+    self.$emit("newActivity", {
           message: `Machine '${self.name}' connected.`,
           timestamp: Date.now()
         });
-      });
-
-      socket.on("status", function(msg) {
-        console.log("ws: tx_confirmed", msg);
-        self.status = msg.status;
-        self.$emit("newActivity", {
-          message: `Machine '${self.name}': ${msg.message}`,
-          timestamp: Date.now()
-        });
-      });
-
-      socket.on("new_balance", function(msg) {
-        console.log("ws: new_balance", msg);
-        self.balance = msg.balance;
-      });
-    }
+    }, rnd_time) 
   },
   methods: {
     getImgUrl() {

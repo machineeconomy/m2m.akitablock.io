@@ -106,7 +106,7 @@ export default {
   padding-bottom: 40px;
   display: flex;
   position: relative;
-  right: 180px;
+  right: 240px;
   .machine_img {
     width: 200px;
     height: 200px;
@@ -115,7 +115,7 @@ export default {
     top: 100px;
   }
   .machine_wallet {
-    min-width: 200px;
+    min-width: 180px;
     float: left;
     text-align: center;
     border-radius: 20px;

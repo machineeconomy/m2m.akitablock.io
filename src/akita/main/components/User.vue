@@ -38,6 +38,7 @@
         url="https://akita.einfach-iota.de:3001"
         :amount="1"
       >Buy Headphone</OrderButton>
+      <p>or </p>
       <OrderButton
         class="button"
         @ordered="ordered"
@@ -189,6 +190,7 @@ export default {
   padding: 10px 20px;
   width: 20%;
   max-height: 500px;
+  max-width: 300px;
   h3 {
     color: white;
   }

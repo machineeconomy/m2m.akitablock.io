@@ -13,12 +13,32 @@
         <User v-on:newActivity="addActivity"/>
         <div class="machines">
           <div class="machines_park">
-            <Machine :url="machine_1_url" name="Robot1" v-on:newActivity="addActivity"/>
-            <Machine :url="provider_1_url" name="EnergyWind" v-on:newActivity="addActivity"/>
+            <img
+              class="transfer_anim transfer_anim__top"
+              src="../../assets/img/value_transfer_anim_machine.gif"
+              alt
+            >
+            <Machine class="machine" :url="machine_1_url" name="Robot1" v-on:newActivity="addActivity"/>
+            <img
+              class="transfer_provider_anim transfer_provider_anim__top"
+              src="../../assets/img/value_transfer_anim_provider.gif"
+              alt
+            >
+            <Machine class="provider" :url="provider_1_url" name="EnergyWind" v-on:newActivity="addActivity"/>
           </div>
           <div class="machines_park">
-            <Machine :url="machine_2_url" name="Robot2" v-on:newActivity="addActivity"/>
-            <Machine :url="provider_2_url" name="EnergySolar" v-on:newActivity="addActivity"/>
+            <img
+              class="transfer_anim transfer_anim__bottom"
+              src="../../assets/img/value_transfer_anim_machine.gif"
+              alt
+            >
+            <Machine class="machine" :url="machine_2_url" name="Robot2" v-on:newActivity="addActivity"/>
+            <img
+              class="transfer_provider_anim transfer_provider_anim__bottom"
+              src="../../assets/img/value_transfer_anim_provider.gif"
+              alt
+            >
+            <Machine class="provider" :url="provider_2_url" name="EnergySolar" v-on:newActivity="addActivity"/>
           </div>
         </div>
       </div>
@@ -51,21 +71,21 @@ export default {
         {
           message: "Machines connecting...",
           timestamp: Date.now(),
-          machine_1_url: '',
-          provider_1_url: '',
-          machine_2_url: '',
-          provider_2_url: ''
+          machine_1_url: "",
+          provider_1_url: "",
+          machine_2_url: "",
+          provider_2_url: ""
         }
       ]
     };
   },
   created() {
-    this.machine_1_url = 'https://akita.einfach-iota.de:3001';
-    this.provider_1_url = 'https://akita.einfach-iota.de:3002';
-    this.machine_2_url = 'https://akita.einfach-iota.de:3003';
-    this.provider_2_url = 'https://akita.einfach-iota.de:3004';
-    console.log("VUE_APP_MACHINE_1_URL", this.machine_1_url)
-    console.log("VUE_APP_PROVIDER_1_URL", this.provider_1_url)
+    this.machine_1_url = "https://akita.einfach-iota.de:3001";
+    this.provider_1_url = "https://akita.einfach-iota.de:3002";
+    this.machine_2_url = "https://akita.einfach-iota.de:3003";
+    this.provider_2_url = "https://akita.einfach-iota.de:3004";
+    console.log("VUE_APP_MACHINE_1_URL", this.machine_1_url);
+    console.log("VUE_APP_PROVIDER_1_URL", this.provider_1_url);
   },
   methods: {
     addActivity(activity) {
@@ -100,6 +120,51 @@ p {
 
 .usecase {
   display: flex;
+  
+  .machines {
+    .machines_park {
+       padding: 10px 40px;
+        display: flex;
+        align-items: left;
+
+      .provider {
+          right: 300px;
+
+      }
+    }
+  }
+}
+
+.transfer_anim {
+  height: 150px;
+  width: 150px;
+  position: relative;
+  &__top {
+    top: 170px;
+    right: 50px;
+  }
+  &__bottom {
+    top: 50px;
+    right: 50px;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+  }
+}
+
+.transfer_provider_anim {
+  height: 150px;
+  width: 150px;
+  position: relative;
+  &__top {
+    top: 100px;
+    right: 180px;
+  }
+  &__bottom {
+    top: 100px;
+    right: 180px;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+  }
 }
 
 .activities {

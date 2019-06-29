@@ -3,9 +3,10 @@
     <img class="machine_img" :src="getImgUrl()" alt="machine">
     <div class="machine_wallet">
       <h3>{{ mutableName }}</h3>
-      <pulse-loader :loading="!this.balance" color="#FFFFFF" size="5px"></pulse-loader>
       <p class="balance">{{ this.balance }}</p>
-      <p>Balance</p>
+      <p>
+        <pulse-loader :loading="!this.balance" color="#FFFFFF" size="5px"></pulse-loader>Balance
+      </p>
     </div>
     <div v-if="connected" class="info">
       <div :class="status">
@@ -13,15 +14,18 @@
       </div>
     </div>
     <div v-else class="info not_connected">
-      <p>not connected</p>
-      <pulse-loader :loading="true" color="#5f46b1" size="5px"></pulse-loader>
+      <badge :type="getStatusColor('not_connected')">not connected</badge>
+      <p>
+        connecting...
+        <pulse-loader :loading="true" color="#5f46b1" size="5px"></pulse-loader>
+      </p>
     </div>
   </div>
 </template>
 
 <script>
 import io from "socket.io-client";
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 export default {
   props: ["url", "name"],
@@ -71,6 +75,9 @@ export default {
     },
     getStatusColor(status) {
       switch (status) {
+        case "not_connected":
+          return "danger";
+          break;
         case "waiting_for_order":
           return "info";
           break;
@@ -94,65 +101,59 @@ export default {
 </script>
 
 
-<style lang="scss">
-.machines {
-  padding: 0 20px;
-  width: 70%;
-
-  h3 {
-    color: white;
+<style lang="scss"  >
+.machine {
+  padding-bottom: 40px;
+  display: flex;
+  position: relative;
+  right: 180px;
+  .machine_img {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    left: 50px;
+    top: 100px;
   }
-  .machines_park {
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    .machine {
-      display: flex;
-      .machine_img {
-        width: 200px;
-        height: 200px;
-        position: relative;
-        left: 50px;
-        top: 100px;
-      }
-      .machine_wallet {
-        float: left;
-        text-align: center;
-        border-radius: 20px;
-        padding: 20px;
-        background: linear-gradient(
-          to top left,
-          var(--akita-blue) 0% ,
-          var(--akita-primary) 50%,
-           var(--akita-secondary)100%
-        );
-        p {
-          color: white;
-        }
-        .balance {
-          font-size: 3em;
-        }
-      }
-      .info {
-        padding: 5px;
-        padding-top: 15px;
-        width: 200px;
-        float: right;
-        border-radius: 20px;
-        background: #efefef;
-        text-align: center;
-        justify-content: center;
-        p {
-          color: black;
-        }
-      }
-      .not_connected {
-        border: 2px solid red;
-        p {
-          color: red;
-          text-align: center;
-        }
-      }
+  .machine_wallet {
+    float: left;
+    text-align: center;
+    border-radius: 20px;
+    padding: 20px;
+    background: linear-gradient(
+      to top left,
+      var(--akita-blue) 0%,
+      var(--akita-primary) 50%,
+      var(--akita-secondary) 100%
+    );
+    h3 {
+      color: white;
+    }
+    p {
+      color: white;
+    }
+    .balance {
+      font-size: 3em;
+    }
+  }
+  .info {
+    padding: 5px;
+    padding-top: 15px;
+    width: 200px;
+    float: right;
+    border-radius: 20px;
+    background: #efefef;
+    text-align: center;
+    justify-content: center;
+    p {
+      color: black;
+    }
+  }
+  .not_connected {
+    border: 2px solid red;
+    p {
+      padding-top: 20px;
+      color: var(--akita-primary);
+      text-align: center;
     }
   }
 }

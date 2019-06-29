@@ -12,7 +12,7 @@
         <p>
           <strong>Note: This could take a while</strong>
         </p>
-        <base-button v-on:click="callFaucet">Get Tokens</base-button>
+        <base-button class="button  " v-on:click="callFaucet">Get Tokens</base-button>
       </div>
       <div v-else>
         <pulse-loader :loading="true" color="#5f46b1" size="5px"></pulse-loader>
@@ -30,13 +30,16 @@
       </div>
     </div>
     <div class="user_wallet__conent" v-else>
+      <h4>Order a Product</h4>
       <OrderButton
+        class="button"
         @ordered="ordered"
         name="headphone"
         url="https://akita.einfach-iota.de:3001"
         :amount="1"
       >Buy Headphone</OrderButton>
       <OrderButton
+        class="button"
         @ordered="ordered"
         name="laptop"
         url="https://akita.einfach-iota.de:3003"
@@ -219,13 +222,16 @@ export default {
       }
     }
   }
+  .button {
+    z-index: 2;
+  }
   .business_woman {
     width: 400px;
     height: 400px;
     position: relative;
-    left: calc(100% - 150px);
+    right: 80%;
     bottom: 300px;
-    z-index: -1;
+    z-index: 1;
   }
 }
 </style>

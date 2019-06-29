@@ -1,6 +1,9 @@
 <template>
   <base-button @click="order" :disabled="loading">
-    <pulse-loader v-if="loading" :loading="true" color="#FFFFFF" size="5px"></pulse-loader>
+  <div v-if="loading">
+    <pulse-loader  :loading="true" color="#FFFFFF" size="5px"></pulse-loader>
+    <p v-for="(message, index) in logs" :key="index">{{message}}</p>
+  </div>
     <slot v-else>{{text}}</slot>
   </base-button>
 </template>
@@ -43,7 +46,8 @@ export default {
   data() {
     return {
       seed: "",
-      loading: false
+      loading: false,
+      logs: []
     };
   },
   created() {
@@ -60,6 +64,7 @@ export default {
           if (response.status == 200) {
             let address = response.data;
             self.transferIOTA(address);
+            self.logs.push(`Pay tp address: https://devnet.thetangle.org/address/s  ${address}`)
           }
         })
         .catch(function(error) {

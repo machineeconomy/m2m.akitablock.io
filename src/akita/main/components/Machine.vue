@@ -115,6 +115,7 @@ export default {
     top: 100px;
   }
   .machine_wallet {
+    min-width: 200px;
     float: left;
     text-align: center;
     border-radius: 20px;
@@ -136,6 +137,7 @@ export default {
     }
   }
   .info {
+    min-width: 200px;
     padding: 5px;
     padding-top: 15px;
     width: 200px;
@@ -167,13 +169,13 @@ export default {
     position: relative;
     right: 0px;
     margin: 20px;
-      .machine_img {
-    width: 100px;
-    height: 100px;
-    position: relative;
-    left: 30px;
-    top: 20px;
-  }
+    .machine_img {
+      width: 100px;
+      height: 100px;
+      position: relative;
+      left: 30px;
+      top: 20px;
+    }
     .machine_wallet {
       float: none;
       width: 150px;
@@ -184,7 +186,6 @@ export default {
     .info {
       float: none;
       width: 150px;
-
     }
   }
 }

@@ -26,6 +26,11 @@ export default {
   margin-bottom: 200px;
 }
 
+ol {
+  color: #000;
+  font-weight: lighter;
+}
+
 p {
   color: black;
   margin: 0;

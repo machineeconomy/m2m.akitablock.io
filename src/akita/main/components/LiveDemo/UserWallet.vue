@@ -55,7 +55,7 @@
         </p>
       </div>
     </div>
-    <img class="business_woman" src="../../../assets/img/business_woman.png" alt="business_woman">
+    <img class="business_woman" src="../../../../assets/img/business_woman.png" alt="business_woman">
   </div>
 </template>
 
@@ -63,7 +63,7 @@
 import { composeAPI } from "@iota/core";
 import generateSeed from "@/utils/generateSeed.js";
 
-import OrderButton from "@/akita/main/components/OrderButton.vue";
+import OrderButton from "./OrderButton.vue";
 
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
@@ -73,7 +73,7 @@ const iota = composeAPI({
 const axios = require("axios");
 
 export default {
-  name: "User",
+  name: "UserWallet",
   components: { OrderButton, PulseLoader },
   data() {
     return {

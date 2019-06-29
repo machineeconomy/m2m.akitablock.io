@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     getImgUrl() {
-      var images = require.context("../../../assets/img/", false, /\.png$/);
+      var images = require.context("../../../../assets/img/", false, /\.png$/);
       return images("./" + this.name + ".png");
     },
     getStatusColor(status) {

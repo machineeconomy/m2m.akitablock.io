@@ -121,10 +121,10 @@ export default {
         border-radius: 20px;
         padding: 20px;
         background: linear-gradient(
-          to top right,
-          #5f46b1 0%,
-          #7d41af 50%,
-          #ff2ea0 100%
+          to top left,
+          var(--akita-blue) 0% ,
+          var(--akita-primary) 50%,
+           var(--akita-secondary)100%
         );
         p {
           color: white;

@@ -4,8 +4,6 @@
       <h3>Your wallet</h3>
       <p class="balance">{{balance}}</p>
       <p>Balance</p>
-      
-
     </div>
     <div class="user_wallet__conent" v-if="!balance">
       <div v-if="!waitForTokens">
@@ -16,7 +14,7 @@
         </p>
         <base-button v-on:click="callFaucet">Get Tokens</base-button>
       </div>
-      <div v-else>  
+      <div v-else>
         <pulse-loader :loading="true" color="#5f46b1" size="5px"></pulse-loader>
         <h5>Loading...</h5>
         <p>
@@ -32,8 +30,18 @@
       </div>
     </div>
     <div class="user_wallet__conent" v-else>
-      <OrderButton @ordered="ordered" name="headphone" url="https://akita.einfach-iota.de:3001" :amount="1">Buy Headphone</OrderButton>
-      <OrderButton @ordered="ordered" name="laptop" url="https://akita.einfach-iota.de:3003" :amount="1">Buy Laptop</OrderButton>
+      <OrderButton
+        @ordered="ordered"
+        name="headphone"
+        url="https://akita.einfach-iota.de:3001"
+        :amount="1"
+      >Buy Headphone</OrderButton>
+      <OrderButton
+        @ordered="ordered"
+        name="laptop"
+        url="https://akita.einfach-iota.de:3003"
+        :amount="1"
+      >Buy Laptop</OrderButton>
       <div v-if="orders" class="orders">
         <p v-for="(order, index) in orders" :key="index">
           <a
@@ -53,7 +61,7 @@ import generateSeed from "@/utils/generateSeed.js";
 
 import OrderButton from "@/akita/main/components/OrderButton.vue";
 
-import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
+import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 const iota = composeAPI({
   provider: "https://nodes.devnet.thetangle.org:443"
@@ -87,7 +95,7 @@ export default {
   },
   methods: {
     fetchBalance() {
-      console.log("fetch balance", this.address)
+      console.log("fetch balance", this.address);
       iota
         .getBalances([this.address], 100)
         .then(({ balances }) => {
@@ -116,7 +124,11 @@ export default {
         timestamp: Date.now()
       });
       axios
-        .post("https://akita.einfach-iota.de:5000/send_tokens?address=" + this.address, {})
+        .post(
+          "https://akita.einfach-iota.de:5000/send_tokens?address=" +
+            this.address,
+          {}
+        )
         .then(function(response) {
           if (response.status == 200) {
             console.log(
@@ -160,10 +172,10 @@ export default {
       );
     },
     ordered(order) {
-      console.log("type", order)
+      console.log("type", order);
       // TODO: save the order object to the history
 
-      this.fetchBalance()
+      this.fetchBalance();
     }
   }
 };
@@ -182,10 +194,10 @@ export default {
     border-radius: 20px;
     padding: 20px;
     background: linear-gradient(
-      to top right,
-      #5f46b1 0%,
-      #7d41af 50%,
-      #ff2ea0 100%
+      to top left,
+      var(--akita-blue) 0%,
+      var(--akita-primary) 50%,
+      var(--akita-secondary) 100%
     );
     p {
       color: white;

@@ -24,6 +24,7 @@ export default {
 :root {
   --akita-primary: #5f46b1;
   --akita-secondary: #eb479d;
+  --akita-blue: #0BC5FE;
   --akita-dark: #3D4449;
   --akita-light: #EFEFEF;
 }

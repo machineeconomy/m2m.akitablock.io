@@ -35,7 +35,7 @@
         class="button"
         @ordered="ordered"
         name="headphone"
-        url="https://akita.einfach-iota.de:3001"
+        :url="machine_1_url"
         :amount="1"
       >Buy Headphone</OrderButton>
       <p>or </p>
@@ -43,7 +43,7 @@
         class="button"
         @ordered="ordered"
         name="laptop"
-        url="https://akita.einfach-iota.de:3003"
+        :url="machine_2_url"
         :amount="1"
       >Buy Laptop</OrderButton>
       <div v-if="orders" class="orders">
@@ -81,7 +81,9 @@ export default {
       seed: "",
       address: "",
       orders: [],
-      waitForTokens: false
+      waitForTokens: false,
+      machine_1_url: process.env.VUE_APP_MACHINE_1_URL,
+      machine_2_url: process.env.VUE_APP_MACHINE_2_URL
     };
   },
   created() {

@@ -77,25 +77,17 @@ export default {
   components: { User, Machine, M2MSupplyChain, Services },
   data() {
     return {
+      machine_1_url: process.env.VUE_APP_MACHINE_1_URL,
+      provider_1_url: process.env.VUE_APP_PROVIDER_1_URL,
+      machine_2_url: process.env.VUE_APP_MACHINE_2_URL,
+      provider_2_url: process.env.VUE_APP_PROVIDER_2_URL,
       activities: [
         {
           message: "Machines connecting...",
-          timestamp: Date.now(),
-          machine_1_url: "",
-          provider_1_url: "",
-          machine_2_url: "",
-          provider_2_url: ""
+          timestamp: Date.now()
         }
       ]
     };
-  },
-  created() {
-    this.machine_1_url = "https://akita.einfach-iota.de:3001";
-    this.provider_1_url = "https://akita.einfach-iota.de:3002";
-    this.machine_2_url = "https://akita.einfach-iota.de:3003";
-    this.provider_2_url = "https://akita.einfach-iota.de:3004";
-    console.log("VUE_APP_MACHINE_1_URL", this.machine_1_url);
-    console.log("VUE_APP_PROVIDER_1_URL", this.provider_1_url);
   },
   methods: {
     addActivity(activity) {

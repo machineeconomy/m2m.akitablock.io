@@ -6,34 +6,13 @@
       <p>Balance</p>
     </div>
     <div class="user_wallet__conent" v-if="!balance">
-      <div v-if="!waitForTokens">
-        <p>Your browser wallet don't have any IOTA tokens on it.</p>
-        <p>Send IOTA devnet tokens with our IOTA Devnet Faucet. Just click this button below and wait for the IOTA tokens.</p>
-        <p>
-          <strong>Note: This could take a while</strong>
-        </p>
-        <base-button class="button" v-on:click="callFaucet">Get Tokens</base-button>
-      </div>
-      <div v-else>
-        <pulse-loader :loading="true" color="#5f46b1" size="5px"></pulse-loader>
-        <h5>Loading...</h5>
-        <p>
-          Watch address on
-          <a
-            :href="`https://devnet.thetangle.org/address/${address}`"
-            target="_blank"
-          >theThangle.org</a>.
-        </p>
-        <p>
-          <strong>Don't refresh this page - it will show the balance automatically</strong>
-        </p>
-      </div>
+      <p>You dont have any virtual tokens anymore. Please refresh the website tp generate new virtual tokens.</p>
     </div>
     <div class="user_wallet__conent" v-else>
       <h4>Order a Product</h4>
-      <base-button>Buy Headphone (100)</base-button>
+      <order-button @ordered="ordered" name="Headphone" :amount="100">Buy Headphone (100)</order-button>
       <p>or</p>
-      <base-button>Buy Laptop (1000)</base-button>
+      <order-button @ordered="ordered" name="Laptop" :amount="1000">Buy Laptop (1000)</order-button>
       <div v-if="orders" class="orders">
         <p v-for="(order, index) in orders" :key="index">
           <a
@@ -53,20 +32,26 @@
 
 <script>
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
+import OrderButton from "./OrderButton";
 
 export default {
   name: "User",
-  components: { PulseLoader },
+  components: { PulseLoader, OrderButton },
+  props: ["balance"],
   data() {
     return {
-      balance: 10000,
-      orders: []
+      orders: [],
+      loading: true
     };
   },
   methods: {
     ordered(order) {
-      console.log("type", order);
       // TODO: save the order object to the history
+      if (order.amount <= this.balance) {
+        this.$emit("ordered", order);
+      } else {
+        console.log("not enough virtual tokens");
+      }
     }
   }
 };
@@ -75,9 +60,9 @@ export default {
 <style lang="scss" scoped>
 .user {
   padding: 10px 20px;
-  width: 20%;
+  width: 30%;
   max-height: 500px;
-  max-width: 300px;
+  max-width: 320px;
   h3 {
     color: white;
   }

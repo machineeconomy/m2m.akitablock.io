@@ -3,48 +3,36 @@
     <img class="machine_img" :src="getImgUrl()" alt="machine">
     <div class="machine_wallet">
       <h3>{{ mutableName }}</h3>
-      <p class="balance">{{ this.balance }}</p>
+      <p v-if="connected" class="balance">{{ mutableBalance }}</p>
       <p>
-        <pulse-loader :loading="isNaN(balance)" color="#FFFFFF" size="5px"></pulse-loader>Balance
+        <pulse-loader :loading="!connected" color="#FFFFFF" size="5px"></pulse-loader>Balance
       </p>
     </div>
-    <div v-if="connected" class="info">
-      <div :class="status">
-        <badge :type="getStatusColor(status)">{{status}}</badge>
-      </div>
     </div>
-    <div v-else class="info not_connected">
-      <badge :type="getStatusColor('not_connected')">not connected</badge>
-      <p>
-        connecting...
-        <pulse-loader :loading="!connected" color="#5f46b1" size="5px"></pulse-loader>
-      </p>
-    </div>
-  </div>
+   
 </template>
 
 <script>
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 export default {
-  props: ["url", "name"],
+  props: ["name", "balance"],
   components: { PulseLoader },
   data() {
     return {
       status: "",
-      balance: undefined,
       connected: false,
-      mutableName: this.name
+      mutableName: this.name,
+      mutableBalance: this.balance
     };
   },
   mounted() {
     let self = this;
     let rnd_time = Math.floor(Math.random() * (4000 - 1000 + 1)) + 1000;
     setTimeout(function() {
-    self.connected = true;
-    self.balance = 0;
-    self.status = "waiting_for_order"
-    self.$emit("newActivity", {
+      self.connected = true;
+      self.status = "waiting_for_order"
+      self.$emit("newActivity", {
           message: `Machine '${self.name}' connected.`,
           timestamp: Date.now()
         });
@@ -78,6 +66,11 @@ export default {
           break;
       }
     }
+  },
+  watch: {
+    balance: function (val) {
+      this.mutableBalance = this.mutableBalance + val;
+    },
   }
 };
 </script>

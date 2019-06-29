@@ -2,8 +2,8 @@
   <div class="machine">
     <img class="machine_img" :src="getImgUrl()" alt="machine">
     <div class="machine_wallet">
-      <h3>{{ name }}</h3>
-      <fade-loader :loading="!this.balance" color="#FFFFFF"></fade-loader>
+      <h3>{{ mutableName }}</h3>
+      <pulse-loader :loading="!this.balance" color="#FFFFFF" size="5px"></pulse-loader>
       <p class="balance">{{ this.balance }}</p>
       <p>Balance</p>
     </div>
@@ -13,24 +13,25 @@
       </div>
     </div>
     <div v-else class="info not_connected">
-      <fade-loader :loading="true" color="#5f46b1"></fade-loader>
       <p>not connected</p>
+      <pulse-loader :loading="true" color="#5f46b1" size="5px"></pulse-loader>
     </div>
   </div>
 </template>
 
 <script>
 import io from "socket.io-client";
-import FadeLoader from "vue-spinner/src/FadeLoader.vue";
+import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
 export default {
   props: ["url", "name"],
-  components: { FadeLoader },
+  components: { PulseLoader },
   data() {
     return {
       status: "",
       balance: "",
-      connected: false
+      connected: false,
+      mutableName: this.name
     };
   },
   created() {
@@ -38,7 +39,7 @@ export default {
     if (socket) {
       var self = this;
       socket.on("init", function(msg) {
-        self.name = msg.name;
+        self.mutableName = msg.name;
         self.status = msg.status;
         self.balance = msg.balance;
         self.connected = true;

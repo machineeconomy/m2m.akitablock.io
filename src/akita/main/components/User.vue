@@ -16,8 +16,8 @@
         </p>
         <base-button v-on:click="callFaucet">Get Tokens</base-button>
       </div>
-      <div v-else>
-        <pulse-loader :loading="true" color="#5f46b1"></pulse-loader>
+      <div v-else>  
+        <pulse-loader :loading="true" color="#5f46b1" size="5px"></pulse-loader>
         <h5>Loading...</h5>
         <p>
           Watch address on

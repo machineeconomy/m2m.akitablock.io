@@ -1,6 +1,6 @@
 <template>
   <base-button @click="order" :disabled="loading">
-    <pulse-loader v-if="loading" :loading="true" color="#FFFFFF"></pulse-loader>
+    <pulse-loader v-if="loading" :loading="true" color="#FFFFFF" size="5px"></pulse-loader>
     <slot v-else>{{text}}</slot>
   </base-button>
 </template>

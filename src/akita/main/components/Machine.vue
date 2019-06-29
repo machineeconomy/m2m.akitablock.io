@@ -173,19 +173,13 @@ export default {
       width: 100px;
       height: 100px;
       position: relative;
-      left: 30px;
+      left: 50px;
       top: 20px;
     }
     .machine_wallet {
-      float: none;
-      width: 150px;
       h3 {
         font-size: 1.2em;
       }
-    }
-    .info {
-      float: none;
-      width: 150px;
     }
   }
 }

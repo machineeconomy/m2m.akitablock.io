@@ -111,7 +111,7 @@ export default {
     width: 200px;
     height: 200px;
     position: relative;
-    left: 50px;
+    left: 80px;
     top: 100px;
   }
   .machine_wallet {

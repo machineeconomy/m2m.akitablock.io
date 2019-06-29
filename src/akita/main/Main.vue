@@ -1,7 +1,6 @@
 <template>
   <main>
     <ClickDemo />
-    <LiveDemo />
     <M2MSupplyChain/>
     <Services/>
   </main>

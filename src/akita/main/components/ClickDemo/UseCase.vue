@@ -11,7 +11,10 @@
         <i class="ni ni-bell-55 ni-3x"></i>
         <h4 class="heading mt-4">Product is ready!</h4>
         <p>You can see your product on the tangle:</p>
-        <a target="_blank" :href="`https://devnet.thetangle.org/transaction/${order_tx}`">Watch on the Tangle.org</a>
+        <a
+          target="_blank"
+          :href="`https://devnet.thetangle.org/transaction/${order_tx}`"
+        >Watch on the Tangle.org</a>
       </div>
 
       <template slot="footer">
@@ -90,7 +93,7 @@ const iota = composeAPI({
   provider: "https://nodes.devnet.thetangle.org:443"
 });
 
-const Converter = require('@iota/converter')
+const Converter = require("@iota/converter");
 
 export default {
   name: "UseCase",
@@ -157,7 +160,6 @@ export default {
       }
     },
     sendTransaction(data) {
-
       // Array of transfers which defines transfer recipients and value transferred in IOTAs.
       const transfers = [
         {
@@ -191,7 +193,7 @@ export default {
             `Published transaction with tail hash: ${bundle[0].hash}`
           );
           this.order_tx = bundle[0].hash;
-          this.order_result_modal = true
+          this.order_result_modal = true;
           console.log(`Bundle: ${bundle}`);
         })
         .catch(err => {
@@ -272,22 +274,30 @@ export default {
 
     .user {
       width: 100%;
+      padding: 0;
     }
-
-    .machines {
-      width: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      .machines_park {
+    .wallets {
+      flex-wrap: wrap;
+      .machines {
         display: flex;
-        flex-direction: column;
-        padding: 0px;
-        img {
-          display: none;
-        }
-        .provider {
-          right: 0px;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: calc(100% + 20px);
+        margin: 0 -10px;
+        .machines_park {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          width: 100%;
+          padding: 0px;
+          margin: 0 10px;
+          max-width: 50%;
+          img {
+            display: none;
+          }
+          .provider {
+            right: 0px;
+          }
         }
       }
     }

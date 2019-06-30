@@ -76,12 +76,13 @@ export default {
 </script>
 
 
-<style lang="scss"  >
+<style lang="scss" scoped>
 .machine {
   padding-bottom: 40px;
   display: flex;
   position: relative;
   right: 240px;
+  min-width: 35%;
   .machine_img {
     width: 200px;
     height: 200px;
@@ -90,11 +91,11 @@ export default {
     top: 100px;
   }
   .machine_wallet {
-    min-width: 180px;
+    padding: 20px;
+    width: 100%;
     float: left;
     text-align: center;
     border-radius: 20px;
-    padding: 20px;
     background: linear-gradient(
       to top left,
       var(--akita-blue) 0%,
@@ -112,7 +113,6 @@ export default {
     }
   }
   .info {
-    min-width: 200px;
     padding: 5px;
     padding-top: 15px;
     width: 200px;
@@ -137,21 +137,21 @@ export default {
 
 @media (max-width: 900px) {
   .machine {
-    padding-bottom: 40px;
+    min-width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     position: relative;
     right: 0px;
-    margin: 20px;
     .machine_img {
       width: 100px;
       height: 100px;
       position: relative;
-      left: 50px;
+      left: 60px;
       top: 20px;
     }
     .machine_wallet {
+      padding: 10px;
       h3 {
         font-size: 1.2em;
       }

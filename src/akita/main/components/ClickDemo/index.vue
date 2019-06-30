@@ -23,3 +23,12 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+
+@media (max-width: 900px) {
+ .contain {
+   padding: 0 30px;
+ }
+}
+</style>

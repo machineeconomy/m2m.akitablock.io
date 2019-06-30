@@ -111,9 +111,9 @@ export default {
 
 @media (max-width: 900px) {
   .user {
-    max-width: 100%;
+    min-width: 100%;
     .business_woman {
-      right: calc(80% - 100px);
+      right: calc(80% - 70px);
     }
   }
 }

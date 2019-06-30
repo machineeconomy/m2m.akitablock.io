@@ -168,12 +168,11 @@ export default {
     flex-wrap: nowrap;
     position: relative;
     right: 0px;
-    margin: 20px;
     .machine_img {
       width: 100px;
       height: 100px;
       position: relative;
-      left: 50px;
+      left: 30px;
       top: 20px;
     }
     .machine_wallet {

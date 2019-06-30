@@ -69,7 +69,7 @@ export default {
   },
   watch: {
     balance: function (val) {
-      this.mutableBalance = this.mutableBalance + val;
+      this.mutableBalance = val;
     },
   }
 };

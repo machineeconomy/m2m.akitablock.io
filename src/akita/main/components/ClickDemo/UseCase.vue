@@ -92,7 +92,7 @@ export default {
         setTimeout(function() {
           self.active_transfer_headphone = false;
           self.user_balance = self.user_balance - order.amount;
-          self.machine_1_balance = self.machine_1_balance + (order.amount - 10);
+          self.machine_1_balance = self.machine_1_balance + order.amount - 10;
           self.provider_1_balance = self.provider_1_balance + 10;
         }, 5000);
       } else if (order.name == "Laptop") {
@@ -101,8 +101,7 @@ export default {
         setTimeout(function() {
           self.active_transfer_laptop = false;
           self.user_balance = self.user_balance - order.amount;
-          self.machine_2_balance =
-            self.machine_2_balance + (order.amount - 100);
+          self.machine_2_balance = self.machine_2_balance + order.amount - 100;
           self.provider_2_balance = self.provider_2_balance + 100;
         }, 5000);
       }

@@ -215,9 +215,6 @@ export default {
         padding: 10px 40px;
         display: flex;
         align-items: left;
-        .provider {
-          right: 400px;
-        }
       }
     }
   }
@@ -244,13 +241,9 @@ export default {
   width: 15%;
   position: relative;
   visibility: hidden;
-  &__top {
-    top: 130px;
-    right: 240px;
-  }
+  right: 120px;
+  top: 130px;
   &__bottom {
-    top: 130px;
-    right: 240px;
     -webkit-transform: scaleY(-1);
     transform: scaleY(-1);
   }
@@ -294,9 +287,6 @@ export default {
           max-width: 50%;
           img {
             display: none;
-          }
-          .provider {
-            right: 0px;
           }
         }
       }

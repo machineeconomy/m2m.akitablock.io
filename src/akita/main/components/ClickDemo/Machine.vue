@@ -93,6 +93,7 @@ export default {
   .machine_wallet {
     padding: 20px;
     width: 100%;
+    min-width: 200px;
     float: left;
     text-align: center;
     border-radius: 20px;
@@ -138,6 +139,7 @@ export default {
 @media (max-width: 900px) {
   .machine {
     min-width: 100%;
+    padding-bottom: 0px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -152,6 +154,7 @@ export default {
     }
     .machine_wallet {
       padding: 10px;
+      min-width: 100px;
       h3 {
         font-size: 1.2em;
       }

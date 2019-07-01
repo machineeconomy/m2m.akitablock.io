@@ -11,7 +11,13 @@
     <div class="user_wallet__conent" v-else>
       <h4>Order a Product</h4>
       <order-button @ordered="ordered" name="Headphone" :amount="100">Buy Headphone (100)</order-button>
-      <p>or</p>
+      <br>
+      <br>
+      <br>
+      <strong>or</strong>
+      <br />
+      <br />
+      <br />
       <order-button @ordered="ordered" name="Laptop" :amount="1000">Buy Laptop (1000)</order-button>
       <div v-if="orders" class="orders">
         <p v-for="(order, index) in orders" :key="index">
@@ -26,7 +32,7 @@
       class="business_woman"
       src="../../../../assets/img/business_woman.png"
       alt="business_woman"
-    >
+    />
   </div>
 </template>
 
@@ -112,6 +118,7 @@ export default {
 @media (max-width: 900px) {
   .user {
     min-width: 100%;
+    height: 100%;
     .business_woman {
       right: calc(80% - 70px);
     }

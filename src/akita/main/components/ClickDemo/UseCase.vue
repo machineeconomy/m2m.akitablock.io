@@ -31,50 +31,50 @@
       <UserWallet :balance="user_balance" @ordered="ordered" v-on:newActivity="addActivity" />
       <div class="machines">
         <div class="machines_park">
-          <img
-            :class="{'active': active_transfer_headphone}"
-            class="transfer_anim transfer_anim__top"
-            src="../../../../assets/img/value_transfer_anim_machine.gif"
-            alt
-          />
-          <Machine :balance="machine_1_balance" name="Robot1" v-on:newActivity="addActivity" />
-          <img
-            :class="{'active': active_transfer_headphone_provider}"
-            class="transfer_provider_anim transfer_provider_anim__top"
-            src="../../../../assets/img/value_transfer_anim_provider.gif"
-            alt
+          <Machine
+            :balance="machine_1_balance"
+            name="Robot1"
+            v-on:newActivity="addActivity"
+            transfer_img="../../../../assets/img/value_transfer_anim_machine.gif"
+            :active="active_transfer_headphone"
+            position="top"
           />
           <Machine
             :balance="provider_1_balance"
             class="provider"
+            provider="true"
             name="EnergyWind"
             v-on:newActivity="addActivity"
+            transfer_img="../../../../assets/img/value_transfer_anim_provider.gif"
+            :active="active_transfer_headphone_provider"
+            position="top"
           />
         </div>
         <div class="machines_park">
-          <img
-            :class="{'active': active_transfer_laptop}"
-            class="transfer_anim transfer_anim__bottom"
-            src="../../../../assets/img/value_transfer_anim_machine.gif"
-            alt
+      
+          <Machine
+            :balance="machine_2_balance"
+            name="Robot2"
+            v-on:newActivity="addActivity"
+            transfer_img="../../../../assets/img/value_transfer_anim_machine.gif"
+            :flip_transfer_img="true"
+            :active="active_transfer_laptop"
+            position="bottom"
           />
-          <Machine :balance="machine_2_balance" name="Robot2" v-on:newActivity="addActivity" />
-          <img
-            :class="{'active': active_transfer_laptop_provider}"
-            class="transfer_provider_anim transfer_provider_anim__bottom"
-            src="../../../../assets/img/value_transfer_anim_provider.gif"
-            alt
-          />
+
           <Machine
             :balance="provider_2_balance"
             class="provider"
+            provider="true"
             name="EnergySolar"
             v-on:newActivity="addActivity"
+            transfer_img="../../../../assets/img/value_transfer_anim_provider.gif"
+            :active="active_transfer_laptop_provider"
+            position="bottom"
           />
         </div>
       </div>
     </div>
-    <Activities :activities="activities" />
   </div>
 </template>
 
@@ -82,7 +82,6 @@
 <script>
 import UserWallet from "./UserWallet.vue";
 import Machine from "./Machine.vue";
-import Activities from "../Activities.vue";
 import { setTimeout } from "timers";
 import Modal from "@/components/Modal.vue";
 
@@ -97,7 +96,7 @@ const Converter = require("@iota/converter");
 
 export default {
   name: "UseCase",
-  components: { UserWallet, Machine, Activities, Modal },
+  components: { UserWallet, Machine, Modal },
   data() {
     return {
       user_balance: 10000,
@@ -241,37 +240,7 @@ export default {
   }
 }
 
-.transfer_anim {
-  height: 20%;
-  width: 20%;
-  position: relative;
-  visibility: hidden;
-  &__top {
-    top: 200px;
-    right: 60px;
-  }
-  &__bottom {
-    top: 60px;
-    right: 60px;
-    -webkit-transform: scaleY(-1);
-    transform: scaleY(-1);
-  }
-}
-.transfer_provider_anim {
-  height: 15%;
-  width: 15%;
-  position: relative;
-  visibility: hidden;
-  right: 120px;
-  top: 130px;
-  &__bottom {
-    -webkit-transform: scaleY(-1);
-    transform: scaleY(-1);
-  }
-}
-.active {
-  visibility: visible;
-}
+
 
 .modal {
   a {
@@ -285,7 +254,7 @@ export default {
   .usecase {
     display: flex;
     flex-direction: column;
-
+    width: 100%;
     .user {
       width: 100%;
       padding: 0;

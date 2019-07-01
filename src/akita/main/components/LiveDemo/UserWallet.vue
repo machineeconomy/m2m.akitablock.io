@@ -189,6 +189,8 @@ export default {
 
 <style lang="scss" scoped>
 .user {
+            z-index: 1;
+
   padding: 10px 20px;
   min-width: 290px;
   max-height: 500px;
@@ -197,6 +199,7 @@ export default {
     color: white;
   }
   .user_wallet {
+
     text-align: center;
     border-radius: 20px;
     padding: 20px;
@@ -231,13 +234,16 @@ export default {
   .button {
     z-index: 2;
   }
+  a {
+    z-index: 2;
+  }
   .business_woman {
     width: 400px;
     height: 400px;
     position: relative;
     right: calc(100% - 50px);
     bottom: 300px;
-    z-index: 1;
+    z-index: 0;
   }
 }
 

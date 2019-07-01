@@ -8,7 +8,7 @@
         >
         <span class="purple">
         <br>Machines' modular services can be integrated into existing systems and hardware or by adding external pc units that can be as small and cheap as a Raspberry Pi</div>
-        </span>
+        <br></span>
         <div
           class="machines__text machines__text-left"
         >

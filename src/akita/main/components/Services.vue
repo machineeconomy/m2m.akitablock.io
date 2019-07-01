@@ -5,13 +5,16 @@
       <div class="machines__information text">
         <div
           class="machines__text machines__text-top"
-        >Machines modular services can be integrated into existing systems and hardware or by adding external pc units that can be as small and cheap as a Raspberry Pi</div>
+        >Machines' modular services can be integrated into existing systems and hardware or by adding external pc units that can be as small and cheap as a Raspberry Pi</div>
         <div
           class="machines__text machines__text-left"
-        >Services and products made by your machine can be offered and sold directly M2M to other machines</div>
-        <div class="machines__middle">
+        >
+         <span class="aquamarine">
+         Services and products made by your machine can be offered and sold directly M2M to other machines</div>
+         </span>
+       <div class="machines__middle">
           <div class="machines__block-mid"></div>
-          <div class="machines__blocks-top machines__blocks"><span>Integrate to your machine</span></div>
+          <div class="machines__blocks-top machines__blocks"><span>Integrate to<br>your machine</span></div>
           <div class="machines__blocks-lt machines__blocks">
             <span class="aquamarine">
               Sell Service
@@ -32,21 +35,27 @@
           </div>
           <div class="machines__blocks-rb machines__blocks">
             <span class="pink">
-              Alternative Service
+              Alt. Service
               <br>-200i
             </span>
           </div>
           <div class="machines__blocks-bot machines__blocks">
-            <span>Connect to
-            <br>the Tangle</span>
+            <span class="purple">
+            Connect to<br>the Tangle</span>
           </div>
         </div>
         <div
           class="machines__text machines__text-right"
-        >Every machine needs at least power to work. In addition it can purchase information like building plans, GPS coordinates or sensor data.</div>
+        >
+         <span class="pink">
+         Every machine needs at least power to work. In addition it can purchase information like building plans, GPS coordinates or sensor data.</div>
+         </span>
         <div
           class="machines__text machines__text-bottom"
-        >Machines is your gateway in and out of the DLT, it can generate private keys, securely store them and save valubale data on an immutable ledger</div>
+        >
+          <span class="purple">
+          Machines is your gateway in and out of the DLT, it can generate private keys, securely store them and save valubale data on an immutable ledger</div>
+      </span>
       </div>
     </div>
   </section>

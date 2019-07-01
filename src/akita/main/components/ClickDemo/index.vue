@@ -1,11 +1,12 @@
 <template>
   <div class="LiveDemo">
     <div class="contain">
-      <p>In this Machine Economy demonstrator every participant has its own blockchain based service application.</p>
-      <p>Each transaction triggers an automated machine-to-machine (M2M) payment and production process:</p>
+      <p>In this Machine Economy demonstrator every participant has its own IOTA based service application.</p>
+      <p>Each transaction triggers an automated machine-to-machine (M2M) payment and the related production process:</p>
       <ol>
         <li>Buy a new pair of headphones or a laptop</li>
-        <li>The rest of the process is completely automated - just watch what happens...</li>
+        <li>The rest of the process is completely automated. Just sit back and watch.</li>
+        <li>When your product is ready, you will receive a notification link to both transactions on the Tangle</li>
       </ol>
       <use-case></use-case>
     </div>

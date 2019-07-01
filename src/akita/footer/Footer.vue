@@ -4,8 +4,8 @@
       <div class="footer__information">
         <h3 class="title">The time to engage is now.</h3>
         <p class="text footer__text">
-          Did our demonstration provide you a better understanding about the true power beyong blockchain?
-          Then let's build a competitve advantage today to stay aheaf of the competition tomorrow.
+          Did our demonstration provide you a better understanding about the true power beyond blockchain?
+          Then let's build a competitve advantage today to stay ahead of the competition:
         </p>
       </div>
       <div class="send__email">

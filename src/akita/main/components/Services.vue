@@ -7,13 +7,13 @@
           class="machines__text machines__text-top"
         >
         <span class="purple">
-        <br>Machines' modular services can be integrated into existing systems and hardware or by adding external pc units that can be as small and cheap as a Raspberry Pi</div>
-        <br></span>
+        Machines' modular services can be integrated into existing systems and hardware or by adding external pc units that can be as small and cheap as a Raspberry Pi.</div>
+        </span>
         <div
           class="machines__text machines__text-left"
         >
          <span class="aquamarine">
-         Services and products made by your machine can be offered and sold directly M2M to other machines</div>
+         Services and products made by your machine can be offered and sold directly M2M to other machines.</div>
          </span>
        <div class="machines__middle">
           <div class="machines__block-mid"></div>
@@ -43,7 +43,7 @@
             </span>
           </div>
           <div class="machines__blocks-bot machines__blocks">
-            Connect to<br>the Tangle
+            <span>Connect to<br>the Tangle</span>
           </div>
         </div>
         <div

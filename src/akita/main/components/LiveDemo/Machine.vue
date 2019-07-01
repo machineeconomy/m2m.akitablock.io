@@ -45,7 +45,6 @@ export default {
       socket.on("init", function(msg) {
         self.mutableName = msg.name;
         self.status = msg.status;
-        self.balance = msg.balance;
         self.connected = true;
         self.$emit("newActivity", {
           message: `Machine '${self.name}' connected.`,
@@ -64,7 +63,7 @@ export default {
 
       socket.on("new_balance", function(msg) {
         console.log("ws: new_balance", msg);
-        self.balance = msg.balance;
+        self.balance = msg.balance.toString();
       });
     }
   },
@@ -101,7 +100,7 @@ export default {
 </script>
 
 
-<style lang="scss"  >
+<style lang="scss">
 .machine {
   padding-bottom: 40px;
   display: flex;

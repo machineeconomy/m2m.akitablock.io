@@ -5,7 +5,10 @@
       <div class="machines__information text">
         <div
           class="machines__text machines__text-top"
-        >Machines' modular services can be integrated into existing systems and hardware or by adding external pc units that can be as small and cheap as a Raspberry Pi</div>
+        >
+        <span class="purple">
+        <br>Machines' modular services can be integrated into existing systems and hardware or by adding external pc units that can be as small and cheap as a Raspberry Pi</div>
+        </span>
         <div
           class="machines__text machines__text-left"
         >
@@ -14,7 +17,7 @@
          </span>
        <div class="machines__middle">
           <div class="machines__block-mid"></div>
-          <div class="machines__blocks-top machines__blocks"><span>Integrate to<br>your machine</span></div>
+          <div class="machines__blocks-top machines__blocks"><span class="purple">Integrate<br>your machine</span></div>
           <div class="machines__blocks-lt machines__blocks">
             <span class="aquamarine">
               Sell Service
@@ -40,8 +43,7 @@
             </span>
           </div>
           <div class="machines__blocks-bot machines__blocks">
-            <span class="purple">
-            Connect to<br>the Tangle</span>
+            Connect to<br>the Tangle
           </div>
         </div>
         <div
@@ -53,9 +55,7 @@
         <div
           class="machines__text machines__text-bottom"
         >
-          <span class="purple">
-          Machines is your gateway in and out of the DLT, it can generate private keys, securely store them and save valubale data on an immutable ledger</div>
-      </span>
+          Machines is your gateway in and out of the DLT, it can generate private keys, securely store them and save valuable data on an immutable ledger</div>
       </div>
     </div>
   </section>
@@ -183,6 +183,11 @@ export default {};
 
 .pink {
   color: #ec60aa;
+}
+
+
+.purple {
+  color: #7030A0;
 }
 
 @media (max-width: 1000px) {

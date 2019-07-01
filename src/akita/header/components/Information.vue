@@ -2,8 +2,8 @@
   <div class="information">
     <div class="information__block">
       <h1 class="title information__title">
-        Experience Machine Economy,
-        <br>beyond blockchain live.
+        Experience Machine Economy
+        <br>beyond blockchain.
       </h1>
     </div>
     <div class="information__block">

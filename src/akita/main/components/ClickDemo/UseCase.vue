@@ -39,7 +39,7 @@
           />
           <Machine :balance="machine_1_balance" name="Robot1" v-on:newActivity="addActivity" />
           <img
-            :class="{'active': active_transfer_headphone}"
+            :class="{'active': active_transfer_headphone_provider}"
             class="transfer_provider_anim transfer_provider_anim__top"
             src="../../../../assets/img/value_transfer_anim_provider.gif"
             alt
@@ -60,7 +60,7 @@
           />
           <Machine :balance="machine_2_balance" name="Robot2" v-on:newActivity="addActivity" />
           <img
-            :class="{'active': active_transfer_laptop}"
+            :class="{'active': active_transfer_laptop_provider}"
             class="transfer_provider_anim transfer_provider_anim__bottom"
             src="../../../../assets/img/value_transfer_anim_provider.gif"
             alt
@@ -106,7 +106,9 @@ export default {
       machine_2_balance: 0,
       provider_2_balance: 0,
       active_transfer_headphone: false,
+      active_transfer_headphone_provider: false,
       active_transfer_laptop: false,
+      active_transfer_laptop_provider: false,
       order_result_modal: false,
       order_tx: "",
       activities: [
@@ -130,15 +132,25 @@ export default {
         let self = this;
         setTimeout(function() {
           self.active_transfer_headphone = false;
+          self.active_transfer_headphone_provider = true;
+
           self.user_balance = self.user_balance - order.amount;
-          self.machine_1_balance = self.machine_1_balance + order.amount - 10;
-          self.provider_1_balance = self.provider_1_balance + 10;
-          let data = {
-            name: "Headphone",
-            price: 1000,
-            ordered_at: Date.now()
-          };
-          self.sendTransaction(data);
+          self.machine_1_balance = self.machine_1_balance + order.amount;
+
+          setTimeout(function() {
+            self.active_transfer_headphone_provider = false;
+            self.machine_1_balance = self.machine_1_balance - 10;
+            self.provider_1_balance = self.provider_1_balance + 10;
+            setTimeout(function() {
+              let data = {
+                name: "Headphone",
+                price: 1000,
+                ordered_at: Date.now()
+              };
+              self.sendTransaction(data);
+            }, 1000);
+          }, 5000);
+
           // Headphone ordered
         }, 5000);
       } else if (order.name == "Laptop") {
@@ -146,15 +158,24 @@ export default {
         let self = this;
         setTimeout(function() {
           self.active_transfer_laptop = false;
+          self.active_transfer_laptop_provider = true;
           self.user_balance = self.user_balance - order.amount;
-          self.machine_2_balance = self.machine_2_balance + order.amount - 100;
-          self.provider_2_balance = self.provider_2_balance + 100;
-          let data = {
-            name: "Laptop",
-            price: 1000,
-            ordered_at: Date.now()
-          };
-          self.sendTransaction(data);
+          self.machine_2_balance = self.machine_2_balance + order.amount;
+
+          setTimeout(function() {
+            self.active_transfer_laptop_provider = false;
+            self.machine_2_balance = self.machine_2_balance - 100;
+            self.provider_2_balance = self.provider_2_balance + 100;
+            setTimeout(function() {
+              let data = {
+                name: "Laptop",
+                price: 1000,
+                ordered_at: Date.now()
+              };
+              self.sendTransaction(data);
+            }, 1000);
+          }, 5000);
+
           // laptop ordered
         }, 5000);
       }

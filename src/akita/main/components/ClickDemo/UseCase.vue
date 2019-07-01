@@ -11,11 +11,16 @@
         <i class="ni ni-bell-55 ni-3x"></i>
         <h4 class="heading mt-4">Product is ready!</h4>
         <p>You can see your product on the tangle:</p>
-        <strong>
-        <a
-          target="_blank"
-          :href="`https://devnet.thetangle.org/address/${address}`"
-        >Watch on the Tangle.org</a></strong>
+
+        <a target="_blank" :href="`https://devnet.thetangle.org/transaction/${product_tx}`">
+          Watch
+          <strong>Product Order</strong> on the Tangle.org
+        </a>
+        <br>
+        <a target="_blank" :href="`https://devnet.thetangle.org/transaction/${energy_tx}`">
+          Watch
+          <strong>Energy Order</strong> on the Tangle.org
+        </a>
       </div>
     </modal>
     <div class="wallets">
@@ -111,8 +116,8 @@ export default {
       active_send_headphone_machine: false,
       active_send_laptop_machine: false,
       order_result_modal: false,
-      address: "",
-      order_tx: "",
+      product_tx: "",
+      energy_tx: "",
       activities: [
         {
           message: "Machines connecting...",
@@ -120,9 +125,6 @@ export default {
         }
       ]
     };
-  },
-  created() {
-    this.address = generateSeed()
   },
   methods: {
     addActivity(activity) {
@@ -141,7 +143,7 @@ export default {
           price: "100i",
           ordered_at: Date.now()
         };
-        self.sendTransaction(data);
+        self.sendTransaction(data, "product");
         setTimeout(function() {
           self.active_transfer_headphone = false;
           self.active_transfer_headphone_provider = true;
@@ -166,7 +168,7 @@ export default {
                   price: "10i", // depending on the current cheaper energyPrice
                   ordered_at: Date.now()
                 };
-                self.sendTransaction(data);
+                self.sendTransaction(data, "energy");
                 self.order_result_modal = true;
               }, 3000);
             }, 5000);
@@ -184,7 +186,7 @@ export default {
           price: "1000i",
           ordered_at: Date.now()
         };
-        self.sendTransaction(data);
+        self.sendTransaction(data, "product");
         setTimeout(function() {
           self.active_transfer_laptop = false;
           self.active_transfer_laptop_provider = true;
@@ -201,14 +203,14 @@ export default {
               self.active_send_laptop_machine = true;
               setTimeout(function() {
                 self.active_send_laptop_machine = false;
-                 let data = {
+                let data = {
                   buyer: "robot1",
                   seller: "energySolar", // or energyWind - depeding on the cheaper price atm
                   purchaseItem: "energy",
                   price: "100i", // depending on the current cheaper energyPrice
                   ordered_at: Date.now()
                 };
-                self.sendTransaction(data);
+                self.sendTransaction(data, "energy");
                 self.order_result_modal = true;
               }, 3000);
             }, 5000);
@@ -218,11 +220,11 @@ export default {
         }, 5000);
       }
     },
-    sendTransaction(data) {
+    sendTransaction(data, type) {
       // Array of transfers which defines transfer recipients and value transferred in IOTAs.
       const transfers = [
         {
-          address: this.address,
+          address: generateSeed(), //generate random new address
           value: 0, // 1Ki
           tag: "AKITAMACHINETOMACHINE", // optional tag of `0-27` trytes
           message: Converter.asciiToTrytes(JSON.stringify(data)) // optional message in trytes
@@ -251,7 +253,11 @@ export default {
           console.log(
             `Published transaction with tail hash: ${bundle[0].hash}`
           );
-          this.order_tx = bundle[0].hash;
+          if (type == "product") {
+            this.product_tx = bundle[0].hash;
+          } else if (type == "energy") {
+            this.energy_tx = bundle[0].hash;
+          }
           console.log(`Bundle: ${bundle}`);
         })
         .catch(err => {

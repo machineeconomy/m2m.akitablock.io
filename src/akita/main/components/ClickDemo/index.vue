@@ -26,10 +26,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.LiveDemo {
+  margin-bottom: 180px;
+}
 @media (max-width: 900px) {
- .contain {
-   padding: 0 30px;
- }
+  .contain {
+    padding: 0 30px;
+  }
 }
 </style>

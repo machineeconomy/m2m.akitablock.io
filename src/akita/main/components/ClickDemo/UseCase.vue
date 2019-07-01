@@ -37,6 +37,7 @@
             v-on:newActivity="addActivity"
             transfer_img="../../../../assets/img/value_transfer_anim_machine.gif"
             :active="active_transfer_headphone"
+            :send="active_send_headphone_machine"
             position="top"
           />
           <Machine
@@ -47,11 +48,11 @@
             v-on:newActivity="addActivity"
             transfer_img="../../../../assets/img/value_transfer_anim_provider.gif"
             :active="active_transfer_headphone_provider"
+            :energy="active_energy_headphone_provider"
             position="top"
           />
         </div>
         <div class="machines_park">
-      
           <Machine
             :balance="machine_2_balance"
             name="Robot2"
@@ -59,6 +60,7 @@
             transfer_img="../../../../assets/img/value_transfer_anim_machine.gif"
             :flip_transfer_img="true"
             :active="active_transfer_laptop"
+            :send="active_send_laptop_machine"
             position="bottom"
           />
 
@@ -70,6 +72,7 @@
             v-on:newActivity="addActivity"
             transfer_img="../../../../assets/img/value_transfer_anim_provider.gif"
             :active="active_transfer_laptop_provider"
+            :energy="active_energy_laptop_provider"
             position="bottom"
           />
         </div>
@@ -108,6 +111,10 @@ export default {
       active_transfer_headphone_provider: false,
       active_transfer_laptop: false,
       active_transfer_laptop_provider: false,
+      active_energy_headphone_provider: false,
+      active_energy_laptop_provider: false,
+      active_send_headphone_machine: false,
+      active_send_laptop_machine: false,
       order_result_modal: false,
       order_tx: "",
       activities: [
@@ -140,14 +147,20 @@ export default {
             self.active_transfer_headphone_provider = false;
             self.machine_1_balance = self.machine_1_balance - 10;
             self.provider_1_balance = self.provider_1_balance + 10;
+            self.active_energy_headphone_provider = true;
             setTimeout(function() {
-              let data = {
-                name: "Headphone",
-                price: 1000,
-                ordered_at: Date.now()
-              };
-              self.sendTransaction(data);
-            }, 1000);
+              self.active_energy_headphone_provider = false;
+              self.active_send_headphone_machine = true;
+              setTimeout(function() {
+                self.active_send_headphone_machine = false;
+                let data = {
+                  name: "Headphone",
+                  price: 100,
+                  ordered_at: Date.now()
+                };
+                self.sendTransaction(data);
+              }, 3000);
+            }, 5000);
           }, 5000);
 
           // Headphone ordered
@@ -165,14 +178,20 @@ export default {
             self.active_transfer_laptop_provider = false;
             self.machine_2_balance = self.machine_2_balance - 100;
             self.provider_2_balance = self.provider_2_balance + 100;
+            self.active_energy_laptop_provider = true;
             setTimeout(function() {
-              let data = {
-                name: "Laptop",
-                price: 1000,
-                ordered_at: Date.now()
-              };
-              self.sendTransaction(data);
-            }, 1000);
+              self.active_energy_laptop_provider = false;
+              self.active_send_laptop_machine = true;
+              setTimeout(function() {
+                self.active_send_laptop_machine = false;
+                let data = {
+                  name: "Laptop",
+                  price: 1000,
+                  ordered_at: Date.now()
+                };
+                self.sendTransaction(data);
+              }, 3000);
+            }, 5000);
           }, 5000);
 
           // laptop ordered
@@ -239,8 +258,6 @@ export default {
     }
   }
 }
-
-
 
 .modal {
   a {

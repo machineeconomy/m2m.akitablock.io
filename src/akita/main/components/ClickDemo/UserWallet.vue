@@ -91,6 +91,7 @@ export default {
       font-size: 3em;
     }
     &__conent {
+      min-height: 500px;
       border-radius: 20px;
       background-color: #efefef;
       padding: 20px;

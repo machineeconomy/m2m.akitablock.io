@@ -1,6 +1,13 @@
 <template>
   <div class="machine">
-    <MachineTransferAnimation :active="active"  :provider="provider" :flip_transfer_img="flip_transfer_img" :position="position" :energy="energy" :send="send" />
+    <MachineTransferAnimation
+      :active="active"
+      :provider="provider"
+      :flip_transfer_img="flip_transfer_img"
+      :position="position"
+      :energy="energy"
+      :send="send"
+    />
     <img class="machine_img" :src="getImgUrl()" alt="machine" />
     <div class="machine_wallet">
       <h3>{{ mutableName }}</h3>
@@ -8,6 +15,9 @@
       <p>
         <pulse-loader :loading="!connected" color="#FFFFFF" size="5px"></pulse-loader>Balance
       </p>
+      <div v-if="provider">
+        <p>Energy Price: {{energy_price}}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -17,7 +27,17 @@ import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 import MachineTransferAnimation from "./MachineTransferAnimation.vue";
 
 export default {
-  props: ["name", "balance", "provider", "active", "flip_transfer_img", "position", "energy", "send"],
+  props: [
+    "name",
+    "balance",
+    "provider",
+    "active",
+    "flip_transfer_img",
+    "position",
+    "energy",
+    "send",
+    "energy_price"
+  ],
   components: { PulseLoader, MachineTransferAnimation },
   data() {
     return {

@@ -11,21 +11,12 @@
         <i class="ni ni-bell-55 ni-3x"></i>
         <h4 class="heading mt-4">Product is ready!</h4>
         <p>You can see your product on the tangle:</p>
+        <strong>
         <a
           target="_blank"
           :href="`https://devnet.thetangle.org/address/${address}`"
-        >Watch on the Tangle.org</a>
+        >Watch on the Tangle.org</a></strong>
       </div>
-
-      <template slot="footer">
-        <base-button type="white" @click="order_result_modal = false">Buy another product!</base-button>
-        <base-button
-          type="link"
-          text-color="white"
-          class="ml-auto"
-          @click="order_result_modal = false"
-        >Close</base-button>
-      </template>
     </modal>
     <div class="wallets">
       <UserWallet :balance="user_balance" @ordered="ordered" v-on:newActivity="addActivity" />
@@ -45,6 +36,7 @@
             class="provider"
             provider="true"
             name="EnergyWind"
+            :energy_price="provider_1_energy_price"
             v-on:newActivity="addActivity"
             transfer_img="../../../../assets/img/value_transfer_anim_provider.gif"
             :active="active_transfer_headphone_provider"
@@ -69,6 +61,7 @@
             class="provider"
             provider="true"
             name="EnergySolar"
+            :energy_price="provider_2_energy_price"
             v-on:newActivity="addActivity"
             transfer_img="../../../../assets/img/value_transfer_anim_provider.gif"
             :active="active_transfer_laptop_provider"
@@ -105,8 +98,10 @@ export default {
       user_balance: 10000,
       machine_1_balance: 0,
       provider_1_balance: 0,
+      provider_1_energy_price: 2,
       machine_2_balance: 0,
       provider_2_balance: 0,
+      provider_2_energy_price: 3,
       active_transfer_headphone: false,
       active_transfer_headphone_provider: false,
       active_transfer_laptop: false,

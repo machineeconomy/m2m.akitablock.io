@@ -16,7 +16,7 @@
         <pulse-loader :loading="!connected" color="#FFFFFF" size="5px"></pulse-loader>Balance
       </p>
       <div v-if="provider">
-        <p>Energy Price: {{energy_price}}</p>
+        <p>Energy price pro second: {{energy_price}} i</p>
       </div>
     </div>
   </div>

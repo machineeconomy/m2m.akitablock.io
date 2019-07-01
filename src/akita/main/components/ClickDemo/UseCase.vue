@@ -16,7 +16,7 @@
           Watch
           <strong>Product Order</strong> on the Tangle.org
         </a>
-        <br>
+        <br />
         <a target="_blank" :href="`https://devnet.thetangle.org/transaction/${energy_tx}`">
           Watch
           <strong>Energy Order</strong> on the Tangle.org
@@ -103,10 +103,10 @@ export default {
       user_balance: 10000,
       machine_1_balance: 0,
       provider_1_balance: 0,
-      provider_1_energy_price: 2,
+      provider_1_energy_price: 20,
       machine_2_balance: 0,
       provider_2_balance: 0,
-      provider_2_energy_price: 3,
+      provider_2_energy_price: 20,
       active_transfer_headphone: false,
       active_transfer_headphone_provider: false,
       active_transfer_laptop: false,
@@ -132,15 +132,40 @@ export default {
       let container = this.$el.querySelector("#logger");
     },
     ordered(order) {
+      let order_data_energy = {
+        buyer: "robot1",
+        seller: "", // or energyWind - depeding on the cheaper price atm
+        purchaseItem: "energy",
+        price: "", // depending on the current cheaper energyPrice
+        ordered_at: Date.now()
+      };
+
+      /*
+      ADD THIS TO AUTOMATIC CHOOSE LOWER PRICE
+      if (this.provider_1_energy_price > this.provider_2_energy_price) {
+        // payout provider_2_energy_price
+        order_data_energy.seller = "energySolar";
+        order_data_energy.price = this.provider_2_energy_price;
+      } else {
+        // payout provider_1_energy_price
+        order_data_energy.seller = "energyWind";
+        order_data_energy.price = this.provider_1_energy_price;
+      }
+      */
+
       // show transfer animation
       if (order.name == "Headphone") {
+        // REMOVE THIS TO AUTOMATIC CHOOSE LOWER PRICE
+        order_data_energy.seller = "energyWind";
+        order_data_energy.price = this.provider_1_energy_price;
+        // END
         this.active_transfer_headphone = true;
         let self = this;
         let data = {
           buyer: "human",
-          seller: "robot2",
+          seller: "Robot1",
           purchaseItem: "headphone",
-          price: "100i",
+          price: 100,
           ordered_at: Date.now()
         };
         self.sendTransaction(data, "product");
@@ -148,27 +173,19 @@ export default {
           self.active_transfer_headphone = false;
           self.active_transfer_headphone_provider = true;
 
-          self.user_balance = self.user_balance - order.amount;
-          self.machine_1_balance = self.machine_1_balance + order.amount;
+          self.user_balance = self.user_balance - data.price;
+          self.machine_1_balance = self.machine_1_balance + data.price;
 
           setTimeout(function() {
-            self.active_transfer_headphone_provider = false;
-            self.machine_1_balance = self.machine_1_balance - 10;
-            self.provider_1_balance = self.provider_1_balance + 10;
-            self.active_energy_headphone_provider = true;
+            self.payoutProviderWindFromMachine1(order_data_energy.price);
+
             setTimeout(function() {
               self.active_energy_headphone_provider = false;
               self.active_send_headphone_machine = true;
               setTimeout(function() {
                 self.active_send_headphone_machine = false;
-                let data = {
-                  buyer: "robot1",
-                  seller: "energyWind", // or energyWind - depeding on the cheaper price atm
-                  purchaseItem: "energy",
-                  price: "10i", // depending on the current cheaper energyPrice
-                  ordered_at: Date.now()
-                };
-                self.sendTransaction(data, "energy");
+
+                self.sendTransaction(order_data_energy, "energy");
                 self.order_result_modal = true;
               }, 3000);
             }, 5000);
@@ -177,40 +194,36 @@ export default {
           // Headphone ordered
         }, 5000);
       } else if (order.name == "Laptop") {
+        // REMOVE THIS TO AUTOMATIC CHOOSE LOWER PRICE
+        order_data_energy.seller = "energySolar";
+        order_data_energy.price = this.provider_2_energy_price;
+        // END
         this.active_transfer_laptop = true;
         let self = this;
         let data = {
           buyer: "human",
-          seller: "robot2",
+          seller: "Robot2",
           purchaseItem: "laptop",
-          price: "1000i",
+          price: 1000,
           ordered_at: Date.now()
         };
         self.sendTransaction(data, "product");
         setTimeout(function() {
           self.active_transfer_laptop = false;
           self.active_transfer_laptop_provider = true;
-          self.user_balance = self.user_balance - order.amount;
-          self.machine_2_balance = self.machine_2_balance + order.amount;
+          self.user_balance = self.user_balance - data.price;
+          self.machine_2_balance = self.machine_2_balance + data.price;
 
           setTimeout(function() {
-            self.active_transfer_laptop_provider = false;
-            self.machine_2_balance = self.machine_2_balance - 100;
-            self.provider_2_balance = self.provider_2_balance + 100;
-            self.active_energy_laptop_provider = true;
+            self.payoutProviderSolarFromMachine2(order_data_energy.price);
+
             setTimeout(function() {
               self.active_energy_laptop_provider = false;
               self.active_send_laptop_machine = true;
               setTimeout(function() {
                 self.active_send_laptop_machine = false;
-                let data = {
-                  buyer: "robot1",
-                  seller: "energySolar", // or energyWind - depeding on the cheaper price atm
-                  purchaseItem: "energy",
-                  price: "100i", // depending on the current cheaper energyPrice
-                  ordered_at: Date.now()
-                };
-                self.sendTransaction(data, "energy");
+
+                self.sendTransaction(order_data_energy, "energy");
                 self.order_result_modal = true;
               }, 3000);
             }, 5000);
@@ -263,6 +276,30 @@ export default {
         .catch(err => {
           // handle errors here
         });
+    },
+    payoutProviderWindFromMachine1(price) {
+      this.active_transfer_headphone_provider = false;
+      this.machine_1_balance = this.machine_1_balance - price;
+      this.provider_1_balance = this.provider_1_balance + price;
+      this.active_energy_headphone_provider = true;
+    },
+    payoutProviderSolarFromMachine1(price) {
+      this.active_transfer_headphone_provider = false;
+      this.machine_1_balance = this.machine_1_balance - price;
+      this.provider_2_balance = this.provider_2_balance + price;
+      this.active_energy_headphone_provider = true;
+    },
+    payoutProviderWindFromMachine2(price) {
+      this.active_transfer_laptop_provider = false;
+      this.machine_2_balance = this.machine_2_balance - price;
+      this.provider_1_balance = this.provider_1_balance + price;
+      this.active_energy_laptop_provider = true;
+    },
+    payoutProviderSolarFromMachine2(price) {
+      this.active_transfer_laptop_provider = false;
+      this.machine_2_balance = this.machine_2_balance - price;
+      this.provider_2_balance = this.provider_2_balance + price;
+      this.active_energy_laptop_provider = true;
     }
   }
 };

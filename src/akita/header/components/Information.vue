@@ -7,9 +7,9 @@
       </h1>
     </div>
     <div class="information__block">
-      <p class="text information__text">99% of all companies are talking about blockchain and DLT...</p>
-      <p class="text information__text">Meanwhile we are already building a physical Machine Economy</p>
-      <p class="text information__text">and demonstrate automated machine-to-machine payment</p>
+      <p class="text information__text">99% of all companies are talking about blockchain.</p>
+      <p class="text information__text">Meanwhile AKITA is already building a physical Machine Economy</p>
+      <p class="text information__text">and demonstrating automated machine-to-machine payments.</p>
     </div>
   </div>
 </template>

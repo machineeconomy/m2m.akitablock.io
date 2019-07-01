@@ -13,7 +13,7 @@
         <p>You can see your product on the tangle:</p>
         <a
           target="_blank"
-          :href="`https://devnet.thetangle.org/transaction/${order_tx}`"
+          :href="`https://devnet.thetangle.org/address/${address}`"
         >Watch on the Tangle.org</a>
       </div>
 
@@ -116,6 +116,7 @@ export default {
       active_send_headphone_machine: false,
       active_send_laptop_machine: false,
       order_result_modal: false,
+      address: "",
       order_tx: "",
       activities: [
         {
@@ -125,7 +126,9 @@ export default {
       ]
     };
   },
-
+  created() {
+    this.address = generateSeed()
+  },
   methods: {
     addActivity(activity) {
       this.activities.push(activity);
@@ -136,6 +139,14 @@ export default {
       if (order.name == "Headphone") {
         this.active_transfer_headphone = true;
         let self = this;
+        let data = {
+          buyer: "human",
+          seller: "robot2",
+          purchaseItem: "headphone",
+          price: "100i",
+          ordered_at: Date.now()
+        };
+        self.sendTransaction(data);
         setTimeout(function() {
           self.active_transfer_headphone = false;
           self.active_transfer_headphone_provider = true;
@@ -154,11 +165,14 @@ export default {
               setTimeout(function() {
                 self.active_send_headphone_machine = false;
                 let data = {
-                  name: "Headphone",
-                  price: 100,
+                  buyer: "robot1",
+                  seller: "energyWind", // or energyWind - depeding on the cheaper price atm
+                  purchaseItem: "energy",
+                  price: "10i", // depending on the current cheaper energyPrice
                   ordered_at: Date.now()
                 };
                 self.sendTransaction(data);
+                self.order_result_modal = true;
               }, 3000);
             }, 5000);
           }, 5000);
@@ -168,6 +182,14 @@ export default {
       } else if (order.name == "Laptop") {
         this.active_transfer_laptop = true;
         let self = this;
+        let data = {
+          buyer: "human",
+          seller: "robot2",
+          purchaseItem: "laptop",
+          price: "1000i",
+          ordered_at: Date.now()
+        };
+        self.sendTransaction(data);
         setTimeout(function() {
           self.active_transfer_laptop = false;
           self.active_transfer_laptop_provider = true;
@@ -184,12 +206,15 @@ export default {
               self.active_send_laptop_machine = true;
               setTimeout(function() {
                 self.active_send_laptop_machine = false;
-                let data = {
-                  name: "Laptop",
-                  price: 1000,
+                 let data = {
+                  buyer: "robot1",
+                  seller: "energySolar", // or energyWind - depeding on the cheaper price atm
+                  purchaseItem: "energy",
+                  price: "100i", // depending on the current cheaper energyPrice
                   ordered_at: Date.now()
                 };
                 self.sendTransaction(data);
+                self.order_result_modal = true;
               }, 3000);
             }, 5000);
           }, 5000);
@@ -202,7 +227,7 @@ export default {
       // Array of transfers which defines transfer recipients and value transferred in IOTAs.
       const transfers = [
         {
-          address: generateSeed(),
+          address: this.address,
           value: 0, // 1Ki
           tag: "AKITAMACHINETOMACHINE", // optional tag of `0-27` trytes
           message: Converter.asciiToTrytes(JSON.stringify(data)) // optional message in trytes
@@ -232,7 +257,6 @@ export default {
             `Published transaction with tail hash: ${bundle[0].hash}`
           );
           this.order_tx = bundle[0].hash;
-          this.order_result_modal = true;
           console.log(`Bundle: ${bundle}`);
         })
         .catch(err => {

@@ -1,8 +1,9 @@
 <template>
   <div class="LiveDemo">
     <div class="contain">
-      <p style="font-size:20px;">In this Machine Economy demonstrator every participant has its own IOTA based service application.</p>
-      <p style="font-size:20px;">Each transaction triggers an automated machine-to-machine (M2M) payment and the related production process:</p>
+      <p style="font-size:20px;">In this Machine Economy alpha version demonstrator every participant has its own IOTA (DevNet) based service application.
+      <br>
+     Each transaction triggers an automated machine-to-machine (M2M) payment and the related production process:</p>
       <ol>
         <li style="font-size:20px;">Buy a new pair of headphones or a laptop</li>
         <li style="font-size:20px;">The rest of the process is completely automated. Just sit back and watch.</li>

@@ -11,16 +11,17 @@
         <i class="ni ni-bell-55 ni-3x"></i>
         <h4 class="heading mt-4">Product is ready!</h4>
         <p>You can see your product on the tangle:</p>
-
-        <a target="_blank" :href="`https://devnet.thetangle.org/transaction/${product_tx}`">
+        <a v-if="product_tx" target="_blank" :href="`https://devnet.thetangle.org/transaction/${product_tx}`">
           Watch
           <strong>Product Order</strong> on the Tangle.org
         </a>
+        <pulse-loader v-else :loading="true" color="#FFFFFF" size="5px"></pulse-loader>
         <br />
-        <a target="_blank" :href="`https://devnet.thetangle.org/transaction/${energy_tx}`">
+        <a v-if="energy_tx" target="_blank" :href="`https://devnet.thetangle.org/transaction/${energy_tx}`">
           Watch
           <strong>Energy Order</strong> on the Tangle.org
         </a>
+        <pulse-loader v-else :loading="true" color="#FFFFFF" size="5px"></pulse-loader>
       </div>
     </modal>
     <div class="wallets">
@@ -85,6 +86,7 @@ import UserWallet from "./UserWallet.vue";
 import Machine from "./Machine.vue";
 import { setTimeout } from "timers";
 import Modal from "@/components/Modal.vue";
+import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 import { composeAPI } from "@iota/core";
 import generateSeed from "@/utils/generateSeed.js";
@@ -97,7 +99,7 @@ const Converter = require("@iota/converter");
 
 export default {
   name: "UseCase",
-  components: { UserWallet, Machine, Modal },
+  components: { UserWallet, Machine, Modal, PulseLoader },
   data() {
     return {
       user_balance: 10000,

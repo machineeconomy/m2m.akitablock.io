@@ -1,7 +1,11 @@
 <template>
-  <div class="background__line">
-    <span class="img__factory"></span>
+<div>
+  <div class="line">
+    <span class="img"></span>
   </div>
+  <div class="space">
+  </div>
+</div>
 </template>
 
 <script>
@@ -9,66 +13,51 @@ export default {}
 </script>
 
 <style>
-.background__line {
-  height: 120px;
+.line {
+  height: 150px;
   width: 100%;
   position: absolute;
-  bottom: -1px;
-  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0) 49%, white 51%);
+  bottom: 98px;
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0) 49.3%, var(--akita-light) 50%);
 }
 
-.img__factory {
-  background-image: url("./../../../../public/FactoryItems.png");
+.img {
+  background: url("./../../../../public/FactoryItems.png") no-repeat;
   background-size: 100%;
-  background-repeat: no-repeat;
   position: absolute;
-  right: 10%;
-  top: -470%;
+  z-index: 1;
+  right: 0;
+  bottom: -100px;
   width: 800px;
   height: 800px;
 }
 
-@media (max-width: 1500px) {
-  .img__factory {
-    right: 0;
-  }
+.space {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  z-index: 0;
+  bottom: -1px;
+  background: var(--akita-light);
 }
 
-@media (max-width: 1400px) {
-  .img__factory {
-    right: 0;
-    top: -330%;
+@media (max-width: 1600px) {
+  .img {
+    bottom: -50px;
     width: 600px;
     height: 600px;
   }
 }
 
-@media (max-width: 1100px) {
-  .img__factory {
-    right: 0;
-    top: -250%;
+@media (max-width: 1200px) {
+  .img {
     width: 500px;
     height: 500px;
   }
 }
 
-@media (max-width: 900px) {
-  .img__factory {
-    right: 0;
-    top: -200%;
-    width: 400px;
-    height: 400px;
-  }
-  .background__line {
-    display: none;
-  }
-}
-
-@media (max-width: 800px) {
-  .background__line {
-    height: 60px;
-  }
-  .img__factory {
+@media (max-width: 1024px) {
+  .img, .line, .space {
     display: none;
   }
 }

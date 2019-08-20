@@ -17,13 +17,16 @@ export default {
 </script>
 
 <style>
-
 :root {
-  --akita-primary: #5f46b1;
-  --akita-secondary: #eb479d;
-  --akita-blue: #0BC5FE;
-  --akita-dark: #3D4449;
-  --akita-light: #EFEFEF;
+  --akita-primary: #00B0F0;
+  --akita-secondary: #00FB92;
+  --akita-dark: #3B3838;
+  --akita-light: #F2F2F2;
+  --akita-blue: #00B0F0;
+}
+
+#app {
+  background: var(--akita-light);
 }
 
 .contain {
@@ -38,21 +41,23 @@ ul {
 }
 
 .title {
-  font-size: 70px;
+  font-size: 60px;
   font-family: "Oswald", sans-serif;
   font-weight: bold;
+  color: var(--akita-dark);
 }
 
 .text {
   font-size: 22px;
   line-height: 1.3;
   margin-bottom: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: ocr-b-std, monospace;
+  color: var(--akita-dark);
 }
 
 @media (max-width:1500px)  {
   .title {
-    font-size: 64px;
+    font-size: 54px;
   }
   .text {
     font-size: 20px;
@@ -61,7 +66,7 @@ ul {
 
 @media (max-width: 1250px) {
   .title {
-    font-size: 54px;
+    font-size: 44px;
   }
   .text {
     font-size: 18px;
@@ -70,7 +75,7 @@ ul {
 
 @media (max-width: 1250px) {
   .title {
-    font-size: 48px;
+    font-size: 38px;
   }
   .text {
     font-size: 18px;
@@ -79,7 +84,7 @@ ul {
 
 @media (max-width: 768px) {
   .title {
-    font-size: 40px;
+    font-size: 30px;
   }
   .text {
     font-size: 16px;
@@ -88,7 +93,7 @@ ul {
 
 @media (max-width: 425px) {
   .title {
-    font-size: 32px;
+    font-size: 22px;
   }
 }
 </style>

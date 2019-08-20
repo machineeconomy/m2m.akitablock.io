@@ -2,61 +2,56 @@
   <header>
     <div class="contain">
       <navigation/>
-      <information/>
-      <div class="header__button">
-        <StandartButton/>
-      </div>
+      <h1 class="title animation">
+        <textAnimation
+          :textList="['Machine-to-Machine M2M Payment.', 'IOTA Tangle.', 'AKITA prototypes.']"
+          :writingSpeed="50"
+          :changingSpeed="4000"
+        />
+      </h1>
+      <p class="text">While most people and companies are talking about blockchain,</p>
+      <p class="text">AKITA is building tangible, live prototypes supported by the</p>
+      <p class="text">IOTA Foundation,</p>
+      <p class="text">EDF Development Fund and based on the Tangle network technology.</p>
+      <!-- buttons -->
     </div>
     <backgroundLine/>
   </header>
 </template>
 <script>
 import Navigation from './components/Navigation'
-import Information from './components/Information'
-import StandartButton from './components/StandartButton'
+import TextAnimation from './components/TextAnimation'
 import BackgroundLine from './components/BackgroundLine'
 
 export default {
   name: 'Header',
   components: {
     Navigation,
-    Information,
-    StandartButton,
+    TextAnimation,
     BackgroundLine
   }
 }
 </script>
 
-<style>
+<style lang="scss">
 header {
-  background: url("./../../../public/chain.png") no-repeat,
-    linear-gradient(to top left, #0BC5FE 0%, #5f46b1 50%, #ff2ea0 100%);
-  background-size: cover;
+  background: linear-gradient(to bottom right, var(--akita-primary) 50%,  var(--akita-secondary) 100%);
   position: relative;
-  font-family: "Roboto", sans-serif;
-  margin-bottom: 200px;
-}
-
-.header__button {
-  width: 100%;
-  height: 210px;
-  margin-left: 40px;
-}
-
-@media (max-width: 1400px) {
-  .header__button {
-    height: 140px;
+  min-height: 100vh;
+  padding-bottom: 250px;
+  margin-bottom: 100px;
+  .text {
+    color: var(--akita-light);
+    position: relative;
+    z-index: 2;
   }
 }
 
-@media (max-width: 900px) {
-  header {
-      margin-bottom: 70px;
-  }
-}
-@media (max-width: 425px) {
-  .header__button {
-    margin-left: 0px;
-  }
+.animation {
+  color: var(--akita-light);
+  height: 100px;
+  margin-top: 7%;
+  position: relative;
+  z-index: 2;
 }
 </style>

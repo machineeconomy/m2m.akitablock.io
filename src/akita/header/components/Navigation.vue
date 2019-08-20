@@ -1,19 +1,14 @@
 <template>
   <nav class="navigation">
-    <ul class="navigation__list">
-      <li class="navigation__item">
-        <a href="#" class="navigation__link navigation__logo"></a>
+    <ul class="list">
+      <li class="item">
+        <h1 class="title logo">Machine Economy</h1>
       </li>
 
-      <li v-for="li in navigation" :class="li.liClass">
-        <a href="#" :class="li.aClass" :path="li.path" :block="li.block" @click="scroll">{{li.text}}</a>
-      </li>
-
-      <li class="navigation__item navigation__language">
-        <span class="change__language">
-          <!--<a href="#" class="change__language navigation__link">EN</a> /
-          <a href="#DE" class="change__language navigation__link">DE</a>-->
-        </span>
+      <li v-for="item in navigation" class="item" :key="item.key">
+        <a href="#" class="link text" :path="item.path" @click.prevent="scroll">
+          {{item.text}}
+        </a>
       </li>
     </ul>
     <navigationButton></navigationButton>
@@ -25,114 +20,74 @@ import NavigationButton from './NavigationButton'
 
 export default {
   name: 'Navigation',
+
   components: {
     NavigationButton
   },
+
   data() {
     return {
       navigation: [
         {
-          text: 'Live Demo',
-          liClass: 'navigation__item navigation__element',
-          aClass: 'navigation__link text',
+          text: 'Live Demos',
           path: '.LiveDemo',
-          block: 'start'
+          id: 1
         },
         {
-          text: 'M2M Supply Chain',
-          liClass: 'navigation__item navigation__element',
-          aClass: 'navigation__link text',
-          path: '.M2MSupplyChain',
-          block: 'start'
+          text: 'Process',
+          path: '.Process',
+          id: 2
         },
         {
-          text: 'Services',
-          liClass: 'navigation__item navigation__element',
-          aClass: 'navigation__link text',
-          path: '.Services',
-          block: window.innerWidth > 1000 ? 'center' : 'start'
+          text: 'Hardware PoC',
+          path: '.HardwarePoC',
+          id: 3
         },
         {
-          text: 'Engage Now',
-          liClass: 'navigation__item navigation__element',
-          aClass: 'navigation__link text',
-          path: '.EngageNow',
-          block: 'start'
+          text: 'Links',
+          path: '.Links',
+          id: 4
         }
       ]
     }
   },
+
   methods: {
     scroll(e) {
-      e.preventDefault()
-      let path = e.target.attributes.path.value
-      let block = e.target.attributes.block.value
       document
-        .querySelector(path)
-        .scrollIntoView({ block: block, behavior: 'smooth' })
+        .querySelector(e.target.attributes.path.value)
+        .scrollIntoView({ block: 'start', behavior: 'smooth' })
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .navigation {
-  padding-top: 50px;
+  padding: 50px 200px 0 0;
   position: relative;
   z-index: 10;
 }
 
-.navigation__list {
+.list {
   display: flex;
+  justify-content: space-between;
 }
 
-.navigation__link,
-.change__language {
-  color: #fff;
+.logo {
+  color: var(--akita-light);
+  font-size: 40px;
+}
+
+.link {
+  color: var(--akita-light);
   white-space: nowrap;
-}
-
-.navigation__item {
-  flex: 1 1 auto;
-}
-
-.navigation__language {
-  flex: 3 1 auto;
-  text-align: right;
-  position: relative;
-  top: -20px;
-}
-
-.navigation__logo {
-  display: block;
-  width: 170px;
-  height: 85px;
-  background: url("./../../../../public/akita_logo_white.png") no-repeat;
-  background-size: 100%;
-  position: relative;
-  top: -25px;
-}
-
-.navigation__link:hover {
-  text-decoration: underline;
-  color: #fff;
-}
-
-@media (max-width: 800px) {
-  .navigation__logo {
-    left: -20px;
-  }
-
-  .navigation__element {
-    display: none;
-  }
-
-  .navigation__link {
-    color: #000;
-  }
-
-  .navigation__language {
-    top: -40px;
+  transition: .1s;
+  display: inline-block;
+  &:hover {
+    text-decoration: underline;
+    color: var(--akita-light);
+    transform: scale(1.1);
   }
 }
 </style>

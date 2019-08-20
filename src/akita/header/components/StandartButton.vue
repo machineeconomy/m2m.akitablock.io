@@ -6,19 +6,18 @@
 
 <script>
 export default {
-  name: "StandartButton",
+  name: 'StandartButton',
   methods: {
     scroll(e) {
-      e.preventDefault();
-      console.log(e);
-      let path = e.target.attributes.path.value,
-        position = e.target.attributes.position.value;
+      e.preventDefault()
+      let path = e.target.attributes.path.value
+      let position = e.target.attributes.position.value
       document
         .querySelector(path)
-        .scrollIntoView({ block: position, behavior: "smooth" });
+        .scrollIntoView({ block: position, behavior: 'smooth' })
     }
   }
-};
+}
 </script>
 
 <style lang="scss">

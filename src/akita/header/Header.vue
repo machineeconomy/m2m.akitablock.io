@@ -11,20 +11,20 @@
   </header>
 </template>
 <script>
-import Navigation from "./components/Navigation";
-import Information from "./components/Information";
-import StandartButton from "./components/StandartButton";
-import BackgroundLine from "./components/BackgroundLine";
+import Navigation from './components/Navigation'
+import Information from './components/Information'
+import StandartButton from './components/StandartButton'
+import BackgroundLine from './components/BackgroundLine'
 
 export default {
-  name: "Header",
+  name: 'Header',
   components: {
     Navigation,
     Information,
     StandartButton,
     BackgroundLine
   }
-};
+}
 </script>
 
 <style>

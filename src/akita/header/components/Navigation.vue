@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import NavigationButton from "./NavigationButton";
+import NavigationButton from './NavigationButton'
 
 export default {
-  name: "Navigation",
+  name: 'Navigation',
   components: {
     NavigationButton
   },
@@ -32,47 +32,47 @@ export default {
     return {
       navigation: [
         {
-          text: "Live Demo",
-          liClass: "navigation__item navigation__element",
-          aClass: "navigation__link text",
-          path: ".LiveDemo",
-          block: "start"
+          text: 'Live Demo',
+          liClass: 'navigation__item navigation__element',
+          aClass: 'navigation__link text',
+          path: '.LiveDemo',
+          block: 'start'
         },
         {
-          text: "M2M Supply Chain",
-          liClass: "navigation__item navigation__element",
-          aClass: "navigation__link text",
-          path: ".M2MSupplyChain",
-          block: "start"
+          text: 'M2M Supply Chain',
+          liClass: 'navigation__item navigation__element',
+          aClass: 'navigation__link text',
+          path: '.M2MSupplyChain',
+          block: 'start'
         },
         {
-          text: "Services",
-          liClass: "navigation__item navigation__element",
-          aClass: "navigation__link text",
-          path: ".Services",
-          block: window.innerWidth > 1000 ? "center" : "start"
+          text: 'Services',
+          liClass: 'navigation__item navigation__element',
+          aClass: 'navigation__link text',
+          path: '.Services',
+          block: window.innerWidth > 1000 ? 'center' : 'start'
         },
         {
-          text: "Engage Now",
-          liClass: "navigation__item navigation__element",
-          aClass: "navigation__link text",
-          path: ".EngageNow",
-          block: "start"
+          text: 'Engage Now',
+          liClass: 'navigation__item navigation__element',
+          aClass: 'navigation__link text',
+          path: '.EngageNow',
+          block: 'start'
         }
       ]
-    };
+    }
   },
   methods: {
     scroll(e) {
-      e.preventDefault();
-      let path = e.target.attributes.path.value,
-        block = e.target.attributes.block.value;
+      e.preventDefault()
+      let path = e.target.attributes.path.value
+      let block = e.target.attributes.block.value
       document
         .querySelector(path)
-        .scrollIntoView({ block: block, behavior: "smooth" });
+        .scrollIntoView({ block: block, behavior: 'smooth' })
     }
   }
-};
+}
 </script>
 
 <style>

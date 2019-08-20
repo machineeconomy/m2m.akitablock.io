@@ -47,14 +47,14 @@
 </template>
 
 <script>
-import  StandartButton from "./components/StandartButton";
+import  StandartButton from './components/StandartButton'
 
 export default {
-  name: "Footer",
+  name: 'Footer',
   components: {
     StandartButton
   }
-};
+}
 </script>
 
 <style lang="scss">

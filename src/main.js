@@ -1,14 +1,14 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import Argon from "./plugins/argon-kit";
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import Argon from './plugins/argon-kit'
 //import './registerServiceWorker'
 import moment from 'moment'
 
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
-Vue.use(Argon);
+Vue.use(Argon)
 
 Vue.filter('formatTimestampToTime', function (timestamp) {
   if (timestamp) {
@@ -20,4 +20,4 @@ Vue.filter('formatTimestampToTime', function (timestamp) {
 new Vue({
   router,
   render: h => h(App)
-}).$mount("#app");
+}).$mount('#app')

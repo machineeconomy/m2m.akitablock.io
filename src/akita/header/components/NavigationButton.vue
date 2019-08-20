@@ -23,56 +23,56 @@
 
 <script>
 export default {
-  name: "NavigationButton",
+  name: 'NavigationButton',
   data() {
     return {
       navigation: [
         {
-          text: "Live Demo",
-          liClass: "navigation__item popup__item",
-          aClass: "popup__link text",
-          path: ".LiveDemo",
-          block: "start"
+          text: 'Live Demo',
+          liClass: 'navigation__item popup__item',
+          aClass: 'popup__link text',
+          path: '.LiveDemo',
+          block: 'start'
         },
         {
-          text: "M2M Supply Chain",
-          liClass: "navigation__item popup__item",
-          aClass: "popup__link text",
-          path: ".M2MSupplyChain",
-          block: "start"
+          text: 'M2M Supply Chain',
+          liClass: 'navigation__item popup__item',
+          aClass: 'popup__link text',
+          path: '.M2MSupplyChain',
+          block: 'start'
         },
         {
-          text: "Services",
-          liClass: "navigation__item popup__item",
-          aClass: "popup__link text",
-          path: ".Services",
-          block: window.innerWidth > 1000 ? "center" : "start"
+          text: 'Services',
+          liClass: 'navigation__item popup__item',
+          aClass: 'popup__link text',
+          path: '.Services',
+          block: window.innerWidth > 1000 ? 'center' : 'start'
         },
         {
-          text: "Engage Now",
-          liClass: "navigation__item popup__item",
-          aClass: "popup__link text",
-          path: ".EngageNow",
-          block: "start"
+          text: 'Engage Now',
+          liClass: 'navigation__item popup__item',
+          aClass: 'popup__link text',
+          path: '.EngageNow',
+          block: 'start'
         }
       ]
-    };
+    }
   },
   methods: {
     openPopup() {
-      let popup = document.querySelector(".navigation__popup");
-      popup.classList.toggle("display-block");
+      let popup = document.querySelector('.navigation__popup')
+      popup.classList.toggle('display-block')
     },
     scroll(e) {
-      e.preventDefault();
-      let path = e.target.attributes.path.value,
-        block = e.target.attributes.block.value;
+      e.preventDefault()
+      let path = e.target.attributes.path.value
+      let block = e.target.attributes.block.value
       document
         .querySelector(path)
-        .scrollIntoView({ block: block, behavior: "smooth" });
+        .scrollIntoView({ block: block, behavior: 'smooth' })
     }
   }
-};
+}
 </script>
 
 <style>

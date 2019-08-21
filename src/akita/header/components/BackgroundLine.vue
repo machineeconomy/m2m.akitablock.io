@@ -1,7 +1,7 @@
 <template>
 <div>
   <div class="line">
-    <span class="img"></span>
+    <span class="img__background"></span>
   </div>
   <div class="space">
   </div>
@@ -9,10 +9,18 @@
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'backgroundLine',
+
+  mounted() {
+    let img = new Image()
+    img.src = require('./../../../../public/FactoryItems.png')
+    img.onload = () => document.querySelector('.img__background').style.opacity = 1
+  }
+}
 </script>
 
-<style>
+<style lang="scss" scoped>
 .line {
   height: 150px;
   width: 100%;
@@ -21,12 +29,14 @@ export default {}
   background: linear-gradient(to bottom right, rgba(0, 0, 0, 0) 49.3%, var(--akita-light) 50%);
 }
 
-.img {
-  background: url("./../../../../public/FactoryItems.png") no-repeat;
+.img__background {
+  background: url('./../../../../public/FactoryItems.png');
   background-size: 100%;
   position: absolute;
   z-index: 1;
+  opacity: 0;
   right: 0;
+  transition: .5s;
   bottom: -100px;
   width: 800px;
   height: 800px;
@@ -42,7 +52,7 @@ export default {}
 }
 
 @media (max-width: 1600px) {
-  .img {
+  .img__background {
     bottom: -50px;
     width: 600px;
     height: 600px;
@@ -50,16 +60,15 @@ export default {}
 }
 
 @media (max-width: 1200px) {
-  .img {
+  .img__background {
     width: 500px;
     height: 500px;
   }
 }
 
 @media (max-width: 1024px) {
-  .img, .line, .space {
+  .img__background, .line, .space {
     display: none;
   }
 }
-
 </style>

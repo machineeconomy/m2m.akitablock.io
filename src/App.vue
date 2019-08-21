@@ -95,5 +95,9 @@ ul {
   .title {
     font-size: 22px;
   }
+
+  .contain {
+    padding-left: 20px;
+  }
 }
 </style>

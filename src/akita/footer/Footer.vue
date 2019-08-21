@@ -70,7 +70,6 @@ footer {
   right: 0;
   width: 50%;
   height: 155%;
-  background: url("./../../../public/MachineChain.png") no-repeat;
   background-size: 1400px;
 }
 

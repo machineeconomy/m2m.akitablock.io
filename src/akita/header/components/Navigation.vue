@@ -1,7 +1,7 @@
 <template>
   <nav class="navigation">
     <ul class="list">
-      <li class="item">
+      <li>
         <h1 class="title logo">Machine Economy</h1>
       </li>
 
@@ -11,18 +11,18 @@
         </a>
       </li>
     </ul>
-    <navigationButton></navigationButton>
+    <mobileNavigation :navigation="navigation" />
   </nav>
 </template>
 
 <script>
-import NavigationButton from './NavigationButton'
+import MobileNavigation from './MobileNavigation'
 
 export default {
   name: 'Navigation',
 
   components: {
-    NavigationButton
+    MobileNavigation
   },
 
   data() {
@@ -30,7 +30,7 @@ export default {
       navigation: [
         {
           text: 'Live Demos',
-          path: '.LiveDemo',
+          path: '.LiveDemos',
           id: 1
         },
         {
@@ -77,6 +77,9 @@ export default {
 .logo {
   color: var(--akita-light);
   font-size: 40px;
+  position: relative;
+  bottom: 25px;
+  white-space: nowrap;
 }
 
 .link {
@@ -88,6 +91,17 @@ export default {
     text-decoration: underline;
     color: var(--akita-light);
     transform: scale(1.1);
+  }
+}
+
+@media (max-width: 1024px) {
+  .item {
+    display: none;
+  }
+
+  .logo {
+    font-size: 24px;
+    margin-bottom: 50px;
   }
 }
 </style>

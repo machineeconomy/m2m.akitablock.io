@@ -23,7 +23,8 @@
         </div>
       </div>
     </div>
-    <backgroundLine/>
+    <logos />
+    <backgroundLine />
     <trailer :isOpen="isOpen" @popup="popup" />
   </header>
 </template>
@@ -32,6 +33,7 @@ import Navigation from './components/Navigation'
 import TextAnimation from './components/TextAnimation'
 import BackgroundLine from './components/BackgroundLine'
 import Trailer from './components/Trailer'
+import Logos from './components/Logos'
 
 export default {
   name: 'Header',
@@ -40,7 +42,8 @@ export default {
     Navigation,
     TextAnimation,
     BackgroundLine,
-    Trailer
+    Trailer,
+    Logos
   },
 
   data() {
@@ -91,40 +94,45 @@ export default {
 }
 
 .mybtn {
-    margin: 40px 0 0 50px;
+  margin: 40px 0 0 50px;
+  position: relative;
+  color: var(--akita-primary);
+  font-size: 22px;
+  width: 250px;
+  padding: 10px;
+  text-align: center;
+  background: var(--akita-light);
+  border: 1px solid var(--akita-light);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.4s;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+
+  .triangle {
+    height: 7px;
+    border: 7px solid transparent;
+    border-left: 15px solid var(--akita-primary);
     position: relative;
-    color: var(--akita-primary);
-    font-size: 22px;
-    width: 250px;
-    padding: 10px;
-    text-align: center;
-    background: var(--akita-light);
-    border: 1px solid var(--akita-light);
-    border-radius: 10px;
-    cursor: pointer;
+    top: 10px;
+    left: 10px;
     transition: 0.4s;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    z-index: 3;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0);
+    color: var(--akita-light);
+    transform: translate(3px, 3px);
+
     .triangle {
-      height: 7px;
-      border: 7px solid transparent;
-      border-left: 15px solid var(--akita-primary);
-      position: relative;
-      top: 10px;
-      left: 10px;
-      transition: 0.4s;
-    }
-    &:hover {
-      background: rgba(0, 0, 0, 0);
-      color: var(--akita-light);
-      transform: translate(3px, 3px);
-      .triangle {
-        border-left-color: var(--akita-light);
-      }
+      border-left-color: var(--akita-light);
     }
   }
+}
+
+
 
 @media (max-width: 1024px) {
   .header {

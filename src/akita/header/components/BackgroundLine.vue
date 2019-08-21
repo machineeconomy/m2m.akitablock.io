@@ -1,11 +1,11 @@
 <template>
-<div>
-  <div class="line">
-    <span class="img__background"></span>
+  <div>
+    <div class="line">
+      <span class="img__background"></span>
+    </div>
+    <div class="space">
+    </div>
   </div>
-  <div class="space">
-  </div>
-</div>
 </template>
 
 <script>
@@ -14,7 +14,7 @@ export default {
 
   mounted() {
     let img = new Image()
-    img.src = require('./../../../../public/FactoryItems.png')
+    img.src = require('../../../assets/img/FactoryItems.png')
     img.onload = () => document.querySelector('.img__background').style.opacity = 1
   }
 }
@@ -30,7 +30,7 @@ export default {
 }
 
 .img__background {
-  background: url('./../../../../public/FactoryItems.png');
+  background: url("../../../assets/img/FactoryItems.png");
   background-size: 100%;
   position: absolute;
   z-index: 1;

@@ -1,16 +1,21 @@
 <template>
-  <main>
-    <ClickDemo />
-    <M2MSupplyChain/>
+  <main class="liveDemos">
+    <clickDemo />
+    <process />
   </main>
 </template>
+
 <script>
-import ClickDemo from './components/ClickDemo/index.vue'
-import M2MSupplyChain from './components/M2MSupplyChain.vue'
+import ClickDemo from './components/ClickDemo/index'
+import Process from './components/Process'
 
 export default {
   name: 'Main',
-  components: { ClickDemo, M2MSupplyChain}
+
+  components: {
+    ClickDemo, 
+    Process
+  }
 }
 </script>
 
@@ -28,6 +33,4 @@ p {
   color: black;
   margin: 0;
 }
-
-
 </style>

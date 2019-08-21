@@ -59,7 +59,7 @@ export default {
 
     scroll() {
       document
-        .querySelector('.LiveDemos')
+        .querySelector('.liveDemos')
         .scrollIntoView({ block: 'start', behavior: 'smooth' })
     }
   }

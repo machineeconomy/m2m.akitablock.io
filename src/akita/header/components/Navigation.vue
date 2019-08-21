@@ -30,22 +30,22 @@ export default {
       navigation: [
         {
           text: 'Live Demos',
-          path: '.LiveDemos',
+          path: '.liveDemos',
           id: 1
         },
         {
           text: 'Process',
-          path: '.Process',
+          path: '.process',
           id: 2
         },
         {
           text: 'Hardware PoC',
-          path: '.HardwarePoC',
+          path: '.hardwarePoC',
           id: 3
         },
         {
           text: 'Links',
-          path: '.Links',
+          path: '.links',
           id: 4
         }
       ]

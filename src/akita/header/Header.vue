@@ -65,7 +65,7 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-  background: linear-gradient(to bottom right, var(--akita-primary) 50%,  var(--akita-secondary) 100%);
+  background: linear-gradient(to bottom right, var(--akita-primary) 50%,  var(--akita-secondary) 85%);
   position: relative;
   min-height: 100vh;
   padding-bottom: 250px;
@@ -112,7 +112,7 @@ export default {
       border: 7px solid transparent;
       border-left: 15px solid var(--akita-primary);
       position: relative;
-      top: 8px;
+      top: 10px;
       left: 10px;
       transition: 0.4s;
     }

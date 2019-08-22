@@ -17,42 +17,26 @@
     </div>
     <div class="row">
       <div class="box">
-        <div class="wallet">
-          <h3>M1</h3>
-        </div>
+        <Machine :url="'http://localhost:3001'" name="Robot 1" />
       </div>
       <div class="box">
-        <div class="wallet">
-          <h3>M2</h3>
-        </div>
+          <Machine :url="'http://localhost:3003'" name="Robot 2" />
       </div>
     </div>
     <div class="row">
       <div class="box hidden">
-        <lottie
-          :options="defaultOptions"
-          :height="400"
-          :width="400"
-        />
+        <lottie :options="defaultOptions" :height="400" :width="400" />
       </div>
       <div class="box hidden">
-         <lottie
-          :options="defaultOptions2"
-          :height="400"
-          :width="400"
-        />
+        <lottie :options="defaultOptions2" :height="400" :width="400" />
       </div>
     </div>
     <div class="row">
       <div class="box">
-        <div class="wallet">
-          <h3>P1</h3>
-        </div>
+         <Machine :url="'http://localhost:3002'" name="Provider 1" />
       </div>
       <div class="box">
-        <div class="wallet">
-          <h3>M2</h3>
-        </div>
+          <Machine :url="'http://localhost:3004'" name="Provider 2" />
       </div>
     </div>
   </div>
@@ -60,11 +44,13 @@
 
 <script>
 import Lottie from "vue-lottie";
+import Machine from "./Machine.vue";
 import * as animationData from "@/assets/lightning.json";
 import * as animationData2 from "@/assets/akita.json";
 export default {
   components: {
-    lottie: Lottie
+    lottie: Lottie,
+    Machine
   },
   data() {
     return {

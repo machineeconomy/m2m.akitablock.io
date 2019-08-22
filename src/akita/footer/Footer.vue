@@ -30,7 +30,8 @@ export default {
 footer {
   position: relative;
   min-height: 100vh;
-  padding-top: 300px;
+  padding-top: 200px;
+  padding-bottom: 400px;
 }
 
 .information {

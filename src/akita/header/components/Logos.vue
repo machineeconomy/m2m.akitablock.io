@@ -16,15 +16,15 @@ export default {
     return {
       logos: [
         {
-          url: require('../../../assets/img/AKITALogo.png'),
+          url: require('../../../assets/img/logo/AKITALogo.png'),
           id: 1
         },
         {
-          url: require('../../../assets/img/IOTALogo.png'),
+          url: require('../../../assets/img/logo/IOTALogo.png'),
           id: 2
         },
         {
-          url: require('../../../assets/img/IOTAEcosystem.svg'),
+          url: require('../../../assets/img/logo/IOTAEcosystem.png'),
           id: 3
         }
       ]

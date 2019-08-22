@@ -4,13 +4,13 @@
       <p class="text">Open source development project by AKITA</p>
       <p class="text">Supported by IOTA Ecosytem Development Fund</p>
       <p class="text">Based on the IOTA Tangle infrastructure</p>
-    </div>
-    <div class="logos">
-      <ul class="list">
-        <li class="item" v-for="logo in logos" :key="logo.key">
-          <span class="img" :style="{backgroundImage: `url(${logo.url})`}"></span>
-        </li>
-      </ul>
+      <div class="logos">
+        <ul class="list">
+          <li class="item" v-for="logo in logos" :key="logo.key">
+            <span class="img" :style="{backgroundImage: `url(${logo.url})`}"></span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -23,11 +23,11 @@ export default {
     return {
       logos: [
         {
-          url: require('../../../assets/img/IOTALogo.png'),
+          url: require('../../../assets/img/logo/IOTALogo.png'),
           id: 1
         },
         {
-          url: require('../../../assets/img/IOTAEcosystem.svg'),
+          url: require('../../../assets/img/logo/IOTAEcosystem.png'),
           id: 2
         }
       ]
@@ -42,7 +42,7 @@ export default {
   bottom: 0;
   width: 100%;
   padding: 50px 0;
-  background: linear-gradient(to left, var(--akita-primary) 50%,  var(--akita-secondary) 85%);
+  background: linear-gradient(to left, var(--akita-primary) 50%,  var(--akita-secondary) 100%);
 }
 
 .logos {
@@ -53,6 +53,7 @@ export default {
 
 .list {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .img {
@@ -62,5 +63,12 @@ export default {
   background-size: auto 40px;
   background-repeat: no-repeat;
   background-position: left center;
+}
+
+@media (max-width: 900px) {
+  .logos {
+    position: relative;
+    top: 0;
+  }
 }
 </style>

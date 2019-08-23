@@ -38,7 +38,7 @@
         <Machine :url="robot_1_url" name="Robot 1" />
       </div>
       <div class="box">
-        <!--<Machine :url="robot_2_url" name="Robot 2" />-->
+        <Machine :url="robot_2_url" name="Robot 2" />
       </div>
     </div>
     <div class="row">
@@ -51,10 +51,10 @@
     </div>
     <div class="row">
       <div class="box">
-        <!--<Machine :url="provider_1_url" name="Provider 1" />-->
+        <Machine :url="provider_1_url" name="Provider 1" />
       </div>
       <div class="box">
-        <!--<Machine :url="provider_2_url" name="Provider 2" />-->
+        <Machine :url="provider_2_url" name="Provider 2" />
       </div>
     </div>
   </div>

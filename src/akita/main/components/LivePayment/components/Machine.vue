@@ -14,9 +14,6 @@
     </div>
     <div v-else class="info not_connected">
       <badge :type="getStatusColor('not_connected')">not connected</badge>
-      <p>
-        <pulse-loader :loading="true" color="#5f46b1" size="5px"></pulse-loader>
-      </p>
     </div>
   </div>
 </template>
@@ -124,7 +121,6 @@ export default {
   }
   .info {
     padding: 5px;
-    padding-top: 15px;
     width: 100%;
     float: right;
     border-radius: 20px;
@@ -136,7 +132,6 @@ export default {
     }
   }
   .not_connected {
-    border: 2px solid red;
     p {
       color: var(--akita-primary);
       text-align: center;

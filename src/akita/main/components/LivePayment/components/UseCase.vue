@@ -9,18 +9,30 @@
     </div>
     <div class="row">
       <div class="box">
-        <button>Headphone</button>
+        <OrderButton
+        class="button"
+        @ordered="ordered"
+        name="headphone"
+        :url="robot_1_url"
+        :amount="0"
+      >Buy Headphone</OrderButton>
       </div>
       <div class="box">
-        <button>Laptop</button>
+        <OrderButton
+        class="button"
+        @ordered="ordered"
+        name="laptop"
+        :url="robot_2_url"
+        :amount="1"
+      >Buy Laptop</OrderButton>
       </div>
     </div>
     <div class="row">
       <div class="box">
-        <Machine :url="'http://localhost:3001'" name="Robot 1" />
+        <Machine :url="robot_1_url" name="Robot 1" />
       </div>
       <div class="box">
-          <Machine :url="'http://localhost:3003'" name="Robot 2" />
+          <Machine :url="robot_2_url" name="Robot 2" />
       </div>
     </div>
     <div class="row">
@@ -33,10 +45,10 @@
     </div>
     <div class="row">
       <div class="box">
-         <Machine :url="'http://localhost:3002'" name="Provider 1" />
+         <Machine :url="provider_1_url" name="Provider 1" />
       </div>
       <div class="box">
-          <Machine :url="'http://localhost:3004'" name="Provider 2" />
+          <Machine :url="provider_2_url" name="Provider 2" />
       </div>
     </div>
   </div>
@@ -45,15 +57,22 @@
 <script>
 import Lottie from "vue-lottie";
 import Machine from "./Machine.vue";
+import OrderButton from "./OrderButton.vue";
+
 import * as animationData from "@/assets/lightning.json";
 import * as animationData2 from "@/assets/akita.json";
 export default {
   components: {
     lottie: Lottie,
-    Machine
+    Machine,
+    OrderButton
   },
   data() {
     return {
+      robot_1_url: "http://localhost:3001",
+      robot_2_url: "http://localhost:3002",
+      provider_1_url: "http://localhost:3003",
+      provider_2_url: "http://localhost:3004",
       defaultOptions: { animationData: animationData.default },
       defaultOptions2: { animationData: animationData2.default },
       animationSpeed: 1

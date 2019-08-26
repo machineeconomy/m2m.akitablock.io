@@ -19,7 +19,7 @@ export default {
 <style>
 :root {
   --akita-primary: #00B0F0;
-  --akita-secondary: #00FB92;
+  --akita-secondary: #00fb92;
   --akita-dark: #3B3838;
   --akita-light: #F2F2F2;
   --akita-blue: #00B0F0;

@@ -1,7 +1,7 @@
 <template>
   <div class="use-case">
     <div class="row centered">
-      <div class="box">
+      <div class="box wide">
         <div class="wallet">
           <h3>User Wallet</h3>
           <p class="balance">{{ this.user_balance }}</p>
@@ -9,49 +9,73 @@
       </div>
     </div>
     <div class="row">
-      <div class="box">
+      <div class="box animation" :class="{hidden: order_laptop_active}">
         <OrderButton
-          v-if="!order_headphone_active"
+          v-if="!r1_iota_animation"
           class="button"
           @ordered="ordered"
           name="headphone"
-          :amount="0"
-        >Buy Headphone</OrderButton>
-        <Lottie v-else :options="defaultOptions" :height="50" />
+          :amount="100"
+          :disabled="order_laptop_active || order_headphone_active"
+        >Buy Headphone (100)</OrderButton>
+        <Lottie v-else class="animation" :options="animationIOTAOptions" :height="150" />
       </div>
-      <div class="box">
+      <div class="box animation">
         <OrderButton
-          v-if="!order_laptop_active"
+          v-if="!r2_iota_animation"
           class="button"
           @ordered="ordered"
           name="laptop"
-          :amount="1"
-        >Buy Laptop</OrderButton>
-        <Lottie v-else :options="defaultOptions" :height="50" />
+          :amount="1000"
+          :disabled="order_laptop_active || order_headphone_active"
+        >Buy Laptop (1000)</OrderButton>
+        <Lottie v-else class="animation" :options="animationIOTAOptions" :height="150" />
       </div>
     </div>
     <div class="row">
       <div class="box">
-        <Machine name="Robot 1" />
+        <Machine name="Robot 1" :balance="$store.getters.robot1_balance" />
       </div>
       <div class="box">
-        <Machine name="Robot 2" />
+        <Machine name="Robot 2" :balance="$store.getters.robot2_balance" />
       </div>
     </div>
     <div class="row">
-      <div class="box hidden">
-        <Lottie :options="defaultOptions" :height="75" />
+      <div class="box animation">
+        <Lottie
+          class="animation"
+          v-if="p1_iota_animation"
+          :options="animationIOTAOptions"
+          :height="150"
+        />
+        <Lottie
+          class="animation"
+          v-if="p1_energy_animation"
+          :options="animationEnergyOptions"
+          :height="150"
+        />
       </div>
-      <div class="box hidden">
-        <Lottie :options="defaultOptions2" :height="75" />
+      <div class="box animation">
+        <Lottie
+          class="animation"
+          v-if="p2_iota_animation"
+          :options="animationIOTAOptions"
+          :height="150"
+        />
+        <Lottie
+          class="animation"
+          v-if="p2_energy_animation"
+          :options="animationEnergyOptions"
+          :height="150"
+        />
       </div>
     </div>
     <div class="row">
       <div class="box">
-        <Machine name="Provider 1" />
+        <Machine name="Provider 1" :balance="$store.getters.provider1_balance" />
       </div>
       <div class="box">
-        <Machine name="Provider 2" />
+        <Machine name="Provider 2" :balance="$store.getters.provider2_balance" />
       </div>
     </div>
   </div>
@@ -62,9 +86,8 @@ import Lottie from "vue-lottie";
 import Machine from "./Machine.vue";
 import OrderButton from "./OrderButton.vue";
 
-import * as animationData from "@/assets/energy.json";
-import * as animationData2 from "@/assets/data.json";
-
+import * as animationEnergy from "@/assets/energy.json";
+import * as animationIOTA from "@/assets/data.json";
 
 import { composeAPI } from "@iota/core";
 import generateSeed from "@/utils/generateSeed.js";
@@ -75,6 +98,8 @@ const iota = composeAPI({
 
 const axios = require("axios");
 
+const TIMEOUT = 5000;
+
 export default {
   components: {
     Lottie,
@@ -83,23 +108,92 @@ export default {
   },
   data() {
     return {
-      defaultOptions: { animationData: animationData.default },
-      defaultOptions2: { animationData: animationData2.default },
+      animationIOTAOptions: { animationData: animationIOTA.default },
+      animationEnergyOptions: { animationData: animationEnergy.default },
       order_laptop_active: false,
       order_headphone_active: false,
-      user_balance: 0
+      r1_iota_animation: false,
+      r2_iota_animation: false,
+      p1_iota_animation: false,
+      p2_iota_animation: false,
+      p1_energy_animation: false,
+      p2_energy_animation: false,
+      user_balance: 10000
     };
   },
   methods: {
     ordered(object) {
+      let self = this;
       console.log("object", object);
       if (object.name == "headphone") {
         this.order_headphone_active = true;
+        this.r1_iota_animation = true;
+        this.user_balance = this.user_balance - object.amount;
+        setTimeout(function() {
+          self.$store.commit("IncreaseBalanceRobot1", object.amount - 10);
+          self.r1_iota_animation = false;
+          self.payProvider("provider1", 100);
+        }, TIMEOUT);
+        console.log("what? headphone");
       } else if (object.name == "laptop") {
+        console.log("what? laptop");
         this.order_laptop_active = true;
+        this.r2_iota_animation = true;
+        this.user_balance = this.user_balance - object.amount;
+        setTimeout(function() {
+          self.$store.commit("IncreaseBalanceRobot2", object.amount - 100);
+          self.r2_iota_animation = false;
+          self.payProvider("provider2", 100);
+        }, TIMEOUT);
+        console.log("what? headphone");
       }
     },
-   
+    payProvider(provider, amount) {
+      console.log("payout provider: ", provider);
+      let self = this;
+      if (provider == "provider1") {
+        console.log("Transver iota to provider1");
+        // order energy from provider
+        this.p1_iota_animation = true;
+        let self = this;
+        setTimeout(function() {
+          self.p1_iota_animation = false;
+          self.$store.commit("IncreaseBalanceProvider1", amount);
+          self.provideEneryTo("robot1");
+        }, TIMEOUT);
+      } else if (provider == "provider2") {
+        console.log("Transver iota to provider2");
+        // order energy from provider
+        this.p2_iota_animation = true;
+        let self = this;
+        setTimeout(function() {
+          self.p2_iota_animation = false;
+          self.$store.commit("IncreaseBalanceProvider2", amount);
+          self.provideEneryTo("robot2");
+        }, TIMEOUT);
+      }
+    },
+    provideEneryTo(robot) {
+      console.log("provide energy to: ", robot);
+      let self = this;
+      if (robot == "robot1") {
+        this.$nextTick(() => {
+          this.p1_energy_animation = true;
+        });
+        setTimeout(function() {
+          self.p1_energy_animation = false;
+          self.order_headphone_active = false;
+        }, TIMEOUT);
+      } else if (robot == "robot2") {
+        this.$nextTick(() => {
+          this.p2_energy_animation = true;
+        });
+        setTimeout(function() {
+          self.p1_energy_animation = false;
+          self.order_laptop_active = false;
+        }, TIMEOUT);
+      }
+    }
   },
   created() {
     // Fetch seed from local storage
@@ -130,12 +224,17 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     width: 50%;
     opacity: 1;
-    padding: 15px 20px;
+    padding: 0 20px;
+    &.wide {
+      width: 100%;
+    }
     &.hidden {
-      opacity: 1;
+      opacity: 0;
+    }
+    &.animation {
+      height: 150px;
     }
   }
 
@@ -161,5 +260,9 @@ export default {
       color: var(--akita-light);
     }
   }
+}
+
+.animation {
+  margin: -11px 0 !important;
 }
 </style>

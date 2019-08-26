@@ -100,7 +100,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .machine {
   padding-bottom: 40px;
   display: flex;

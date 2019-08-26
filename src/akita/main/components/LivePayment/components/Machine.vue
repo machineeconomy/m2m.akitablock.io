@@ -91,7 +91,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .machine {
   .machine_wallet {
     background: linear-gradient(

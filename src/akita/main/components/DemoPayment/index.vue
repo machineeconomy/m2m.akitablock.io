@@ -90,7 +90,7 @@ export default {
   display: flex;
   .inner {
     padding: 10px;
-    height: 800px;
+    padding-bottom: 80px;
     &.left {
       width: 60%;
       padding-left: 0;

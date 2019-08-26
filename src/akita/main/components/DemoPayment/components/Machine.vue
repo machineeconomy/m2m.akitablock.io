@@ -14,12 +14,11 @@
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 export default {
-  props: ["name"],
+  props: ["name", "balance"],
   components: { PulseLoader },
   data() {
     return {
-      loading: false,
-      balance: 0
+      loading: false
     };
   },
   created() {
@@ -31,7 +30,7 @@ export default {
 </script>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .machine {
   .machine_wallet {
     background: linear-gradient(
@@ -81,7 +80,6 @@ export default {
 
 @media (max-width: 900px) {
   .machine {
-    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;

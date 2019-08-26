@@ -5,7 +5,9 @@ import router from './router'
 import Argon from './plugins/argon-kit'
 //import './registerServiceWorker'
 import moment from 'moment'
+import VueImg from 'v-img';
 
+Vue.use(VueImg);
 
 Vue.config.productionTip = false
 

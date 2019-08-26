@@ -73,7 +73,12 @@ export default {
     }
   }
 
+@media (max-width: 900px) {
+   .btn-order {
+    font-size: .62em;
 
+   }
+ }
 
   @keyframes shadow-pulse
 {

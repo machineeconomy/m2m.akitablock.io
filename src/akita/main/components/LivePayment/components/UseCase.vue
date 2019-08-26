@@ -43,10 +43,10 @@
     </div>
     <div class="row">
       <div class="box hidden">
-        <Lottie :options="defaultOptions" :height="50" />
+        <Lottie :options="defaultOptions" :height="75" />
       </div>
       <div class="box hidden">
-        <Lottie :options="defaultOptions" :height="50" />
+        <Lottie :options="defaultOptions2" :height="75" />
       </div>
     </div>
     <div class="row">
@@ -65,7 +65,8 @@ import Lottie from "vue-lottie";
 import Machine from "./Machine.vue";
 import OrderButton from "./OrderButton.vue";
 
-import * as animationData from "@/assets/8711-scroll-down-hint.json";
+import * as animationData from "@/assets/energy.json";
+import * as animationData2 from "@/assets/data.json";
 
 
 import { composeAPI } from "@iota/core";
@@ -86,10 +87,11 @@ export default {
   data() {
     return {
       robot_1_url: "http://localhost:3001",
-      robot_2_url: "http://localhost:3002",
-      provider_1_url: "http://localhost:3003",
+      robot_2_url: "http://localhost:3003",
+      provider_1_url: "http://localhost:3002",
       provider_2_url: "http://localhost:3004",
       defaultOptions: { animationData: animationData.default },
+      defaultOptions2: { animationData: animationData2.default },
       order_laptop_active: false,
       order_headphone_active: false,
       user_balance: 0

@@ -25,32 +25,30 @@ export default {
     MobileNavigation
   },
 
-  data() {
-    return {
-      navigation: [
-        {
-          text: 'Live Demos',
-          path: '.liveDemos',
-          id: 1
-        },
-        {
-          text: 'Process',
-          path: '.process',
-          id: 2
-        },
-        {
-          text: 'Hardware PoC',
-          path: '.hardwarePoC',
-          id: 3
-        },
-        {
-          text: 'Links',
-          path: '.links',
-          id: 4
-        }
-      ]
-    }
-  },
+  data: () => ({
+    navigation: [
+      {
+        text: 'Live Demos',
+        path: '.liveDemos',
+        id: 1
+      },
+      {
+        text: 'Process',
+        path: '.process',
+        id: 2
+      },
+      {
+        text: 'Hardware PoC',
+        path: '.hardwarePoC',
+        id: 3
+      },
+      {
+        text: 'Links',
+        path: '.links',
+        id: 4
+      }
+    ]
+  }),
 
   methods: {
     scroll(e) {
@@ -64,7 +62,8 @@ export default {
 
 <style lang="scss" scoped>
 .navigation {
-  padding: 50px 250px 0 0;
+  padding-top: 50px;
+  margin-right: 200px;
   position: relative;
   z-index: 10;
 }
@@ -102,6 +101,12 @@ export default {
   .logo {
     font-size: 24px;
     margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 700px) {
+  .navigation {
+    margin-right: 0;
   }
 }
 </style>

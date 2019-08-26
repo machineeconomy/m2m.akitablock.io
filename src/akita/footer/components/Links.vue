@@ -6,8 +6,8 @@
       <p class="text">Based on the IOTA Tangle infrastructure</p>
       <div class="logos">
         <ul class="list">
-          <li class="item" v-for="logo in logos" :key="logo.key">
-            <span class="img" :style="{backgroundImage: `url(${logo.url})`}"></span>
+          <li class="item" v-for="logo in logos" :key="logo.href">
+            <a class="img" target="_blank" :href="logo.href" :style="{backgroundImage: `url(${logo.url})`}"></a>
           </li>
         </ul>
       </div>
@@ -19,20 +19,18 @@
 export default {
   name: 'Links',
 
-  data() {
-    return {
-      logos: [
-        {
-          url: require('../../../assets/img/logo/IOTALogo.png'),
-          id: 1
-        },
-        {
-          url: require('../../../assets/img/logo/IOTAEcosystem.png'),
-          id: 2
-        }
-      ]
-    }
-  }
+  data: () => ({
+    logos: [
+      {
+        url: require('@/assets/img/logo/IOTALogo.png'),
+        href: "https://www.iota.org/"
+      },
+      {
+        url: require('@/assets/img/logo/IOTAEcosystem.png'),
+        href: "https://fund.iota.org/"
+      }
+    ]
+  })
 }
 </script>
 

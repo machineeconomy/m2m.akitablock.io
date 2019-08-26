@@ -13,8 +13,8 @@ export default {
   name: 'backgroundLine',
 
   mounted() {
-    let img = new Image()
-    img.src = require('../../../assets/img/FactoryItems.png')
+    const img = new Image()
+    img.src = require('@/assets/img/FactoryItems.png')
     img.onload = () => document.querySelector('.img__background').style.opacity = 1
   }
 }
@@ -30,7 +30,7 @@ export default {
 }
 
 .img__background {
-  background: url("../../../assets/img/FactoryItems.png");
+  background: url("~@/assets/img/FactoryItems.png");
   background-size: 100%;
   position: absolute;
   z-index: 1;

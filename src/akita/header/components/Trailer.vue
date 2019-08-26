@@ -5,9 +5,13 @@
         <iframe
           class="trailer"
           id="trailer"
-          src="https://player.vimeo.com/video/341052776?title=0&byline=0&portrait=0"
+          src="https://www.youtube.com/embed/cM_XhH6N2zc"
           frameborder="0"
-          allow="autoplay; fullscreen"
+          allow="accelerometer; 
+          autoplay; 
+          encrypted-media; 
+          gyroscope; 
+          picture-in-picture" 
           allowfullscreen
         ></iframe>
         <div class="close">
@@ -22,6 +26,7 @@
 <script>
 export default {
   name: 'Trailer',
+  
   props: ['isOpen']
 }
 </script>

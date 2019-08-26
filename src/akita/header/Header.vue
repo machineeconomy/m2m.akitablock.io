@@ -46,11 +46,9 @@ export default {
     Logos
   },
 
-  data() {
-    return {
-      isOpen: false
-    }
-  },
+  data: () => ({
+    isOpen: false
+  }),
 
   methods: {
     popup() {

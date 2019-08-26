@@ -13,7 +13,7 @@ export default {
   name: "Main",
   components: {
     LivePayment,
-    Proces
+    Process
   }
 };
 </script>

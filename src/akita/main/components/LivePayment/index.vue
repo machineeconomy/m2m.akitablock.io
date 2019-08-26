@@ -18,8 +18,25 @@
       </div>
       <div class="inner right">
         <div v-if="!started" class="curtain">
-          <div class="btn-wrapper">
-            <button class="btn btn-play" @click="play">Play!</button>
+          <div class="wrapper">
+            <div v-if="loading" class="center">
+              <div class="loading_line">
+                <span>loading user wallet</span>
+                <span v-if="!load_wallet">✓</span>
+                <pulse-loader :loading="load_wallet" color="#FFFFFF" size="5px"></pulse-loader>
+              </div>
+              <div class="loading_line">
+                <span>connect to machines</span>
+                <span v-if="!load_machines">✓</span>
+                <pulse-loader :loading="load_machines" color="#FFFFFF" size="5px"></pulse-loader>
+              </div>
+              <div class="loading_line">
+                <span>loading animations</span>
+                <span v-if="!load_animations">✓</span>
+                <pulse-loader :loading="load_animations" color="#FFFFFF" size="5px"></pulse-loader>
+              </div>
+            </div>
+            <button v-else class="center btn btn-play" @click="play">Play!</button>
           </div>
         </div>
         <use-case v-else></use-case>
@@ -30,18 +47,38 @@
 
     <script>
 import UseCase from "./components/UseCase.vue";
+import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 export default {
   name: "LiveDemo",
-  components: { UseCase },
+  components: { UseCase, PulseLoader },
   data() {
     return {
-      started: false
+      started: false,
+      loading: false,
+      load_wallet: true,
+      load_machines: true,
+      load_animations: true
     };
   },
   methods: {
     play() {
-      this.started = true;
+      this.loading = true;
+      let self = this;
+
+      setTimeout(function() {
+        self.load_wallet = false;
+      }, 1500);
+      setTimeout(function() {
+        self.load_machines = false;
+      }, 2500);
+      setTimeout(function() {
+        self.load_animations = false;
+      }, 3500);
+
+      setTimeout(function() {
+        self.started = true;
+      }, 4000);
     }
   }
 };
@@ -77,13 +114,21 @@ export default {
     var(--akita-primary) 50%,
     var(--akita-secondary) 85%
   );
-  .btn-wrapper {
+  .wrapper {
     display: table-cell;
     vertical-align: middle;
-    .btn-play {
-        display: block;
+    .center {
+      display: block;
       width: 50%;
       margin: 0 auto;
+      .loading_line {
+        display: flex;
+        margin: 10px 0;
+        span {
+          margin-right: 10px;
+          color: white;
+        }
+      }
     }
   }
 }

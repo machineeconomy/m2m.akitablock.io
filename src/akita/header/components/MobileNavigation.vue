@@ -23,11 +23,9 @@ export default {
 
   props: ['navigation'],
 
-  data() {
-    return {
-      isOpen: false
-    }
-  },
+  data: () => ({
+    isOpen: false
+  }),
 
   methods: {
     openPopup() {
@@ -50,6 +48,7 @@ export default {
   position: absolute;
   right: 0px;
   top: 38px;
+  z-index: 15;
 }
 
 .line {

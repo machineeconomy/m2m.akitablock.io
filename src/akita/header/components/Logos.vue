@@ -1,8 +1,8 @@
 <template>
   <div class="logos">
     <ul class="list">
-      <li class="item" v-for="logo in logos" :key="logo.key">
-        <span class="img" :style="{backgroundImage: `url(${logo.url})`}"></span>
+      <li class="item" v-for="logo in logos" :key="logo.href">
+        <a class="img" target="_blank" :href="logo.href" :style="{backgroundImage: `url(${logo.url})`}"></a>
       </li>
     </ul>
   </div>
@@ -12,32 +12,30 @@
 export default {
   name: 'Logos',
 
-  data() {
-    return {
-      logos: [
-        {
-          url: require('../../../assets/img/logo/AKITALogo.png'),
-          id: 1
-        },
-        {
-          url: require('../../../assets/img/logo/IOTALogo.png'),
-          id: 2
-        },
-        {
-          url: require('../../../assets/img/logo/IOTAEcosystem.png'),
-          id: 3
-        }
-      ]
-    }
-  }
+  data: () => ({
+    logos: [
+      {
+        url: require('@/assets/img/logo/AKITALogo.png'),
+        href: "https://twitter.com/AkitaBlock"
+      },
+      {
+        url: require('@/assets/img/logo/IOTALogo.png'),
+        href: "https://www.iota.org/"
+      },
+      {
+        url: require('@/assets/img/logo/IOTAEcosystem.png'),
+        href: "https://fund.iota.org/"
+      }
+    ]
+  })
 }
 </script>
 
 <style lang="scss" scoped>
 .logos {
   position: absolute;
-  top: 35px;
-  right: 20px;
+  top: 20px;
+  right: 0px;
   z-index: 3;
 }
 
@@ -54,8 +52,7 @@ export default {
   &:nth-child(1) {
     .img {
       background-size: auto 75px;
-      position: relative;
-      right: 17px;
+      background-position: -15px center;
     }
   }
 

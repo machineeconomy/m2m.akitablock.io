@@ -32,6 +32,9 @@ footer {
   min-height: 100vh;
   padding-top: 200px;
   padding-bottom: 400px;
+  background: url("~@/assets/img/Tangle.png") no-repeat;
+  background-position: -5vw 450px;
+  background-size: 100%;
 }
 
 .information {

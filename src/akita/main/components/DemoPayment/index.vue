@@ -2,18 +2,20 @@
   <div class="live-payment">
     <div class="contain">
       <div class="inner left">
-        <h2>M2M Payment Demo</h2>
-        <p style="font-size:20px;">
+        <h3 class="title">M2M Payment Demo</h3>
+        <p class="text">
           In this Machine Economy alpha version demonstrator every participant has its own IOTA (DevNet) based service application.
           <br />Each transaction triggers an automated machine-to-machine (M2M) payment and the related energy delivery and production process:
         </p>
+        <br>
+        <br>
         <ol>
-          <li style="font-size:20px;">Buy a new pair of headphones or a laptop</li>
+          <li class="text">Buy a new pair of headphones or a laptop</li>
           <li
-            style="font-size:20px;"
+            class="text"
           >The rest of the process is completely automated. Just sit back and watch.</li>
           <li
-            style="font-size:20px;"
+            class="text"
           >When your product is ready, you will receive a notification link to both transactions on the Tangle</li>
         </ol>
       </div>

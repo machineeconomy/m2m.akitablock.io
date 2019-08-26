@@ -41,6 +41,9 @@ export default {
   width: 100%;
   padding: 50px 0;
   background: linear-gradient(to left, var(--akita-primary) 50%,  var(--akita-secondary) 100%);
+  p {
+  color: white;
+  }
 }
 
 .logos {

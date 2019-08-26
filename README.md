@@ -35,10 +35,109 @@ internal checklist:
 - hosting = github
 - docu = github
 
-## setup repository
+## Development
 
-you need an `.env` file in the root directory with this content:
+To setup this app for development, you need to setup a few things for the live payment demo.
 
+The demo consists of the folloing parts
+
+- an [IOTA Devnet Faucet](https://github.com/machineeconomy/faucet), to send Tokens to the User Wallet in the Browser.
+- Four running [machines](https://github.com/machineeconomy/machine): two configured as robots and two as energy providers.
+
+
+#### Step 1
+Follow the setup steps on the [IOTA Devnet Faucet](https://github.com/machineeconomy/faucet) README.md file.
+
+#### Step 2
+
+- Clone the machine repository and prepare the env files
+
+```bash
+git clone https://github.com/machineeconomy/machine
+cd machine
+```
+
+- create the env files
+
+```bash
+touch .env
+touch .env_provider
+touch .env_robot2
+touch .env_provider2
+```
+
+- Add this content to the `.env` file
+```bash
+PORT=3001
+NAME=dev robot 1	
+SEED=ADD...YOUR...FIRST...ROBOT...SEED
+IS_PROVIDER=false
+PROVIDER_URL="http://localhost:3002"
+DEVELOPMENT=true
+VALUE=0
+```
+- Add this content to the `.env_provider` file
+```bash
+PORT=3002
+NAME=dev provider 1	
+SEED=ADD...YOUR...FIRST...PROVIDER...SEED
+IS_PROVIDER=true
+DEVELOPMENT=true
+VALUE=0
+```
+
+- Add this content to the `.env_robot2` file
+```bash
+PORT=3003
+NAME=dev robot 2	
+SEED=ADD...YOUR...SECOND...ROBOT...SEED
+IS_PROVIDER=false
+PROVIDER_URL="http://localhost:3004"
+DEVELOPMENT=true
+VALUE=0
+```
+
+- Add this content to the `.env_provider2` file
+```bash
+PORT=3004
+NAME=dev provider 2	
+SEED=ADD...YOUR...SECOND...PROVIDER...SEED
+IS_PROVIDER=true
+DEVELOPMENT=true
+VALUE=0
+```
+
+#### Step 3
+
+Start everything
+
+- Faucet:
+npm start
+```bash
+npm start
+```
+
+- machines:
+open 4 new terminal tabs and start 4 nodejs apps
+
+```bash
+npm start
+npm run start-provider
+npm run start-robot2
+npm run start-provider2
+```
+
+- setup and run this web application
+
+```bash
+git clone https://github.com/machineeconomy/m2m.akitablock.io.git
+cd m2m.akitablock.io
+npm install
+touch .env
+npm run serve
+```
+
+Add this content to the `.env` file
 ```
 VUE_APP_MACHINE_1_URL=http://localhost:3001
 VUE_APP_PROVIDER_1_URL=http://localhost:3002
@@ -46,3 +145,7 @@ VUE_APP_MACHINE_2_URL=http://localhost:3003
 VUE_APP_PROVIDER_2_URL=http://localhost:3004
 ```
 
+run the app
+```bash
+npm run serve
+```

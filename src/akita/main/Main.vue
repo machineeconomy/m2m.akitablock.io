@@ -1,17 +1,19 @@
 <template>
   <main class="liveDemos">
-    <LivePayment />
+    <DemoPayment />
     <process />
   </main>
 </template>
 
 <script>
+import DemoPayment from "./components/DemoPayment/index";
 import LivePayment from "./components/LivePayment/index";
 import Process from "./components/Process";
 
 export default {
   name: "Main",
   components: {
+    DemoPayment,
     LivePayment,
     Process
   }

@@ -263,6 +263,6 @@ export default {
 }
 
 .animation {
-  margin: -11px 0 !important;
+  margin: -18px 0 !important;
 }
 </style>

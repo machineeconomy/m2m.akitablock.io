@@ -1,5 +1,37 @@
 <template>
   <div class="use-case">
+    <modal
+      :show.sync="order_result_modal"
+      gradient="success"
+      modal-classes="modal-dialog-centered text-white"
+    >
+      <h6 slot="header" class="modal-title text-white" id="modal-title-notification">Your product was finished!</h6>
+
+      <div class="py-3 text-center">
+        <i class="ni ni-bell-55 ni-3x"></i>
+        <h4 class="heading mt-4 text-white">Product is ready!</h4>
+        <p>You can see your product on the tangle:</p>
+        <a
+          v-if="product_tx"
+          target="_blank"
+          :href="`https://www.thetangle.org/transaction/${product_tx}`"
+        >
+          Watch
+          <strong>Product Order</strong> on the Tangle.org
+        </a>
+        <pulse-loader v-else :loading="true" color="#FFFFFF" size="5px"></pulse-loader>
+        <br />
+        <a
+          v-if="energy_tx"
+          target="_blank"
+          :href="`https://www.thetangle.org/transaction/${energy_tx}`"
+        >
+          Watch
+          <strong>Energy Order</strong> on the Tangle.org
+        </a>
+        <pulse-loader v-else :loading="true" color="#FFFFFF" size="5px"></pulse-loader>
+      </div>
+    </modal>
     <div class="row centered">
       <div class="box wide">
         <div class="wallet">
@@ -89,12 +121,17 @@ import OrderButton from "./OrderButton.vue";
 import * as animationEnergy from "@/assets/energy.json";
 import * as animationIOTA from "@/assets/data.json";
 
+const Converter = require("@iota/converter");
+
 import { composeAPI } from "@iota/core";
 import generateSeed from "@/utils/generateSeed.js";
 
 const iota = composeAPI({
-  provider: "https://nodes.devnet.thetangle.org:443"
+  provider: "https://nodes.thetangle.org:443"
 });
+
+import Modal from "@/components/Modal.vue";
+import PulseLoader from "vue-spinner/src/PulseLoader.vue";
 
 const axios = require("axios");
 
@@ -104,7 +141,9 @@ export default {
   components: {
     Lottie,
     Machine,
-    OrderButton
+    OrderButton,
+    Modal,
+    PulseLoader
   },
   data() {
     return {
@@ -118,13 +157,17 @@ export default {
       p2_iota_animation: false,
       p1_energy_animation: false,
       p2_energy_animation: false,
-      user_balance: 10000
+      user_balance: 10000,
+      order_result_modal: false,
+      product_tx: null,
+      energy_tx: null
     };
   },
   methods: {
     ordered(object) {
       let self = this;
       console.log("object", object);
+      this.sendTransaction(object, "product");
       if (object.name == "headphone") {
         this.order_headphone_active = true;
         this.r1_iota_animation = true;
@@ -176,6 +219,7 @@ export default {
     provideEneryTo(robot) {
       console.log("provide energy to: ", robot);
       let self = this;
+      this.sendTransaction(robot, "energy");
       if (robot == "robot1") {
         this.$nextTick(() => {
           this.p1_energy_animation = true;
@@ -183,6 +227,7 @@ export default {
         setTimeout(function() {
           self.p1_energy_animation = false;
           self.order_headphone_active = false;
+          self.order_result_modal = true;
         }, TIMEOUT);
       } else if (robot == "robot2") {
         this.$nextTick(() => {
@@ -191,8 +236,54 @@ export default {
         setTimeout(function() {
           self.p2_energy_animation = false;
           self.order_laptop_active = false;
+          self.order_result_modal = true;
         }, TIMEOUT);
       }
+    },
+    sendTransaction(data, type) {
+      // Array of transfers which defines transfer recipients and value transferred in IOTAs.
+      const transfers = [
+        {
+          address: generateSeed(), //generate random new address
+          value: 0,
+          tag: "AKITAMACHINETOMACHINE", // optional tag of `0-27` trytes
+          message: Converter.asciiToTrytes(JSON.stringify(data)) // optional message in trytes
+        }
+      ];
+
+      // Depth or how far to go for tip selection entry point.
+      const depth = 3;
+
+      // Difficulty of Proof-of-Work required to attach transaction to tangle.
+      // Minimum value on mainnet is `14`, `7` on spamnet and `9` on devnet and other testnets.
+      const minWeightMagnitude = 14;
+
+      // Prepare a bundle and signs it.
+      iota
+        .prepareTransfers(generateSeed(), transfers)
+        .then(trytes => {
+          // Persist trytes locally before sending to network.
+          // This allows for reattachments and prevents key reuse if trytes can't
+          // be recovered by querying the network after broadcasting.
+
+          // Does tip selection, attaches to tangle by doing PoW and broadcasts.
+          return iota.sendTrytes(trytes, depth, minWeightMagnitude);
+        })
+        .then(bundle => {
+          console.log(
+            `Published transaction with tail hash: ${bundle[0].hash}`
+          );
+          console.log("bundle[0].hash", bundle[0].hash);
+          if (type == "product") {
+            this.product_tx = bundle[0].hash;
+          } else if (type == "energy") {
+            this.energy_tx = bundle[0].hash;
+          }
+          console.log(`Bundle: ${bundle}`);
+        })
+        .catch(err => {
+          // handle errors here
+        });
     }
   },
   created() {
@@ -221,7 +312,6 @@ export default {
   }
 
   .box {
-
     font-family: "Oswald", sans-serif;
     font-weight: bold;
 
@@ -231,7 +321,7 @@ export default {
     width: 50%;
     opacity: 1;
     padding: 0 20px;
-      h3 {
+    h3 {
       font-size: 1em;
       color: var(--akita-light);
     }
@@ -257,9 +347,7 @@ export default {
     width: 100%;
     height: 75px;
     text-align: center;
-    font
-
-    h3 {
+    font h3 {
       font-size: 1em;
       color: var(--akita-light);
     }
@@ -273,4 +361,15 @@ export default {
 .animation {
   margin: -18px 0 !important;
 }
+
+.modal-content {
+   a {
+     color: var(--primary);
+     font-weight: bold;
+     &:hover {
+        color: var(--akita-secondary);
+     }
+   }
+}
+
 </style>

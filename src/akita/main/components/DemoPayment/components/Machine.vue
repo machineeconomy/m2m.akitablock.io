@@ -1,11 +1,17 @@
 <template>
   <div class="machine">
     <div class="machine_wallet">
-      <h3>{{ name }}</h3>
-      <p class="balance">{{ this.balance }}</p>
-      <p>
-        <pulse-loader :loading="false" color="#FFFFFF" size="5px"></pulse-loader>Balance
-      </p>
+      <img v-if="name == 'Robot 1'" src="@/assets/img/Robot1_xs.png" />
+      <img v-if="name == 'Robot 2'" src="@/assets/img/Robot2_xs.png" />
+      <img v-if="name == 'Energy Solar'" src="@/assets/img/EnergySolar_xs.png" />
+      <img v-if="name == 'Energy Wind'" src="@/assets/img/EnergyWind_xs.png" />
+      <div class="info">
+        <h3>{{ name }}</h3>
+        <p class="balance">{{ balance }}</p>
+        <p>
+          <pulse-loader :loading="false" color="#FFFFFF" size="5px"></pulse-loader>Balance
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -18,14 +24,12 @@ export default {
   components: { PulseLoader },
   data() {
     return {
-      loading: false
+      loading: false,
+      img_src: "@/assets/img/Robot2_xs.pngs"
     };
   },
-  created() {
-  },
-  methods: {
-  
-  }
+  created() {},
+  methods: {}
 };
 </script>
 
@@ -42,38 +46,25 @@ export default {
     border-radius: 10px;
     padding: 15px 20px;
     width: 100%;
-    height: 75px;
-    text-align: center;
-    height: 100px;
-    h3 {
-      color: white;
-      font-size: 1em;
-      margin-bottom: 10;
+    height: 110px;
+    text-align: left;
+
+    img {
+      float: left;
     }
-    p {
-      color: white;
-      margin-bottom: 0;
-    }
-    .balance {
-      font-size: 1em;
-    }
-  }
-  .info {
-    padding: 5px;
-    width: 100%;
-    float: right;
-    border-radius: 20px;
-    background: #efefef;
-    text-align: center;
-    justify-content: center;
-    p {
-      color: black;
-    }
-  }
-  .not_connected {
-    p {
-      color: var(--akita-primary);
-      text-align: center;
+    .info {
+      h3 {
+        color: var(--akita-light);
+        font-size: 1em;
+        margin-bottom: 10;
+      }
+      p {
+        color: var(--akita-light);
+        margin-bottom: 0;
+      }
+      .balance {
+        font-size: 1em;
+      }
     }
   }
 }

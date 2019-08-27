@@ -5,7 +5,11 @@
       gradient="success"
       modal-classes="modal-dialog-centered text-white"
     >
-      <h6 slot="header" class="modal-title text-white" id="modal-title-notification">Your product was finished!</h6>
+      <h6
+        slot="header"
+        class="modal-title text-white"
+        id="modal-title-notification"
+      >Your product was finished!</h6>
 
       <div class="py-3 text-center">
         <i class="ni ni-bell-55 ni-3x"></i>
@@ -35,8 +39,14 @@
     <div class="row centered">
       <div class="box wide">
         <div class="wallet">
-          <h3>User Wallet</h3>
-          <p class="balance">{{ this.user_balance }}</p>
+          <img src="@/assets/img/business_woman_xs.png" />
+          <div class="wallet-info">
+            <h3>User Wallet</h3>
+            <p class="balance">{{ this.user_balance }}</p>
+            <p>
+              Balance
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -169,12 +179,12 @@ export default {
       console.log("object", object);
 
       let data = {
-          buyer: "human",
-          seller: object.type == "headphone" ? "robot1" : "robot2",
-          purchaseItem:  object.type,
-          price: object.amount,
-          ordered_at: Date.now()
-        };
+        buyer: "human",
+        seller: object.type == "headphone" ? "robot1" : "robot2",
+        purchaseItem: object.type,
+        price: object.amount,
+        ordered_at: Date.now()
+      };
 
       this.sendTransaction(data, "product");
       if (object.type == "headphone") {
@@ -201,8 +211,6 @@ export default {
       console.log("payout provider: ", provider);
       let self = this;
 
-      
-
       if (provider == "provider1") {
         console.log("Transver iota to provider1");
         // order energy from provider
@@ -227,12 +235,12 @@ export default {
     },
     provideEnery(provider, robot, amount) {
       let data = {
-          buyer: robot,
-          seller: provider,
-          purchaseItem: "energy",
-          price: amount,
-          ordered_at: Date.now()
-        };
+        buyer: robot,
+        seller: provider,
+        purchaseItem: "energy",
+        price: amount,
+        ordered_at: Date.now()
+      };
       console.log("provide energy to: ", robot);
       let self = this;
       this.sendTransaction(data, "energy");
@@ -362,15 +370,27 @@ export default {
     border-radius: 10px;
     padding: 15px 20px;
     width: 100%;
-    height: 75px;
-    text-align: center;
-    font h3 {
-      font-size: 1em;
-      color: var(--akita-light);
+    height: 110px;
+    text-align: left;
+    img {
+      display: flex;
+      float: left;
     }
 
-    .balance {
-      color: var(--akita-light);
+    &-info {
+      font h3 {
+        font-size: 1em;
+        color: var(--akita-light);
+      }
+
+      .balance {
+        color: var(--akita-light);
+      }
+      
+      p {
+        color: var(--akita-light);
+        margin-bottom: 0;
+      }
     }
   }
 }
@@ -380,13 +400,12 @@ export default {
 }
 
 .modal-content {
-   a {
-     color: var(--primary);
-     font-weight: bold;
-     &:hover {
-        color: var(--akita-secondary);
-     }
-   }
+  a {
+    color: var(--primary);
+    font-weight: bold;
+    &:hover {
+      color: var(--akita-secondary);
+    }
+  }
 }
-
 </style>

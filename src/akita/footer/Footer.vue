@@ -6,7 +6,7 @@
         <p class="text">
           The very same process and code that you can experience here is now being tested on actual physical hardware, industry
           robots, energy providers, micro controllers with displays and more. As soon as our hardware integration and testing
-          is done you will see more. For now you can get additional information here:
+          is done you will see more. For now you can get additional information below by clicking on the links in the footer.
         </p>
       </div>
     </div>

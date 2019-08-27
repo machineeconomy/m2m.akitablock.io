@@ -2,12 +2,12 @@
   <div class="live-payment">
     <div class="contain">
       <div class="inner left">
-        <h2>M2M Payment Demo</h2>
-        <p style="font-size:20px;">
+        <h2 class="title">M2M Payment Demo</h2>
+        <p class="text" style="font-size:20px;">
           In this Machine Economy alpha version demonstrator every participant has its own IOTA (DevNet) based service application.
           <br />Each transaction triggers an automated machine-to-machine (M2M) payment and the related energy delivery and production process:
         </p>
-        <ol>
+        <ol class="text">
           <li style="font-size:20px;">Buy a new pair of headphones or a laptop</li>
           <li
             style="font-size:20px;"

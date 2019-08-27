@@ -2,10 +2,10 @@
   <div class="machine">
     <div class="machine_wallet">
       <div class="wrapper">
-        <img v-if="name == 'Robot 1'" src="@/assets/img/Robot1_xs.png" />
-        <img v-if="name == 'Robot 2'" src="@/assets/img/Robot2_xs.png" />
-        <img v-if="name == 'Energy Solar'" src="@/assets/img/EnergySolar_xs.png" />
-        <img v-if="name == 'Energy Wind'" src="@/assets/img/EnergyWind_xs.png" />
+        <img v-if="name == 'Robot 1'" src="@/assets/img/Robot1.png" />
+        <img v-if="name == 'Robot 2'" src="@/assets/img/Robot2.png" />
+        <img v-if="name == 'Energy Solar'" src="@/assets/img/EnergySolar.png" />
+        <img v-if="name == 'Energy Wind'" src="@/assets/img/EnergyWind.png" />
       </div>
       <div class="info">
         <h3>{{ name }}</h3>

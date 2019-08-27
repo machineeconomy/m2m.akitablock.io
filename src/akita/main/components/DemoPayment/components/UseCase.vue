@@ -132,7 +132,7 @@ export default {
         setTimeout(function() {
           self.$store.commit("IncreaseBalanceRobot1", object.amount - 10);
           self.r1_iota_animation = false;
-          self.payProvider("provider1", 100);
+          self.payProvider("provider1", 10);
         }, TIMEOUT);
         console.log("what? headphone");
       } else if (object.name == "laptop") {
@@ -189,7 +189,7 @@ export default {
           this.p2_energy_animation = true;
         });
         setTimeout(function() {
-          self.p1_energy_animation = false;
+          self.p2_energy_animation = false;
           self.order_laptop_active = false;
         }, TIMEOUT);
       }
@@ -221,12 +221,20 @@ export default {
   }
 
   .box {
+
+    font-family: "Oswald", sans-serif;
+    font-weight: bold;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 50%;
     opacity: 1;
     padding: 0 20px;
+      h3 {
+      font-size: 1em;
+      color: var(--akita-light);
+    }
     &.wide {
       width: 100%;
     }
@@ -244,12 +252,12 @@ export default {
       var(--akita-primary) 50%,
       var(--akita-secondary) 85%
     );
-
     border-radius: 10px;
     padding: 15px 20px;
     width: 100%;
     height: 75px;
     text-align: center;
+    font
 
     h3 {
       font-size: 1em;

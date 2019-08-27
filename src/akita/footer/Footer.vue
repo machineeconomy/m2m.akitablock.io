@@ -15,15 +15,15 @@
 </template>
 
 <script>
-import Links from './components/Links'
+import Links from "./components/Links";
 
 export default {
-  name: 'Footer',
+  name: "Footer",
 
   components: {
     Links
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -31,8 +31,9 @@ footer {
   position: relative;
   min-height: 100vh;
   padding-top: 200px;
-  padding-bottom: 400px;
-  background: url("~@/assets/img/Tangle.png") no-repeat;
+  padding-bottom: 700px;
+  background: url("~@/assets/img/tangle.svg ");
+  background-repeat: repeat-x;
   background-position: -5vw 450px;
   background-size: 100%;
 }
@@ -44,6 +45,17 @@ footer {
 
   .title {
     white-space: nowrap;
+  }
+}
+
+@media (max-width: 960px) {
+  footer {
+    padding-bottom: 500px;
+  }
+}
+@media (max-width: 480px) {
+  footer {
+    padding-bottom: 700px;
   }
 }
 </style>

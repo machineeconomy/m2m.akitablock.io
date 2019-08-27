@@ -37,6 +37,9 @@
       </div>
     </modal>
     <div class="row centered">
+      <div v-if="no_balance" class="alert alert-warning" role="alert">
+        <strong>Warning!</strong> The wallet has not enough balance, reload the page to fill the wallet.
+      </div>
       <div class="box wide">
         <div class="wallet">
           <div class="wrapper">
@@ -170,13 +173,23 @@ export default {
       user_balance: 10000,
       order_result_modal: false,
       product_tx: null,
-      energy_tx: null
+      energy_tx: null,
+      no_balance: false
     };
   },
   methods: {
+    countDownChanged(dismissCountDown) {
+      this.dismissCountDown = dismissCountDown;
+    },
     ordered(object) {
       let self = this;
       console.log("object", object);
+
+      if (this.user_balance < object.amount) {
+        console.log("not enouth balance");
+        this.no_balance = true;
+        return;
+      }
 
       let data = {
         buyer: "human",
@@ -319,7 +332,6 @@ export default {
       this.seed = generateSeed();
       // set seed to local storage
       this.seed = localStorage.setItem("seed", this.seed);
-      this.createNewAddress();
     }
   }
 };
@@ -374,7 +386,6 @@ export default {
     text-align: left;
 
     .wrapper {
-
       float: left;
       width: 25%;
       img {

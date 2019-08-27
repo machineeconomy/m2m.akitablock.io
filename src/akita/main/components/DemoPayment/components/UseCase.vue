@@ -167,8 +167,17 @@ export default {
     ordered(object) {
       let self = this;
       console.log("object", object);
-      this.sendTransaction(object, "product");
-      if (object.name == "headphone") {
+
+      let data = {
+          buyer: "human",
+          seller: object.type == "headphone" ? "robot1" : "robot2",
+          purchaseItem:  object.type,
+          price: object.amount,
+          ordered_at: Date.now()
+        };
+
+      this.sendTransaction(data, "product");
+      if (object.type == "headphone") {
         this.order_headphone_active = true;
         this.r1_iota_animation = true;
         this.user_balance = this.user_balance - object.amount;
@@ -177,9 +186,7 @@ export default {
           self.r1_iota_animation = false;
           self.payProvider("provider1", 10);
         }, TIMEOUT);
-        console.log("what? headphone");
-      } else if (object.name == "laptop") {
-        console.log("what? laptop");
+      } else if (object.type == "laptop") {
         this.order_laptop_active = true;
         this.r2_iota_animation = true;
         this.user_balance = this.user_balance - object.amount;
@@ -188,12 +195,14 @@ export default {
           self.r2_iota_animation = false;
           self.payProvider("provider2", 100);
         }, TIMEOUT);
-        console.log("what? headphone");
       }
     },
     payProvider(provider, amount) {
       console.log("payout provider: ", provider);
       let self = this;
+
+      
+
       if (provider == "provider1") {
         console.log("Transver iota to provider1");
         // order energy from provider
@@ -202,7 +211,7 @@ export default {
         setTimeout(function() {
           self.p1_iota_animation = false;
           self.$store.commit("IncreaseBalanceProvider1", amount);
-          self.provideEneryTo("robot1");
+          self.provideEnery(provider, "robot1", 10);
         }, TIMEOUT);
       } else if (provider == "provider2") {
         console.log("Transver iota to provider2");
@@ -212,14 +221,21 @@ export default {
         setTimeout(function() {
           self.p2_iota_animation = false;
           self.$store.commit("IncreaseBalanceProvider2", amount);
-          self.provideEneryTo("robot2");
+          self.provideEnery(provider, "robot2", 100);
         }, TIMEOUT);
       }
     },
-    provideEneryTo(robot) {
+    provideEnery(provider, robot, amount) {
+      let data = {
+          buyer: robot,
+          seller: provider,
+          purchaseItem: "energy",
+          price: amount,
+          ordered_at: Date.now()
+        };
       console.log("provide energy to: ", robot);
       let self = this;
-      this.sendTransaction(robot, "energy");
+      this.sendTransaction(data, "energy");
       if (robot == "robot1") {
         this.$nextTick(() => {
           this.p1_energy_animation = true;

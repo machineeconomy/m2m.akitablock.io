@@ -53,7 +53,7 @@ export default {
       let self = this;
       setTimeout(function() {
         self.loading = false;
-        self.$emit("ordered", { name: self.name, amount: self.amount });
+        self.$emit("ordered", { type: self.name, amount: self.amount });
       }, 1000);
     }
   }

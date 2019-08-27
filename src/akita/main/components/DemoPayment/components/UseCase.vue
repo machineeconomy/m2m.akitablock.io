@@ -39,13 +39,13 @@
     <div class="row centered">
       <div class="box wide">
         <div class="wallet">
-          <img src="@/assets/img/business_woman_xs.png" />
+          <div class="wrapper">
+            <img src="@/assets/img/business_woman.png" />
+          </div>
           <div class="wallet-info">
             <h3>User Wallet</h3>
             <p class="balance">{{ this.user_balance }}</p>
-            <p>
-              Balance
-            </p>
+            <p>Balance</p>
           </div>
         </div>
       </div>
@@ -372,9 +372,17 @@ export default {
     width: 100%;
     height: 110px;
     text-align: left;
-    img {
-      display: flex;
+
+    .wrapper {
+
       float: left;
+      width: 25%;
+      img {
+        position: relative;
+        right: 50px;
+        bottom: 20px;
+        width: 150px;
+      }
     }
 
     &-info {
@@ -385,8 +393,9 @@ export default {
 
       .balance {
         color: var(--akita-light);
+        font-weight: 700;
       }
-      
+
       p {
         color: var(--akita-light);
         margin-bottom: 0;

@@ -1,10 +1,12 @@
 <template>
   <div class="machine">
     <div class="machine_wallet">
-      <img v-if="name == 'Robot 1'" src="@/assets/img/Robot1_xs.png" />
-      <img v-if="name == 'Robot 2'" src="@/assets/img/Robot2_xs.png" />
-      <img v-if="name == 'Energy Solar'" src="@/assets/img/EnergySolar_xs.png" />
-      <img v-if="name == 'Energy Wind'" src="@/assets/img/EnergyWind_xs.png" />
+      <div class="wrapper">
+        <img v-if="name == 'Robot 1'" src="@/assets/img/Robot1_xs.png" />
+        <img v-if="name == 'Robot 2'" src="@/assets/img/Robot2_xs.png" />
+        <img v-if="name == 'Energy Solar'" src="@/assets/img/EnergySolar_xs.png" />
+        <img v-if="name == 'Energy Wind'" src="@/assets/img/EnergyWind_xs.png" />
+      </div>
       <div class="info">
         <h3>{{ name }}</h3>
         <p class="balance">{{ balance }}</p>
@@ -36,6 +38,7 @@ export default {
 
 <style lang="scss" scoped>
 .machine {
+  height: 110px;
   .machine_wallet {
     background: linear-gradient(
       to bottom right,
@@ -49,10 +52,18 @@ export default {
     height: 110px;
     text-align: left;
 
-    img {
+    .wrapper {
       float: left;
+      width: 50%;
+      img {
+        position: relative;
+        right: 50px;
+        bottom: 20px;
+        width: 150px;
+      }
     }
     .info {
+      text-align: left;
       h3 {
         color: var(--akita-light);
         font-size: 1em;
@@ -64,6 +75,7 @@ export default {
       }
       .balance {
         font-size: 1em;
+        font-weight: 700;
       }
     }
   }

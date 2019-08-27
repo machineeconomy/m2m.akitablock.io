@@ -104,10 +104,10 @@
     </div>
     <div class="row">
       <div class="box">
-        <Machine name="Provider 1" :balance="$store.getters.provider1_balance" />
+        <Machine name="Energy Wind" :balance="$store.getters.provider1_balance" />
       </div>
       <div class="box">
-        <Machine name="Provider 2" :balance="$store.getters.provider2_balance" />
+        <Machine name="Energy Solar" :balance="$store.getters.provider2_balance" />
       </div>
     </div>
   </div>
@@ -328,8 +328,9 @@ export default {
   }
 
   .box {
-    font-family: "Oswald", sans-serif;
-    font-weight: bold;
+    font-family: ocr-b-std, monospace;
+    font-style: normal;
+    font-weight: 400;
 
     display: flex;
     flex-direction: column;

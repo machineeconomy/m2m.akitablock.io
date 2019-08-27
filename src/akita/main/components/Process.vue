@@ -14,10 +14,6 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
-.process {
-  margin-bottom: 220px;
-}
-
 .img {
   width: 90%;
   margin-top: 30px

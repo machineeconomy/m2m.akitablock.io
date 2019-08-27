@@ -34,7 +34,7 @@ export default {
 <style lang="scss" scoped>
 .logos {
   position: absolute;
-  top: 20px;
+  top: 200px;
   right: 0px;
   z-index: 3;
 }
@@ -63,7 +63,7 @@ export default {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .list {
     display: none;
   }

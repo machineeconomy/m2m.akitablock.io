@@ -31,7 +31,7 @@ footer {
   position: relative;
   min-height: 100vh;
   padding-top: 200px;
-  padding-bottom: 700px;
+  padding-bottom: 500px;
   background: url("~@/assets/img/tangle.svg ");
   background-repeat: repeat-x;
   background-position: -5vw 450px;
@@ -48,14 +48,9 @@ footer {
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 900px) {
   footer {
-    padding-bottom: 500px;
-  }
-}
-@media (max-width: 480px) {
-  footer {
-    padding-bottom: 700px;
+    padding-bottom: 300px;
   }
 }
 </style>

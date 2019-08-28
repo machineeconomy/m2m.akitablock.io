@@ -15,26 +15,25 @@
 </template>
 
 <script>
-import Links from "./components/Links";
+import Links from './components/Links'
 
 export default {
-  name: "Footer",
+  name: 'Footer',
 
   components: {
     Links
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
 footer {
   position: relative;
   min-height: 100vh;
-  padding-top: 200px;
-  padding-bottom: 700px;
-  background: url("~@/assets/img/tangle.svg ");
-  background-repeat: repeat-x;
-  background-position: -5vw 450px;
+  padding-top: 150px;
+  padding-bottom: 500px;
+  background: url("~@/assets/img/tangle.svg ") no-repeat;
+  background-position: -7vw 500px;
   background-size: 100%;
 }
 
@@ -48,14 +47,15 @@ footer {
   }
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1166px) {
   footer {
-    padding-bottom: 500px;
+    background-position: -7vw 400px;
   }
 }
-@media (max-width: 480px) {
+
+@media (max-width: 600px) {
   footer {
-    padding-bottom: 700px;
+    background: none;
   }
 }
 </style>

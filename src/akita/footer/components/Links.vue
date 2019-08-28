@@ -1,9 +1,11 @@
 <template>
   <div class="links">
     <div class="contain">
-      <p class="text">Open source development project by AKITA</p>
-      <p class="text">Supported by IOTA Ecosytem Development Fund</p>
-      <p class="text">Based on the IOTA Tangle infrastructure</p>
+      <div class="information">
+        <p class="text">Open source development project by AKITA</p>
+        <p class="text">Supported by IOTA Ecosytem Development Fund</p>
+        <p class="text">Based on the IOTA Tangle infrastructure</p>
+      </div>
       <div class="logos">
         <ul class="list">
           <li class="item" v-for="logo in logos" :key="logo.href">
@@ -23,11 +25,19 @@ export default {
     logos: [
       {
         url: require('@/assets/img/logo/IOTALogo.png'),
-        href: "https://www.iota.org/"
+        href: 'https://www.iota.org/'
       },
       {
         url: require('@/assets/img/logo/IOTAEcosystem.png'),
-        href: "https://fund.iota.org/"
+        href: 'https://fund.iota.org/'
+      },
+      {
+        url: require('@/assets/img/logo/Medium.png'),
+        href: 'https://medium.com/@akitablock/machine-to-machine-ecosystem-cf1155825a86'
+      },
+      {
+        url: require('@/assets/img/logo/GitHub.png'),
+        href: 'https://github.com/akitablock'
       }
     ]
   })
@@ -42,34 +52,64 @@ export default {
   padding: 50px 0;
   background: linear-gradient(to left, var(--akita-primary) 50%,  var(--akita-secondary) 100%);
   p {
-  color: white;
+    color: white;
+    white-space: nowrap;
   }
 }
 
-.logos {
-  position: absolute;
-  right: 0;
-  bottom: 30px;
+.contain {
+  display: flex;
+  justify-content: space-between;
+}
+
+.information {
+  margin-right: 50px;
 }
 
 .list {
   display: flex;
   flex-wrap: wrap;
+  position: relative;
+  bottom: 20px;
+}
+
+.item {
+  &:nth-child(3) {
+    .img {
+      background-size: auto 90px;
+    }
+  }
+
+  &:nth-child(4) {
+    .img {
+      width: 50px;
+    }
+  }
 }
 
 .img {
   display: block;
   height: 70px;
-  width: 200px;
+  width: 180px;
   background-size: auto 40px;
   background-repeat: no-repeat;
   background-position: left center;
 }
 
-@media (max-width: 900px) {
-  .logos {
-    position: relative;
-    top: 0;
+@media (max-width: 950px) {
+  .contain {
+    flex-direction: column;
+  }
+
+  .information {
+    margin-right: 0;
+    p {
+      white-space: normal;
+    }
+  }
+
+  .list {
+    bottom: 0;
   }
 }
 </style>

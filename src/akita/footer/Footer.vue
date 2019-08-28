@@ -2,7 +2,7 @@
   <footer class="hardwarePoC">
     <div class="contain">
       <div class="information">
-        <h3 class="title">Phyiscal M2M prototypes soon!</h3>
+        <h3 class="title">Physical M2M prototypes soon!</h3>
         <p class="text">
           The very same process and code that you can experience here is now being tested on actual physical hardware, industry
           robots, energy providers, micro controllers with displays and more. As soon as our hardware integration and testing
